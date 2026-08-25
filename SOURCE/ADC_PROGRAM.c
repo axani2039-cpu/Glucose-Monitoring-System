@@ -43,7 +43,7 @@ void MADC_voidInit(void)
 	CLR_BIT(ADCSRA, ADIE);
 
 
-	/* ADC Prescaler */
+	/* Select ADC Prescaler */
 
 #if ADC_PRESCALER == ADC_PRESCALER_2
 
@@ -88,5 +88,49 @@ void MADC_voidInit(void)
 	SET_BIT(ADCSRA, ADPS0);
 
 #endif
+}
 
+
+u16 MADC_u16GetDigitalValue(ADC_Channel_t A_ADC_Channel)
+{
+	u8 Local_u8Low;
+	u8 Local_u8High;
+
+	u16 Local_u16Result;
+
+
+	/* Select ADC Channel */
+
+	ADMUX &= 0b11100000;
+
+	ADMUX |= A_ADC_Channel;
+
+
+	/* Start Conversion */
+
+	SET_BIT(ADCSRA, ADSC);
+
+
+	/* Wait Until Conversion Complete */
+
+	while(GET_BIT(ADCSRA, ADIF) == 0);
+
+
+	/* Clear ADC Flag */
+
+	SET_BIT(ADCSRA, ADIF);
+
+
+	/* Read ADC Result */
+
+	Local_u8Low = ADCL;
+
+	Local_u8High = ADCH;
+
+
+	Local_u16Result =
+			((u16)Local_u8High << 8) | Local_u8Low;
+
+
+	return Local_u16Result;
 }
