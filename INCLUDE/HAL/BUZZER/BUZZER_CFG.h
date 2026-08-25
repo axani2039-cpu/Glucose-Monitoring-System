@@ -1,5 +1,5 @@
-#ifndef BUZZER_CONFIG_H_
-#define BUZZER_CONFIG_H_
+#ifndef BUZZER_CFG.h
+#define BUZZER_CFG.h
 
 #include "../../MCAL/DIO/DIO_interface.h"
 
