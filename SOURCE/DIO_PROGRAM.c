@@ -73,10 +73,6 @@ break;
 }
 }
 
-
-/*----------------------------------------------------------*/
-
-
 void DIO_voidSetPinValue(u8 Copy_u8Port,
 u8 Copy_u8Pin,
 u8 Copy_u8Value)
@@ -144,10 +140,6 @@ break;
 }
 }
 
-
-/*----------------------------------------------------------*/
-
-
 u8 DIO_u8GetPinValue(u8 Copy_u8Port,
 u8 Copy_u8Pin)
 {
@@ -190,10 +182,6 @@ break;
 return Local_u8Value;
 }
 
-
-/*----------------------------------------------------------*/
-
-
 void DIO_voidSetPortDirection(u8 Copy_u8Port,
 u8 Copy_u8Direction)
 {
@@ -220,9 +208,6 @@ break;
 }
 }
 
-
-/*----------------------------------------------------------*/
-
 void DIO_voidSetPortValue(u8 Copy_u8Port,
 u8 Copy_u8Value)
 {
@@ -248,10 +233,6 @@ default:
 break;
 }
 }
-
-
-/*----------------------------------------------------------*/
-
 
 u8 DIO_u8GetPortValue(u8 Copy_u8Port)
 {
