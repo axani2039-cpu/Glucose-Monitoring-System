@@ -1,5 +1,5 @@
-#ifndef BUZZER_PRIVATE.h
-#define BUZZER_PRIVATE.h
+#ifndef BUZZER_PRIVATE_H_
+#define BUZZER_PRIVATE_H_
 
 /*
 * Private definitions for Buzzer Driver
