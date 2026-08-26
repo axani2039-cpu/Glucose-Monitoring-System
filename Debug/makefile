@@ -31,41 +31,50 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 LSS += \
-Glucose-Monitoring-System.lss \
+GLU.lss \
+
+FLASH_IMAGE += \
+GLU.hex \
 
 SIZEDUMMY += \
 sizedummy \
 
 
 # All Target
-all: Glucose-Monitoring-System.elf secondary-outputs
+all: GLU.elf secondary-outputs
 
 # Tool invocations
-Glucose-Monitoring-System.elf: $(OBJS) $(USER_OBJS)
+GLU.elf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: AVR C Linker'
-	avr-gcc -Wl,-Map,Glucose-Monitoring-System.map -mmcu=atmega16 -o "Glucose-Monitoring-System.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	avr-gcc -Wl,-Map,GLU.map -mmcu=atmega32 -o "GLU.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
-Glucose-Monitoring-System.lss: Glucose-Monitoring-System.elf
+GLU.lss: GLU.elf
 	@echo 'Invoking: AVR Create Extended Listing'
-	-avr-objdump -h -S Glucose-Monitoring-System.elf  >"Glucose-Monitoring-System.lss"
+	-avr-objdump -h -S GLU.elf  >"GLU.lss"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-sizedummy: Glucose-Monitoring-System.elf
+GLU.hex: GLU.elf
+	@echo 'Create Flash image (ihex format)'
+	-avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex GLU.elf  "GLU.hex"
+	@echo 'Finished building: $@'
+	@echo ' '
+
+sizedummy: GLU.elf
 	@echo 'Invoking: Print Size'
-	-avr-size --format=avr --mcu=atmega16 Glucose-Monitoring-System.elf
+	-avr-size --format=avr --mcu=atmega32 GLU.elf
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(ELFS)$(OBJS)$(ASM_DEPS)$(S_DEPS)$(SIZEDUMMY)$(S_UPPER_DEPS)$(LSS)$(C_DEPS) Glucose-Monitoring-System.elf
+	-$(RM) $(FLASH_IMAGE)$(ELFS)$(OBJS)$(ASM_DEPS)$(S_DEPS)$(SIZEDUMMY)$(S_UPPER_DEPS)$(LSS)$(C_DEPS) GLU.elf
 	-@echo ' '
 
-secondary-outputs: $(LSS) $(SIZEDUMMY)
+secondary-outputs: $(LSS) $(FLASH_IMAGE) $(SIZEDUMMY)
 
 .PHONY: all clean dependents
 .SECONDARY:

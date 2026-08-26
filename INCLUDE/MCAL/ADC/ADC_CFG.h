@@ -1,5 +1,5 @@
-#ifndef ADC_CFG_H_
-#define ADC_CFG_H_
+#ifndef  INCLUDE_MCAL_ADC_ADC_CFG_H_
+#define  INCLUDE_MCAL_ADC_ADC_CFG_H_
 
 
 #define ADC_VREF_AVCC        1
@@ -19,6 +19,7 @@
 
 
 #define ADC_PRESCALER        ADC_PRESCALER_128
+
 
 
 #endif

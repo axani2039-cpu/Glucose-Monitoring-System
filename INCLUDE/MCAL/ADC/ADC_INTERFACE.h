@@ -1,5 +1,12 @@
-#ifndef ADC_INTERFACE_H_
-#define ADC_INTERFACE_H_
+/*
+ * ADC_INTERFACE.h
+ *
+ *  Created on: Aug 26, 2026
+ *      Author: lenovo
+ */
+
+#ifndef INCLUDE_MCAL_ADC_ADC_INTERFACE_H_
+#define INCLUDE_MCAL_ADC_ADC_INTERFACE_H_
 
 
 typedef enum
@@ -51,4 +58,5 @@ void MADC_voidInit(void);
 u16 MADC_u16GetDigitalValue(ADC_Channel_t A_ADC_Channel);
 
 
-#endif
+
+#endif /* INCLUDE_MCAL_ADC_ADC_INTERFACE_H_ */

@@ -1,6 +1,5 @@
-#ifndef ADC_PRIVATE_H_
-#define ADC_PRIVATE_H_
-
+#ifndef INCLUDE_MCAL_ADC_ADC_PRIVATE_H_
+#define INCLUDE_MCAL_ADC_ADC_PRIVATE_H_
 
 /* ADC Registers */
 

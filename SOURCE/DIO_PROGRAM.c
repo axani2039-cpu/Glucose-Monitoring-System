@@ -1,264 +1,305 @@
 
-#include "../INCLUDE/MCAL/DIO/DIO_INTERFACE.h"
-#include "../INCLUDE/MCAL/DIO/DIO_CFG.h"
-#include "../INCLUDE/MCAL/DIO/DIO_PRIVATE.h"
+#include "../INCLUDE/LIB/BIT_MATH.h"
+#include "../INCLUDE/LIB/STD_TYPES.h"
 
-#include "../INCLUDE/LIB/BIT_MATH.h"
+#include "../INCLUDE/MCAL/DIO/DIO_INTERFACE.h"
+#include "../INCLUDE/MCAL/DIO/DIO_PRIVATE.h"
+#include "../INCLUDE/MCAL/DIO/DIO_CFG.h"
 
-
-void DIO_voidSetPinDirection(u8 Copy_u8Port,
-u8 Copy_u8Pin,
-u8 Copy_u8Direction)
+void MDIO_voidInit()
 {
-switch(Copy_u8Port)
-{
-case DIO_PORTA:
+	DDRA_REG= CONC_BIT(PORTA_PIN7_DIRECTION,
+			PORTA_PIN6_DIRECTION,
+			PORTA_PIN5_DIRECTION,
+			PORTA_PIN4_DIRECTION,
+			PORTA_PIN3_DIRECTION,
+			PORTA_PIN2_DIRECTION,
+			PORTA_PIN1_DIRECTION,
+			PORTA_PIN0_DIRECTION);
 
-if(Copy_u8Direction == DIO_OUTPUT)
-{
-SET_BIT(DDRA, Copy_u8Pin);
-}
-else
-{
-CLR_BIT(DDRA, Copy_u8Pin);
-}
+	DDRB_REG= CONC_BIT(PORTB_PIN7_DIRECTION,
+				PORTB_PIN6_DIRECTION,
+				PORTB_PIN5_DIRECTION,
+				PORTB_PIN4_DIRECTION,
+				PORTB_PIN3_DIRECTION,
+				PORTB_PIN2_DIRECTION,
+				PORTB_PIN1_DIRECTION,
+				PORTB_PIN0_DIRECTION);
 
-break;
+	DDRC_REG= CONC_BIT(PORTC_PIN7_DIRECTION,
+				PORTC_PIN6_DIRECTION,
+				PORTC_PIN5_DIRECTION,
+				PORTC_PIN4_DIRECTION,
+				PORTC_PIN3_DIRECTION,
+				PORTC_PIN2_DIRECTION,
+				PORTC_PIN1_DIRECTION,
+				PORTC_PIN0_DIRECTION);
 
+	DDRD_REG= CONC_BIT(PORTD_PIN7_DIRECTION,
+				PORTD_PIN6_DIRECTION,
+				PORTD_PIN5_DIRECTION,
+				PORTD_PIN4_DIRECTION,
+				PORTD_PIN3_DIRECTION,
+				PORTD_PIN2_DIRECTION,
+				PORTD_PIN1_DIRECTION,
+				PORTD_PIN0_DIRECTION);
 
-case DIO_PORTB:
+	PORTA_REG= CONC_BIT(PORTA_PIN7_VALUE,
+				PORTA_PIN6_VALUE,
+				PORTA_PIN5_VALUE,
+				PORTA_PIN4_VALUE,
+				PORTA_PIN3_VALUE,
+				PORTA_PIN2_VALUE,
+				PORTA_PIN1_VALUE,
+				PORTA_PIN0_VALUE);
 
-if(Copy_u8Direction == DIO_OUTPUT)
-{
-SET_BIT(DDRB, Copy_u8Pin);
-}
-else
-{
-CLR_BIT(DDRB, Copy_u8Pin);
-}
+	PORTB_REG= CONC_BIT(PORTB_PIN7_VALUE,
+					PORTB_PIN6_VALUE,
+					PORTB_PIN5_VALUE,
+					PORTB_PIN4_VALUE,
+					PORTB_PIN3_VALUE,
+					PORTB_PIN2_VALUE,
+					PORTB_PIN1_VALUE,
+					PORTB_PIN0_VALUE);
 
-break;
+	PORTC_REG= CONC_BIT(PORTC_PIN7_VALUE,
+					PORTC_PIN6_VALUE,
+					PORTC_PIN5_VALUE,
+					PORTC_PIN4_VALUE,
+					PORTC_PIN3_VALUE,
+					PORTC_PIN2_VALUE,
+					PORTC_PIN1_VALUE,
+					PORTC_PIN0_VALUE);
 
-
-case DIO_PORTC:
-
-if(Copy_u8Direction == DIO_OUTPUT)
-{
-SET_BIT(DDRC, Copy_u8Pin);
-}
-else
-{
-CLR_BIT(DDRC, Copy_u8Pin);
-}
-
-break;
-
-
-case DIO_PORTD:
-
-if(Copy_u8Direction == DIO_OUTPUT)
-{
-SET_BIT(DDRD, Copy_u8Pin);
-}
-else
-{
-CLR_BIT(DDRD, Copy_u8Pin);
-}
-
-break;
-
-
-default:
-break;
-}
-}
-
-void DIO_voidSetPinValue(u8 Copy_u8Port,
-u8 Copy_u8Pin,
-u8 Copy_u8Value)
-{
-switch(Copy_u8Port)
-{
-case DIO_PORTA:
-
-if(Copy_u8Value == DIO_HIGH)
-{
-SET_BIT(PORTA, Copy_u8Pin);
-}
-else
-{
-CLR_BIT(PORTA, Copy_u8Pin);
+	PORTD_REG= CONC_BIT(PORTD_PIN7_VALUE,
+					PORTD_PIN6_VALUE,
+					PORTD_PIN5_VALUE,
+					PORTD_PIN4_VALUE,
+					PORTD_PIN3_VALUE,
+					PORTD_PIN2_VALUE,
+					PORTD_PIN1_VALUE,
+					PORTD_PIN0_VALUE);
 }
 
-break;
-
-
-case DIO_PORTB:
-
-if(Copy_u8Value == DIO_HIGH)
+void MDIO_voidSetPinDirection(DIO_PORTS A_DIOPORT,DIO_PINS A_DIOPIN,PIN_DIRECTION A_PINDIRECTION)
 {
-SET_BIT(PORTB, Copy_u8Pin);
+	if((A_DIOPORT<= PORTD) && (A_DIOPIN<=PIN7 )&& (A_PINDIRECTION <= DIO_OUTPUT ))
+	{
+		switch(A_DIOPORT)
+		{
+		case PORTA:
+			switch(A_PINDIRECTION)
+			{
+			case DIO_OUTPUT: SET_BIT(DDRA_REG,A_DIOPIN);break;
+			case DIO_INPUT: CLR_BIT(DDRA_REG,A_DIOPIN);break;
+
+			}
+			break;
+		case PORTB:
+			switch(A_PINDIRECTION)
+						{
+						case DIO_OUTPUT: SET_BIT(DDRB_REG,A_DIOPIN);break;
+						case DIO_INPUT: CLR_BIT(DDRB_REG,A_DIOPIN);break;
+
+						}
+			break;
+		case PORTC:
+			switch(A_PINDIRECTION)
+						{
+						case DIO_OUTPUT: SET_BIT(DDRC_REG,A_DIOPIN);break;
+						case DIO_INPUT: CLR_BIT(DDRC_REG,A_DIOPIN);break;
+
+						}
+			break;
+		case PORTD:
+			switch(A_PINDIRECTION)
+						{
+						case DIO_OUTPUT: SET_BIT(DDRD_REG,A_DIOPIN);break;
+						case DIO_INPUT: CLR_BIT(DDRD_REG,A_DIOPIN);break;
+
+						}
+			break;
+			default:break;
+
+		}
+	}
 }
-else
+
+
+void MDIO_voidSetPinValue(DIO_PORTS A_DIOPORT,DIO_PINS A_DIOPIN,PIN_VALUE  A_PINVALUE)
 {
-CLR_BIT(PORTB, Copy_u8Pin);
+	if((A_DIOPORT<= PORTD) && (A_DIOPIN<=PIN7 )&& (A_PINVALUE <= DIO_HIGH ))
+	{
+		switch(A_DIOPORT)
+		{
+		case PORTA:
+			switch(A_PINVALUE)
+			{
+			case DIO_HIGH: SET_BIT(PORTA_REG,A_DIOPIN);break;
+			case DIO_LOW: CLR_BIT(PORTA_REG,A_DIOPIN);break;
+
+			}
+			break;
+		case PORTB:
+			switch(A_PINVALUE)
+						{
+			case DIO_HIGH:SET_BIT(PORTB_REG,A_DIOPIN);break;
+			case DIO_LOW: CLR_BIT(PORTB_REG,A_DIOPIN);break;
+
+						}
+			break;
+		case PORTC:
+			switch(A_PINVALUE)
+						{
+			case DIO_HIGH: SET_BIT(PORTC_REG,A_DIOPIN);break;
+			case DIO_LOW: CLR_BIT(PORTC_REG,A_DIOPIN);break;
+
+						}
+			break;
+		case PORTD:
+			switch(A_PINVALUE)
+						{
+			case DIO_HIGH: SET_BIT(PORTD_REG,A_DIOPIN);break;
+			case DIO_LOW: CLR_BIT(PORTD_REG,A_DIOPIN);break;
+
+						}
+			break;
+			default:break;
+		}
+	}
 }
 
-break;
-
-
-case DIO_PORTC:
-
-if(Copy_u8Value == DIO_HIGH)
+void MDIO_voidTogglePinValue (DIO_PORTS A_DIOPORT,DIO_PINS A_DIOPIN)
 {
-SET_BIT(PORTC, Copy_u8Pin);
+
+	if((A_DIOPORT<= PORTD) && (A_DIOPIN<=PIN7 ))
+	{
+		switch(A_DIOPORT)
+		{
+
+		case PORTA:
+			TOGGLE_BIT(PORTA_REG,A_DIOPIN);
+			break;
+
+		case PORTB:
+			TOGGLE_BIT(PORTB_REG,A_DIOPIN);
+			break;
+
+		case PORTC:
+			TOGGLE_BIT(PORTC_REG,A_DIOPIN);
+			break;
+
+		case PORTD:
+			TOGGLE_BIT(PORTD_REG,A_DIOPIN);
+			break;
+		default:break;
+		}
+	}
 }
-else
+
+void MDIO_voidTogglePinDirection (DIO_PORTS A_DIOPORT,DIO_PINS A_DIOPIN)
 {
-CLR_BIT(PORTC, Copy_u8Pin);
+
+	if((A_DIOPORT<= PORTD) && (A_DIOPIN<=PIN7 ))
+	{
+		switch(A_DIOPORT)
+		{
+		case PORTA:
+			TOGGLE_BIT(DDRA_REG,A_DIOPIN);
+			break;
+		case PORTB:
+			TOGGLE_BIT(DDRB_REG,A_DIOPIN);
+
+			break;
+		case PORTC:
+			TOGGLE_BIT(DDRC_REG,A_DIOPIN);
+
+			break;
+		case PORTD:
+			TOGGLE_BIT(DDRD_REG,A_DIOPIN);
+
+			break;
+		default:break;
+
+		}
+	}
 }
 
-break;
-
-
-case DIO_PORTD:
-
-if(Copy_u8Value == DIO_HIGH)
+void MDIO_voidSetPortValue (DIO_PORTS A_DIOPORT,u8 a_u8PORTVALUE)
 {
-SET_BIT(PORTD, Copy_u8Pin);
+	if((A_DIOPORT<= PORTD))
+		{
+			switch(A_DIOPORT)
+			{
+			case PORTA:
+				SET_BYTE(PORTA_REG,a_u8PORTVALUE);
+				break;
+			case PORTB:
+				SET_BYTE(PORTB_REG,a_u8PORTVALUE);
+
+				break;
+			case PORTC:
+				SET_BYTE(PORTC_REG,a_u8PORTVALUE);
+
+				break;
+			case PORTD:
+				SET_BYTE(PORTD_REG,a_u8PORTVALUE);
+
+				break;
+			}
+		}
 }
-else
+void MDIO_voidSetPortDirection (DIO_PORTS A_DIOPORT,u8 a_u8PORTDIRECTION)
 {
-CLR_BIT(PORTD, Copy_u8Pin);
+	if((A_DIOPORT<= PORTD))
+			{
+				switch(A_DIOPORT)
+				{
+				case PORTA:
+					SET_BYTE(DDRA_REG,a_u8PORTDIRECTION);
+					break;
+				case PORTB:
+					SET_BYTE(DDRB_REG,a_u8PORTDIRECTION);
+
+					break;
+				case PORTC:
+					SET_BYTE(DDRC_REG,a_u8PORTDIRECTION);
+
+					break;
+				case PORTD:
+					SET_BYTE(DDRD_REG,a_u8PORTDIRECTION);
+
+					break;
+				}
+			}
 }
 
-break;
-
-
-default:
-break;
-}
-}
-
-u8 DIO_u8GetPinValue(u8 Copy_u8Port,
-u8 Copy_u8Pin)
+PIN_VALUE MDIO_pinValueGetPinValue(DIO_PORTS A_DIOPORT, DIO_PINS A_DIOPIN)
 {
-u8 Local_u8Value = DIO_LOW;
+	PIN_VALUE VALUE;
+	if((A_DIOPORT<= PORTD) && (A_DIOPIN<=PIN7 ))
+		{
+			switch(A_DIOPORT)
+			{
 
-switch(Copy_u8Port)
-{
-case DIO_PORTA:
+			case PORTA:
+				VALUE=GET_BIT(PINA_REG,A_DIOPIN);
+				break;
 
-Local_u8Value = GET_BIT(PINA, Copy_u8Pin);
+			case PORTB:
+				VALUE=GET_BIT(PINB_REG,A_DIOPIN);
+				break;
 
-break;
+			case PORTC:
+				VALUE=GET_BIT(PINC_REG,A_DIOPIN);
+				break;
 
+			case PORTD:
+				VALUE=GET_BIT(PIND_REG,A_DIOPIN);
+				break;
+			default:break;
+			}
+		}
+	return VALUE;
 
-case DIO_PORTB:
-
-Local_u8Value = GET_BIT(PINB, Copy_u8Pin);
-
-break;
-
-
-case DIO_PORTC:
-
-Local_u8Value = GET_BIT(PINC, Copy_u8Pin);
-
-break;
-
-
-case DIO_PORTD:
-
-Local_u8Value = GET_BIT(PIND, Copy_u8Pin);
-
-break;
-
-
-default:
-break;
-}
-
-return Local_u8Value;
-}
-
-void DIO_voidSetPortDirection(u8 Copy_u8Port,
-u8 Copy_u8Direction)
-{
-switch(Copy_u8Port)
-{
-case DIO_PORTA:
-DDRA = Copy_u8Direction;
-break;
-
-case DIO_PORTB:
-DDRB = Copy_u8Direction;
-break;
-
-case DIO_PORTC:
-DDRC = Copy_u8Direction;
-break;
-
-case DIO_PORTD:
-DDRD = Copy_u8Direction;
-break;
-
-default:
-break;
-}
-}
-
-void DIO_voidSetPortValue(u8 Copy_u8Port,
-u8 Copy_u8Value)
-{
-switch(Copy_u8Port)
-{
-case DIO_PORTA:
-PORTA = Copy_u8Value;
-break;
-
-case DIO_PORTB:
-PORTB = Copy_u8Value;
-break;
-
-case DIO_PORTC:
-PORTC = Copy_u8Value;
-break;
-
-case DIO_PORTD:
-PORTD = Copy_u8Value;
-break;
-
-default:
-break;
-}
-}
-
-u8 DIO_u8GetPortValue(u8 Copy_u8Port)
-{
-u8 Local_u8Value = 0;
-
-switch(Copy_u8Port)
-{
-case DIO_PORTA:
-Local_u8Value = PINA;
-break;
-
-case DIO_PORTB:
-Local_u8Value = PINB;
-break;
-
-case DIO_PORTC:
-Local_u8Value = PINC;
-break;
-
-case DIO_PORTD:
-Local_u8Value = PIND;
-break;
-
-default:
-break;
-}
-
-return Local_u8Value;
 }

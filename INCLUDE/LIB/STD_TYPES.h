@@ -1,5 +1,12 @@
-#ifndef STD_TYPES_H_
-#define STD_TYPES_H_
+/*
+ * STD_TYPES.h
+ *
+ *  Created on: Aug 26, 2026
+ *      Author: lenovo
+ */
+
+#ifndef INCLUDE_LIB_STD_TYPES_H_
+#define INCLUDE_LIB_STD_TYPES_H_
 
 typedef unsigned char        u8;
 typedef unsigned short int   u16;
@@ -17,4 +24,5 @@ typedef double               f64;
 #define OK                   0
 #define NOK                  1
 
-#endif /* STD_TYPES_H_ */
+
+#endif /* INCLUDE_LIB_STD_TYPES_H_ */
