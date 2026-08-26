@@ -1,9 +1,7 @@
-#ifndef BUZZER_CFG.h
-#define BUZZER_CFG.h
+#ifndef INCLUDE_HAL_BUZZER_BUZZER_CFG_H_
+#define INCLUDE_HAL_BUZZER_BUZZER_CFG_H_
 
-#include "../../MCAL/DIO/DIO_interface.h"
+#define BUZZER_PORT   PORTD
+#define BUZZER_PIN    PIN4
 
-#define BUZZER_PORT DIO_PORTD
-#define BUZZER_PIN DIO_PIN2
-
-#endif
+#endif 
