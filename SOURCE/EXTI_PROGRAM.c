@@ -36,7 +36,7 @@ void MEXTI_voidConfig (EXTI_ID A_EXTI_ID, EXTI_SENSE_MODE A_EXTI_SENSE_MODE)
             case EXTI2:
                 switch(A_EXTI_SENSE_MODE)
                 {
-                    case FALLING_EDGE: CLEAR_BIT(MCUCSR, EXTI2_SENSE_MODE_BITS); break;
+                    case FALLING_EDGE: CLR_BIT(MCUCSR, EXTI2_SENSE_MODE_BITS); break;
                     case RISING_EDGE:  SET_BIT(MCUCSR, EXTI2_SENSE_MODE_BITS); break;
                 }
                 break;
@@ -59,9 +59,9 @@ void MEXTI_voidDisable(EXTI_ID A_EXTI_ID)
 {
     switch (A_EXTI_ID)
     {
-        case EXTI0: CLEAR_BIT(GICR, EXTI0_ENABLE_BIT); break;
-        case EXTI1: CLEAR_BIT(GICR, EXTI1_ENABLE_BIT); break;
-        case EXTI2: CLEAR_BIT(GICR, EXTI2_ENABLE_BIT); break;
+        case EXTI0: CLR_BIT(GICR, EXTI0_ENABLE_BIT); break;
+        case EXTI1: CLR_BIT(GICR, EXTI1_ENABLE_BIT); break;
+        case EXTI2: CLR_BIT(GICR, EXTI2_ENABLE_BIT); break;
         default: break;
     }
 }

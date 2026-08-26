@@ -30,7 +30,7 @@ typedef enum{
 
 
 void HLCD_voidSendCommand(u8 A_u8Command);
-void HLCD_voidSendData(u8 A_u8Command);
+void HLCD_voidSendData(u8 A_u8Data);
 void HLCD_voidInit(void);
 void HLCD_voidSendString(u8 *A_Pu8String);
 void HLCD_voidClearDisplay(void);

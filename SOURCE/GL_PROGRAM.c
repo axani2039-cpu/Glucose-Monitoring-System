@@ -17,5 +17,5 @@ void MGI_voidEnable(void) {
 }
 
 void MGI_voidDisable(void) {
-    CLEAR_BIT(SREG , GLOBAL_INTERRUPT_ENABLE_BIT);
+    CLR_BIT(SREG , GLOBAL_INTERRUPT_ENABLE_BIT);
 }
