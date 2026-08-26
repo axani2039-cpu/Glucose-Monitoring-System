@@ -1,10 +1,13 @@
 /*
  * BIT_MATH.h
  *
+ *  Created on: Aug 26, 2026
+ *      Author: lenovo
  */
 
-#ifndef BIT_MATH_H_
-#define BIT_MATH_H_
+#ifndef INCLUDE_LIB_BIT_MATH_H_
+#define INCLUDE_LIB_BIT_MATH_H_
+
 
 /* Bit Manipulation Macros */
 #define SET_BIT(Reg, bitnum)         ((Reg) |= (1 << (bitnum)))
@@ -20,4 +23,5 @@
 #define CONC_BIT(b7,b6,b5,b4,b3,b2,b1,b0)     CONC_HELP(b7,b6,b5,b4,b3,b2,b1,b0)
 #define CONC_HELP(b7,b6,b5,b4,b3,b2,b1,b0)    0b##b7##b6##b5##b4##b3##b2##b1##b0
 
-#endif /* BIT_MATH_H_ */
+
+#endif /* INCLUDE_LIB_BIT_MATH_H_ */
