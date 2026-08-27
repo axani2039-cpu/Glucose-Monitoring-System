@@ -72,7 +72,7 @@ int main(void) {
     Display_StartupAnimation();
 
     /* Set Initial RTC Time for Testing (11:59:50 AM) */
-    RTC_Time_t initTime = {50, 59, 11};
+    RTC_Time_t initTime = {00, 00, 10};
     HRTC_voidSetTime(&initTime);
 
     u16 glucoseValue = 0;
