@@ -1,6 +1,6 @@
 # 🩸 Glucose Monitoring System (ATmega32)
 
-An embedded C application built for the ATmega32 microcontroller using a Layered Software Architecture (MCAL, HAL, LIB). The system simulates blood glucose level measurement, displays real-time readings on a 16x2 LCD, and triggers visual (LED) and audible (Buzzer) alerts when thresholds are exceeded.
+An embedded C application designed for the **ATmega32** microcontroller following a modular **Layered Software Architecture (MCAL, HAL, LIB)**. The system provides real-time monitoring of simulated blood glucose levels, tracks precise time via an RTC module, supports multiple testing modes (Fasting and Post-Meal), displays status on a 16x2 LCD, and provides visual (LED) and audible (Buzzer) alerts for critical medical ranges.
 
 ---
 
@@ -11,90 +11,68 @@ Glucose-Monitoring-System/
 │
 ├── INCLUDE/
 │   ├── HAL/
-│   │   ├── LCD_config.h
-│   │   ├── LCD_interface.h
-│   │   └── LCD_private.h
+│   │   ├── BUZZER/
+│   │   │   ├── BUZZER_CFG.h
+│   │   │   ├── BUZZER_INTERFACE.h
+│   │   │   └── BUZZER_PRIVATE.h
+│   │   │
+│   │   ├── GLUCOSE_SENSOR/
+│   │   │   ├── GLUCOSE_CFG.h
+│   │   │   ├── GLUCOSE_INTERFACE.h
+│   │   │   └── GLUCOSE_PRIVATE.h
+│   │   │
+│   │   ├── LCD/
+│   │   │   ├── LCD_CFG.h
+│   │   │   ├── LCD_INTERFACE.h
+│   │   │   └── LCD_PRIVATE.h
+│   │   │
+│   │   └── RTC/
+│   │       ├── RTC_CFG.h
+│   │       ├── RTC_INTERFACE.h
+│   │       └── RTC_PRIVATE.h
 │   │
 │   ├── LIB/
 │   │   ├── BIT_MATH.h
 │   │   └── STD_TYPES.h
 │   │
 │   └── MCAL/
-│       ├── ADC_config.h
-│       ├── ADC_interface.h
-│       ├── ADC_private.h
+│       ├── ADC/
+│       │   ├── ADC_CFG.h
+│       │   ├── ADC_INTERFACE.h
+│       │   └── ADC_PRIVATE.h
 │       │
-│       ├── DIO_config.h
-│       ├── DIO_interface.h
-│       └── DIO_private.h
+│       ├── DIO/
+│       │   ├── DIO_CFG.h
+│       │   ├── DIO_INTERFACE.h
+│       │   └── DIO_PRIVATE.h
+│       │
+│       ├── EXTI/
+│       │   ├── EXTI_CFG.h
+│       │   ├── EXTI_INTERFACE.h
+│       │   └── EXTI_PRIVATE.h
+│       │
+│       ├── GL/
+│       │   ├── GL_CFG.h
+│       │   ├── GL_INTERFACE.h
+│       │   └── GL_PRIVATE.h
+│       │
+│       └── TWI/
+│           ├── TWI_CFG.h
+│           ├── TWI_INTERFACE.h
+│           └── TWI_PRIVATE.h
 │
 └── SOURCE/
-    ├── ADC_program.c
-    ├── DIO_program.c
-    ├── LCD_program.c
-    └── MAIN.C
-⚡ Key Features
-Analog Sensing: Simulates a glucose sensor using a Potentiometer connected to PA0 (ADC Channel 0).  
-PDF
-
-ADC Processing: Uses the ATmega32 10-bit ADC to convert analog voltage into digital values (0 to 1023).  
-PDF
-
-Value Mapping: Maps digital ADC values to blood glucose readings (0 to 300 mg/dL).  
-PDF
-
-LCD Visualization: Displays live glucose values and system status on a 16x2 LCD.  
-PDF
-
-Hardware Alarm: Automatically turns on an LED and Buzzer on PORTB when glucose levels exceed 140 mg/dL.
-
-🔌 Hardware Pin Configuration
-Component	Microcontroller Pin	Function / Description
-Potentiometer	PA0 (ADC0)	
-Glucose Sensor Simulation Input  
-PDF
-
-LCD Data Lines	PORTC (PC0 - PC7)	
-8-Bit Data Bus  
-PDF
-
-LCD Control	PD0 (RS), PD1 (EN)	
-Register Select & Enable Control Pins  
-PDF
-
-LED Alert	PB0	Visual Warning Indicator
-Buzzer Alert	PB1	Audible Alarm Indicator
-💻 Tech Stack & Tools
-Language: Embedded C  
-PDF
-
-Microcontroller: ATmega32 (16 MHz)  
-PDF
-
-IDE: Eclipse IDE for C/C++ Developers  
-PDF
-
-Simulation: Proteus VSM  
-PDF
-
-Version Control: Git & GitHub
-
-🚀 How to Run the Simulation
-Clone this repository to your local machine:
-
-Bash
-git clone [https://github.com/username/Glucose-Monitoring-System.git](https://github.com/username/Glucose-Monitoring-System.git)
-Open the workspace in Eclipse and build the project to generate the .hex file.  
-PDF
-
-Open the schematic in Proteus.  
-PDF
-
-Double-click the ATmega32 component and select the compiled .hex file[cite: 1].
-
-Start the simulation and adjust the potentiometer value to observe live updates on the LCD and alert triggers[cite: 1].
-
-
----
-
-How would you like to update the GitHub repository: by using terminal commands directly, or by creating the `README.md` file from the GitHub web interface?
+    ├── ADC_PROGRAM.c
+    ├── BUZZER_PROGRAM.c
+    ├── DIO_PROGRAM.c
+    ├── EXTI_PROGRAM.c
+    ├── GLUCOSE_PROGRAM.c
+    ├── GLUCOSE_SENSOR_PROGRAM.c
+    ├── GL_PROGRAM.c
+    ├── LCD_PROGRAM.c
+    ├── MAIN.C
+    ├── RTC_PROGRAM.c
+    ├── TWI_PROGRAM.c
+    └── main.c
+⚡ Key FeaturesAnalog Sensor Simulation: Simulates blood glucose levels using a Potentiometer sampled via the 10-bit Analog-to-Digital Converter (ADC).Medical Range Evaluation: Processes raw voltage and maps it to blood glucose concentrations ($mg/dL$).Dual Testing Modes: Dynamic status evaluation based on selected context:🔴 Fasting Mode🟣 Post-Meal ModeI2C Real-Time Clock (DS1307): Communicates via the TWI (I2C) peripheral driver to fetch real-time clock data.Multi-Level Visual Alert System (LEDs):🟢 Green LED: Normal Glucose Level (Safe).🟡 Yellow LED: Prediabetes / Warning Level.🔴 Red LED: Critical / Diabetes Threshold.Audible Emergency Alarm: Active Buzzer activated automatically upon critical threshold breach.External Interrupts (EXTI): Mode selection buttons and alarm toggles handled via push buttons.16x2 LCD Visualization: Displays system status, current measurement mode, real-time clock, and numerical glucose readings.📊 Glucose Medical Ranges & ThresholdsStatus CategoryFasting Mode Range (mg/dL)Post-Meal Mode Range (mg/dL)Active LED IndicatorNormal Level$70 - 99$$< 140$🟢 Green LEDWarning / Prediabetes$100 - 125$$140 - 199$🟡 Yellow LEDCritical / Critical Alarm$\ge 126$$\ge 200$🔴 Red LED + Buzzer🔌 Hardware Pin ConfigurationComponentMicrocontroller PinFunction / DescriptionGlucose Sensor (Pot)PA0 (ADC Channel 0)Analog Voltage InputDS1307 RTC ModulePC0 (SCL), PC1 (SDA)TWI / I2C Clock & Data Lines16x2 LCD Data LinesPORTC PinsCharacter Display Data Bus16x2 LCD Control LinesPORTD Pins (RS, EN)Register Select & Enable LinesGreen LED IndicatorOutput PinNormal Range Visual SignalYellow LED IndicatorOutput PinWarning Range Visual SignalRed LED IndicatorOutput PinCritical Range Visual SignalActive BuzzerOutput PinAudible High-Risk AlertFasting Mode SwitchPush Button InputSelect Fasting Medical ThresholdsPost-Meal Mode SwitchPush Button InputSelect Post-Meal Medical ThresholdsAlarm Toggle SwitchPush Button InputManual Alarm Control / Toggle💻 Tech Stack & Embedded ToolsProgramming Language: Embedded CTarget Microcontroller: ATmega32 (16 MHz Clock Speed)Architecture: Layered Software Architecture (MCAL / HAL / LIB)IDE & Toolchain: Eclipse IDE for C/C++ Developers (AVR-GCC Toolchain)Hardware Simulator: Proteus VSM 8.xVersion Control: Git & GitHub🚀 How to Build & Run SimulationClone the Repository:Bashgit clone [https://github.com/axani2039-cpu/Glucose-Monitoring-System.git](https://github.com/axani2039-cpu/Glucose-Monitoring-System.git)
+Compile the Software:Import the project into Eclipse IDE.Build the target project using the AVR Toolchain to produce the binary .hex file.Execute Proteus Simulation:Open the .pdsprj file in Proteus VSM.Double-click the ATmega32 chip and attach the compiled .hex file path.Start simulation to interact with the potentiometer, switch between Fasting and Post-Meal modes, monitor real-time RTC time, and inspect LED/Buzzer alert responses.
