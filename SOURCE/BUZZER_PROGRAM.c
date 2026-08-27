@@ -1,35 +1,28 @@
-#include "../INCLUDE/HAL/BUZZER/BUZZER_INTERFACE.h"
-#include "../INCLUDE/HAL/BUZZER/BUZZER_CFG.h"
-#include "../INCLUDE/HAL/BUZZER/BUZZER_PRIVATE.h"
+#include "../INCLUDE/LIB/STD_TYPES.h"
+#include "../INCLUDE/LIB/BIT_MATH.h"
 
 #include "../INCLUDE/MCAL/DIO/DIO_INTERFACE.h"
 
+#include "../INCLUDE/HAL/BUZZER/BUZZER_INTERFACE.h"
+#include "../INCLUDE/HAL/BUZZER/BUZZER_PRIVATE.h"
+#include "../INCLUDE/HAL/BUZZER/BUZZER_CFG.h"
 
-void BUZZER_voidInit(void)
+void HBUZZER_voidInit(void)
 {
-DIO_voidSetPinDirection(
-BUZZER_PORT,
-BUZZER_PIN,
-DIO_OUTPUT
-);
-
-BUZZER_voidOff();
+    MDIO_voidSetPinDirection(BUZZER_PORT, BUZZER_PIN, DIO_OUTPUT);
 }
 
-void BUZZER_voidOn(void)
+void HBUZZER_voidTurnOn(void)
 {
-DIO_voidSetPinValue(
-BUZZER_PORT,
-BUZZER_PIN,
-DIO_HIGH
-);
+    MDIO_voidSetPinValue(BUZZER_PORT, BUZZER_PIN, DIO_HIGH);
 }
 
-void BUZZER_voidOff(void)
+void HBUZZER_voidTurnOff(void)
 {
-DIO_voidSetPinValue(
-BUZZER_PORT,
-BUZZER_PIN,
-DIO_LOW
-);
+    MDIO_voidSetPinValue(BUZZER_PORT, BUZZER_PIN, DIO_LOW);
+}
+
+void HBUZZER_voidToggle(void)
+{
+    MDIO_voidTogglePinValue(BUZZER_PORT, BUZZER_PIN);
 }

@@ -1,147 +1,137 @@
+#ifndef F_CPU
+#define F_CPU 8000000UL
+#endif
 #include <util/delay.h>
+
 #include "../INCLUDE/LIB/STD_TYPES.h"
 #include "../INCLUDE/LIB/BIT_MATH.h"
+
 #include "../INCLUDE/MCAL/DIO/DIO_INTERFACE.h"
 
 #include "../INCLUDE/HAL/LCD/LCD_INTERFACE.h"
 #include "../INCLUDE/HAL/LCD/LCD_PRIVATE.h"
 #include "../INCLUDE/HAL/LCD/LCD_CFG.h"
 
-
-void HLCD_voidInit(void)
-{
-
-    MDIO_voidSetPortDirection(LCD_DATA_PORT, 0xFF);
-    MDIO_voidSetPortValue(LCD_DATA_PORT, 0x00);
-
-    MDIO_voidSetPortDirection(LCD_CONTROL_PORT, 0xFF);
-    MDIO_voidSetPortValue(LCD_CONTROL_PORT, 0x00);
-
-    _delay_ms(32);
-
-    HLCD_voidSendCommand(FUNCTION_SET);
-    _delay_ms(1);
-
-    HLCD_voidSendCommand(DISPLAY_ON_OFF_CONTROL);
-    _delay_ms(1);
-
-    HLCD_voidSendCommand(DISPLAY_CLEAR);
+static void HLCD_voidSendEnablePulse(void) {
+    MDIO_voidSetPinValue(LCD_CONTROL_PORT, LCD_E_PIN, DIO_HIGH);
     _delay_ms(2);
-
-    HLCD_voidSendCommand(ENTRY_MODE_SET);
+    MDIO_voidSetPinValue(LCD_CONTROL_PORT, LCD_E_PIN, DIO_LOW);
+    _delay_ms(2);
 }
 
+static void HLCD_voidWrite4Bits(u8 copy_u8Data) {
+    MDIO_voidSetPinValue(LCD_DATA_PORT, LCD_D4_PIN, GET_BIT(copy_u8Data, 0));
+    MDIO_voidSetPinValue(LCD_DATA_PORT, LCD_D5_PIN, GET_BIT(copy_u8Data, 1));
+    MDIO_voidSetPinValue(LCD_DATA_PORT, LCD_D6_PIN, GET_BIT(copy_u8Data, 2));
+    MDIO_voidSetPinValue(LCD_DATA_PORT, LCD_D7_PIN, GET_BIT(copy_u8Data, 3));
+    HLCD_voidSendEnablePulse();
+}
 
-void HLCD_voidSendCommand(u8 A_u8Command)
-{
+void HLCD_voidInit(void) {
+    _delay_ms(40);
+
+    MDIO_voidSetPinDirection(LCD_CONTROL_PORT, LCD_RS_PIN, DIO_OUTPUT);
+    MDIO_voidSetPinDirection(LCD_CONTROL_PORT, LCD_RW_PIN, DIO_OUTPUT);
+    MDIO_voidSetPinDirection(LCD_CONTROL_PORT, LCD_E_PIN, DIO_OUTPUT);
+
+    MDIO_voidSetPinDirection(LCD_DATA_PORT, LCD_D4_PIN, DIO_OUTPUT);
+    MDIO_voidSetPinDirection(LCD_DATA_PORT, LCD_D5_PIN, DIO_OUTPUT);
+    MDIO_voidSetPinDirection(LCD_DATA_PORT, LCD_D6_PIN, DIO_OUTPUT);
+    MDIO_voidSetPinDirection(LCD_DATA_PORT, LCD_D7_PIN, DIO_OUTPUT);
 
     MDIO_voidSetPinValue(LCD_CONTROL_PORT, LCD_RS_PIN, DIO_LOW);
     MDIO_voidSetPinValue(LCD_CONTROL_PORT, LCD_RW_PIN, DIO_LOW);
 
+    HLCD_voidWrite4Bits(0x03);
+    _delay_ms(5);
+    HLCD_voidWrite4Bits(0x03);
+    _delay_us(150);
+    HLCD_voidWrite4Bits(0x03);
+    HLCD_voidWrite4Bits(0x02);
 
-    MDIO_voidSetPortValue(LCD_DATA_PORT, A_u8Command);
-
-    MDIO_voidSetPinValue(LCD_CONTROL_PORT, LCD_E_PIN, DIO_HIGH);
+    HLCD_voidSendCommand(0x28);
+    _delay_ms(1);
+    HLCD_voidSendCommand(0x0C);
+    _delay_ms(1);
+    HLCD_voidSendCommand(0x01);
     _delay_ms(2);
-    MDIO_voidSetPinValue(LCD_CONTROL_PORT, LCD_E_PIN, DIO_LOW);
-}
-
-
-void HLCD_voidSendData(u8 A_u8Data)
-{
-
-    MDIO_voidSetPinValue(LCD_CONTROL_PORT, LCD_RS_PIN, DIO_HIGH);
-    MDIO_voidSetPinValue(LCD_CONTROL_PORT, LCD_RW_PIN, DIO_LOW);
-
-
-    MDIO_voidSetPortValue(LCD_DATA_PORT, A_u8Data);
-
-    MDIO_voidSetPinValue(LCD_CONTROL_PORT, LCD_E_PIN, DIO_HIGH);
-    _delay_ms(2);
-    MDIO_voidSetPinValue(LCD_CONTROL_PORT, LCD_E_PIN, DIO_LOW);
-}
-
-
-void HLCD_voidSendString(u8 *A_Pu8String)
-{
-
-    while(*A_Pu8String != '\0')
-    {
-        HLCD_voidSendData(*A_Pu8String++);
-    }
-}
-
-
-void HLCD_voidClearDisplay(void)
-{
-
-    HLCD_voidSendCommand(DISPLAY_CLEAR);
-    _delay_ms(2);
-}
-
-
-void HLCD_voidGoToPos(LCD_ROWS A_LcdRowNo , LCD_COLS  A_LcdColNo)
-{
-    switch(A_LcdRowNo)
-    {
-    case ROW1: HLCD_voidSendCommand(0x80 + (A_LcdColNo - 1)); break;
-    case ROW2: HLCD_voidSendCommand(0xC0 + (A_LcdColNo - 1)); break;
-    default: break;
-    }
+    HLCD_voidSendCommand(0x06);
     _delay_ms(1);
 }
 
+void HLCD_voidSendCommand(u8 copy_u8Command) {
+    MDIO_voidSetPinValue(LCD_CONTROL_PORT, LCD_RS_PIN, DIO_LOW);
+    MDIO_voidSetPinValue(LCD_CONTROL_PORT, LCD_RW_PIN, DIO_LOW);
+
+    HLCD_voidWrite4Bits(copy_u8Command >> 4);
+    HLCD_voidWrite4Bits(copy_u8Command & 0x0F);
+}
+
+void HLCD_voidSendData(u8 copy_u8Data) {
+    MDIO_voidSetPinValue(LCD_CONTROL_PORT, LCD_RS_PIN, DIO_HIGH);
+    MDIO_voidSetPinValue(LCD_CONTROL_PORT, LCD_RW_PIN, DIO_LOW);
+
+    HLCD_voidWrite4Bits(copy_u8Data >> 4);
+    HLCD_voidWrite4Bits(copy_u8Data & 0x0F);
+}
+
+void HLCD_voidClearDisplay(void) {
+    HLCD_voidSendCommand(0x01);
+    _delay_ms(2);
+}
+
+void HLCD_voidSendString(u8 *copy_u8String) {
+    u8 Local_u8Iterator = 0;
+    while (copy_u8String[Local_u8Iterator] != '\0') {
+        HLCD_voidSendData(copy_u8String[Local_u8Iterator]);
+        Local_u8Iterator++;
+    }
+}
 
 
-void HLCD_voidDisplayNumber (u32 A_u32Number)
-{
-    u32 local_u32Number = 1;
+void HLCD_voidDisplayNumber(u32 copy_u8Number) {
+    u8 Local_u8Arr[10];
+    s8 Local_s8Iterator = 0;
 
-
-    if(A_u32Number == 0)
-    {
+    if (copy_u8Number == 0) {
         HLCD_voidSendData('0');
         return;
     }
 
-
-    while(A_u32Number != 0)
-    {
-        local_u32Number = ((local_u32Number * 10) + (A_u32Number % 10));
-        A_u32Number /= 10;
+    while (copy_u8Number != 0) {
+        Local_u8Arr[Local_s8Iterator] = (copy_u8Number % 10) + '0';
+        copy_u8Number /= 10;
+        Local_s8Iterator++;
     }
 
-
-    while(local_u32Number != 1)
-    {
-        HLCD_voidSendData((local_u32Number % 10) + 48);
-        local_u32Number /= 10;
+    Local_s8Iterator--;
+    while (Local_s8Iterator >= 0) {
+        HLCD_voidSendData(Local_u8Arr[Local_s8Iterator]);
+        Local_s8Iterator--;
     }
 }
 
+void HLCD_voidGoToPos(u8 copy_u8Row, u8 copy_u8Col) {
+    u8 Local_u8Address = 0;
+    switch (copy_u8Row) {
+        case ROW1:
+            Local_u8Address = copy_u8Col;
+            break;
+        case ROW2:
+            Local_u8Address = copy_u8Col + 0x40;
+            break;
+    }
+    HLCD_voidSendCommand(Local_u8Address + 128);
+}
 
-void HLCD_voidSendSpecialCharacter(u8 *A_pu8PatternArr, u8 A_u8PatternNumber,LCD_ROWS A_LcdRowNo,LCD_COLS A_LcdColNo)
-{
-    u8 local_u8CGRamAdderss;
+void HLCD_voidSendSpecialCharacter(u8 *copy_u8Pattern, u8 copy_u8PatternNum, u8 copy_u8Row, u8 copy_u8Col) {
+    u8 Local_u8CGRAMAddress = copy_u8PatternNum * 8;
+    HLCD_voidSendCommand(Local_u8CGRAMAddress + 64);
 
-
-    local_u8CGRamAdderss = A_u8PatternNumber * 8;
-
-
-    SET_BIT(local_u8CGRamAdderss, 6);
-
-
-    HLCD_voidSendCommand(local_u8CGRamAdderss);
-
-
-    for(u8 i=0; i<8; i++)
-    {
-        HLCD_voidSendData(A_pu8PatternArr[i]);
+    for (u8 Local_u8Iterator = 0; Local_u8Iterator < 8; Local_u8Iterator++) {
+        HLCD_voidSendData(copy_u8Pattern[Local_u8Iterator]);
     }
 
-
-    HLCD_voidGoToPos(A_LcdRowNo, A_LcdColNo);
-
-
-    HLCD_voidSendData(A_u8PatternNumber);
+    HLCD_voidGoToPos(copy_u8Row, copy_u8Col);
+    HLCD_voidSendData(copy_u8PatternNum);
 }

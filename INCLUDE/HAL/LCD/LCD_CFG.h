@@ -4,24 +4,18 @@
 #ifndef INCLUDE_HAL_LCD_LCD_CFG_H_
 #define INCLUDE_HAL_LCD_LCD_CFG_H_
 
+#define LCD_MODE            FOUR_BIT_MODE
 
-#define LCD_DATA_PORT 			PORTC
-#define LCD_CONTROL_PORT    	PORTB
+#define LCD_CONTROL_PORT    PORTA
+#define LCD_RS_PIN          PIN1
+#define LCD_RW_PIN          PIN2
+#define LCD_E_PIN           PIN3
 
-#define LCD_RS_PIN 	        	PIN0
-#define LCD_RW_PIN 				PIN1
-#define LCD_E_PIN  				PIN2
-
-
-#define LCD_NO_OF_LINES 		1
-#define LCD_DL 1
-#define LCD_CHAR_FONT		 	0
-#define DISPLAY_ON 				1
-#define CURSOR_DISPLAY 			1
-#define CURSOR_BLINK 			1
-
-#define LCD_DATA_DIRECTION 		1
-#define LCD_SHIFT 				0
+#define LCD_DATA_PORT       PORTA
+#define LCD_D4_PIN          PIN4
+#define LCD_D5_PIN          PIN5
+#define LCD_D6_PIN          PIN6
+#define LCD_D7_PIN          PIN7
 
 
 #endif /* INCLUDE_HAL_LCD_LCD_CFG_H_ */

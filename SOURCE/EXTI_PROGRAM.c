@@ -38,6 +38,7 @@ void MEXTI_voidConfig (EXTI_ID A_EXTI_ID, EXTI_SENSE_MODE A_EXTI_SENSE_MODE)
                 {
                     case FALLING_EDGE: CLR_BIT(MCUCSR, EXTI2_SENSE_MODE_BITS); break;
                     case RISING_EDGE:  SET_BIT(MCUCSR, EXTI2_SENSE_MODE_BITS); break;
+
                 }
                 break;
         }

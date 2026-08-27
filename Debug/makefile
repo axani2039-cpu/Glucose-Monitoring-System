@@ -31,47 +31,47 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 LSS += \
-GLU.lss \
+Glucose-Monitoring-System.lss \
 
 FLASH_IMAGE += \
-GLU.hex \
+Glucose-Monitoring-System.hex \
 
 SIZEDUMMY += \
 sizedummy \
 
 
 # All Target
-all: GLU.elf secondary-outputs
+all: Glucose-Monitoring-System.elf secondary-outputs
 
 # Tool invocations
-GLU.elf: $(OBJS) $(USER_OBJS)
+Glucose-Monitoring-System.elf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: AVR C Linker'
-	avr-gcc -Wl,-Map,GLU.map -mmcu=atmega32 -o "GLU.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	avr-gcc -Wl,-Map,Glucose-Monitoring-System.map -mmcu=atmega16 -o "Glucose-Monitoring-System.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
-GLU.lss: GLU.elf
+Glucose-Monitoring-System.lss: Glucose-Monitoring-System.elf
 	@echo 'Invoking: AVR Create Extended Listing'
-	-avr-objdump -h -S GLU.elf  >"GLU.lss"
+	-avr-objdump -h -S Glucose-Monitoring-System.elf  >"Glucose-Monitoring-System.lss"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-GLU.hex: GLU.elf
+Glucose-Monitoring-System.hex: Glucose-Monitoring-System.elf
 	@echo 'Create Flash image (ihex format)'
-	-avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex GLU.elf  "GLU.hex"
+	-avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex Glucose-Monitoring-System.elf  "Glucose-Monitoring-System.hex"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-sizedummy: GLU.elf
+sizedummy: Glucose-Monitoring-System.elf
 	@echo 'Invoking: Print Size'
-	-avr-size --format=avr --mcu=atmega32 GLU.elf
+	-avr-size --format=avr --mcu=atmega16 Glucose-Monitoring-System.elf
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(FLASH_IMAGE)$(ELFS)$(OBJS)$(ASM_DEPS)$(S_DEPS)$(SIZEDUMMY)$(S_UPPER_DEPS)$(LSS)$(C_DEPS) GLU.elf
+	-$(RM) $(FLASH_IMAGE)$(ELFS)$(OBJS)$(ASM_DEPS)$(S_DEPS)$(SIZEDUMMY)$(S_UPPER_DEPS)$(LSS)$(C_DEPS) Glucose-Monitoring-System.elf
 	-@echo ' '
 
 secondary-outputs: $(LSS) $(FLASH_IMAGE) $(SIZEDUMMY)
