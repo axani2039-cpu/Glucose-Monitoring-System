@@ -3,33 +3,33 @@ Glucose-Monitoring-System.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         000038a4  00000000  00000000  00000094  2**1
+  0 .text         0000376c  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         000000bc  00800060  000038a4  00003938  2**0
+  1 .data         000000bc  00800060  0000376c  00003800  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          0000000b  0080011c  0080011c  000039f4  2**0
+  2 .bss          0000000b  0080011c  0080011c  000038bc  2**0
                   ALLOC
-  3 .stab         000035f4  00000000  00000000  000039f4  2**2
+  3 .stab         000035ac  00000000  00000000  000038bc  2**2
                   CONTENTS, READONLY, DEBUGGING
-  4 .stabstr      000019c2  00000000  00000000  00006fe8  2**0
+  4 .stabstr      000019f3  00000000  00000000  00006e68  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_aranges 00000160  00000000  00000000  000089aa  2**0
+  5 .debug_aranges 00000160  00000000  00000000  0000885b  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_pubnames 0000018f  00000000  00000000  00008b0a  2**0
+  6 .debug_pubnames 0000018f  00000000  00000000  000089bb  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_info   00002045  00000000  00000000  00008c99  2**0
+  7 .debug_info   00002045  00000000  00000000  00008b4a  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_abbrev 00001101  00000000  00000000  0000acde  2**0
+  8 .debug_abbrev 00001101  00000000  00000000  0000ab8f  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_line   00000f82  00000000  00000000  0000bddf  2**0
+  9 .debug_line   00000f82  00000000  00000000  0000bc90  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_frame  00000180  00000000  00000000  0000cd64  2**2
+ 10 .debug_frame  00000180  00000000  00000000  0000cc14  2**2
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_str    000002c2  00000000  00000000  0000cee4  2**0
+ 11 .debug_str    000002c2  00000000  00000000  0000cd94  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_loc    0000088e  00000000  00000000  0000d1a6  2**0
+ 12 .debug_loc    0000088e  00000000  00000000  0000d056  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_ranges 00000050  00000000  00000000  0000da34  2**0
+ 13 .debug_ranges 00000050  00000000  00000000  0000d8e4  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -69,8 +69,8 @@ Disassembly of section .text:
       60:	11 e0       	ldi	r17, 0x01	; 1
       62:	a0 e6       	ldi	r26, 0x60	; 96
       64:	b0 e0       	ldi	r27, 0x00	; 0
-      66:	e4 ea       	ldi	r30, 0xA4	; 164
-      68:	f8 e3       	ldi	r31, 0x38	; 56
+      66:	ec e6       	ldi	r30, 0x6C	; 108
+      68:	f7 e3       	ldi	r31, 0x37	; 55
       6a:	02 c0       	rjmp	.+4      	; 0x70 <.do_copy_data_start>
 
 0000006c <.do_copy_data_loop>:
@@ -96,7 +96,7 @@ Disassembly of section .text:
       82:	b1 07       	cpc	r27, r17
       84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
       86:	0e 94 bb 16 	call	0x2d76	; 0x2d76 <main>
-      8a:	0c 94 50 1c 	jmp	0x38a0	; 0x38a0 <_exit>
+      8a:	0c 94 b4 1b 	jmp	0x3768	; 0x3768 <_exit>
 
 0000008e <__bad_interrupt>:
       8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
@@ -148,7 +148,7 @@ Disassembly of section .text:
       ec:	b0 e0       	ldi	r27, 0x00	; 0
       ee:	eb e7       	ldi	r30, 0x7B	; 123
       f0:	f0 e0       	ldi	r31, 0x00	; 0
-      f2:	0c 94 19 1c 	jmp	0x3832	; 0x3832 <__prologue_saves__>
+      f2:	0c 94 7d 1b 	jmp	0x36fa	; 0x36fa <__prologue_saves__>
       f6:	dc 01       	movw	r26, r24
       f8:	2b 01       	movw	r4, r22
       fa:	fa 01       	movw	r30, r20
@@ -473,14 +473,14 @@ Disassembly of section .text:
      378:	cd b7       	in	r28, 0x3d	; 61
      37a:	de b7       	in	r29, 0x3e	; 62
      37c:	e2 e1       	ldi	r30, 0x12	; 18
-     37e:	0c 94 35 1c 	jmp	0x386a	; 0x386a <__epilogue_restores__>
+     37e:	0c 94 99 1b 	jmp	0x3732	; 0x3732 <__epilogue_restores__>
 
 00000382 <__subsf3>:
      382:	a0 e2       	ldi	r26, 0x20	; 32
      384:	b0 e0       	ldi	r27, 0x00	; 0
      386:	e7 ec       	ldi	r30, 0xC7	; 199
      388:	f1 e0       	ldi	r31, 0x01	; 1
-     38a:	0c 94 25 1c 	jmp	0x384a	; 0x384a <__prologue_saves__+0x18>
+     38a:	0c 94 89 1b 	jmp	0x3712	; 0x3712 <__prologue_saves__+0x18>
      38e:	69 83       	std	Y+1, r22	; 0x01
      390:	7a 83       	std	Y+2, r23	; 0x02
      392:	8b 83       	std	Y+3, r24	; 0x03
@@ -518,14 +518,14 @@ Disassembly of section .text:
      3d8:	0e 94 a9 04 	call	0x952	; 0x952 <__pack_f>
      3dc:	a0 96       	adiw	r28, 0x20	; 32
      3de:	e6 e0       	ldi	r30, 0x06	; 6
-     3e0:	0c 94 41 1c 	jmp	0x3882	; 0x3882 <__epilogue_restores__+0x18>
+     3e0:	0c 94 a5 1b 	jmp	0x374a	; 0x374a <__epilogue_restores__+0x18>
 
 000003e4 <__addsf3>:
      3e4:	a0 e2       	ldi	r26, 0x20	; 32
      3e6:	b0 e0       	ldi	r27, 0x00	; 0
      3e8:	e8 ef       	ldi	r30, 0xF8	; 248
      3ea:	f1 e0       	ldi	r31, 0x01	; 1
-     3ec:	0c 94 25 1c 	jmp	0x384a	; 0x384a <__prologue_saves__+0x18>
+     3ec:	0c 94 89 1b 	jmp	0x3712	; 0x3712 <__prologue_saves__+0x18>
      3f0:	69 83       	std	Y+1, r22	; 0x01
      3f2:	7a 83       	std	Y+2, r23	; 0x02
      3f4:	8b 83       	std	Y+3, r24	; 0x03
@@ -559,14 +559,14 @@ Disassembly of section .text:
      432:	0e 94 a9 04 	call	0x952	; 0x952 <__pack_f>
      436:	a0 96       	adiw	r28, 0x20	; 32
      438:	e6 e0       	ldi	r30, 0x06	; 6
-     43a:	0c 94 41 1c 	jmp	0x3882	; 0x3882 <__epilogue_restores__+0x18>
+     43a:	0c 94 a5 1b 	jmp	0x374a	; 0x374a <__epilogue_restores__+0x18>
 
 0000043e <__mulsf3>:
      43e:	a0 e2       	ldi	r26, 0x20	; 32
      440:	b0 e0       	ldi	r27, 0x00	; 0
      442:	e5 e2       	ldi	r30, 0x25	; 37
      444:	f2 e0       	ldi	r31, 0x02	; 2
-     446:	0c 94 19 1c 	jmp	0x3832	; 0x3832 <__prologue_saves__>
+     446:	0c 94 7d 1b 	jmp	0x36fa	; 0x36fa <__prologue_saves__>
      44a:	69 83       	std	Y+1, r22	; 0x01
      44c:	7a 83       	std	Y+2, r23	; 0x02
      44e:	8b 83       	std	Y+3, r24	; 0x03
@@ -806,14 +806,14 @@ Disassembly of section .text:
      626:	0e 94 a9 04 	call	0x952	; 0x952 <__pack_f>
      62a:	a0 96       	adiw	r28, 0x20	; 32
      62c:	e2 e1       	ldi	r30, 0x12	; 18
-     62e:	0c 94 35 1c 	jmp	0x386a	; 0x386a <__epilogue_restores__>
+     62e:	0c 94 99 1b 	jmp	0x3732	; 0x3732 <__epilogue_restores__>
 
 00000632 <__divsf3>:
      632:	a8 e1       	ldi	r26, 0x18	; 24
      634:	b0 e0       	ldi	r27, 0x00	; 0
      636:	ef e1       	ldi	r30, 0x1F	; 31
      638:	f3 e0       	ldi	r31, 0x03	; 3
-     63a:	0c 94 21 1c 	jmp	0x3842	; 0x3842 <__prologue_saves__+0x10>
+     63a:	0c 94 85 1b 	jmp	0x370a	; 0x370a <__prologue_saves__+0x10>
      63e:	69 83       	std	Y+1, r22	; 0x01
      640:	7a 83       	std	Y+2, r23	; 0x02
      642:	8b 83       	std	Y+3, r24	; 0x03
@@ -975,14 +975,14 @@ Disassembly of section .text:
      77e:	0e 94 a9 04 	call	0x952	; 0x952 <__pack_f>
      782:	68 96       	adiw	r28, 0x18	; 24
      784:	ea e0       	ldi	r30, 0x0A	; 10
-     786:	0c 94 3d 1c 	jmp	0x387a	; 0x387a <__epilogue_restores__+0x10>
+     786:	0c 94 a1 1b 	jmp	0x3742	; 0x3742 <__epilogue_restores__+0x10>
 
 0000078a <__gtsf2>:
      78a:	a8 e1       	ldi	r26, 0x18	; 24
      78c:	b0 e0       	ldi	r27, 0x00	; 0
      78e:	eb ec       	ldi	r30, 0xCB	; 203
      790:	f3 e0       	ldi	r31, 0x03	; 3
-     792:	0c 94 25 1c 	jmp	0x384a	; 0x384a <__prologue_saves__+0x18>
+     792:	0c 94 89 1b 	jmp	0x3712	; 0x3712 <__prologue_saves__+0x18>
      796:	69 83       	std	Y+1, r22	; 0x01
      798:	7a 83       	std	Y+2, r23	; 0x02
      79a:	8b 83       	std	Y+3, r24	; 0x03
@@ -1020,14 +1020,14 @@ Disassembly of section .text:
      7e0:	8f ef       	ldi	r24, 0xFF	; 255
      7e2:	68 96       	adiw	r28, 0x18	; 24
      7e4:	e6 e0       	ldi	r30, 0x06	; 6
-     7e6:	0c 94 41 1c 	jmp	0x3882	; 0x3882 <__epilogue_restores__+0x18>
+     7e6:	0c 94 a5 1b 	jmp	0x374a	; 0x374a <__epilogue_restores__+0x18>
 
 000007ea <__gesf2>:
      7ea:	a8 e1       	ldi	r26, 0x18	; 24
      7ec:	b0 e0       	ldi	r27, 0x00	; 0
      7ee:	eb ef       	ldi	r30, 0xFB	; 251
      7f0:	f3 e0       	ldi	r31, 0x03	; 3
-     7f2:	0c 94 25 1c 	jmp	0x384a	; 0x384a <__prologue_saves__+0x18>
+     7f2:	0c 94 89 1b 	jmp	0x3712	; 0x3712 <__prologue_saves__+0x18>
      7f6:	69 83       	std	Y+1, r22	; 0x01
      7f8:	7a 83       	std	Y+2, r23	; 0x02
      7fa:	8b 83       	std	Y+3, r24	; 0x03
@@ -1065,14 +1065,14 @@ Disassembly of section .text:
      840:	8f ef       	ldi	r24, 0xFF	; 255
      842:	68 96       	adiw	r28, 0x18	; 24
      844:	e6 e0       	ldi	r30, 0x06	; 6
-     846:	0c 94 41 1c 	jmp	0x3882	; 0x3882 <__epilogue_restores__+0x18>
+     846:	0c 94 a5 1b 	jmp	0x374a	; 0x374a <__epilogue_restores__+0x18>
 
 0000084a <__ltsf2>:
      84a:	a8 e1       	ldi	r26, 0x18	; 24
      84c:	b0 e0       	ldi	r27, 0x00	; 0
      84e:	eb e2       	ldi	r30, 0x2B	; 43
      850:	f4 e0       	ldi	r31, 0x04	; 4
-     852:	0c 94 25 1c 	jmp	0x384a	; 0x384a <__prologue_saves__+0x18>
+     852:	0c 94 89 1b 	jmp	0x3712	; 0x3712 <__prologue_saves__+0x18>
      856:	69 83       	std	Y+1, r22	; 0x01
      858:	7a 83       	std	Y+2, r23	; 0x02
      85a:	8b 83       	std	Y+3, r24	; 0x03
@@ -1110,14 +1110,14 @@ Disassembly of section .text:
      8a0:	81 e0       	ldi	r24, 0x01	; 1
      8a2:	68 96       	adiw	r28, 0x18	; 24
      8a4:	e6 e0       	ldi	r30, 0x06	; 6
-     8a6:	0c 94 41 1c 	jmp	0x3882	; 0x3882 <__epilogue_restores__+0x18>
+     8a6:	0c 94 a5 1b 	jmp	0x374a	; 0x374a <__epilogue_restores__+0x18>
 
 000008aa <__fixsfsi>:
      8aa:	ac e0       	ldi	r26, 0x0C	; 12
      8ac:	b0 e0       	ldi	r27, 0x00	; 0
      8ae:	eb e5       	ldi	r30, 0x5B	; 91
      8b0:	f4 e0       	ldi	r31, 0x04	; 4
-     8b2:	0c 94 29 1c 	jmp	0x3852	; 0x3852 <__prologue_saves__+0x20>
+     8b2:	0c 94 8d 1b 	jmp	0x371a	; 0x371a <__prologue_saves__+0x20>
      8b6:	69 83       	std	Y+1, r22	; 0x01
      8b8:	7a 83       	std	Y+2, r23	; 0x02
      8ba:	8b 83       	std	Y+3, r24	; 0x03
@@ -1193,7 +1193,7 @@ Disassembly of section .text:
      948:	ca 01       	movw	r24, r20
      94a:	2c 96       	adiw	r28, 0x0c	; 12
      94c:	e2 e0       	ldi	r30, 0x02	; 2
-     94e:	0c 94 45 1c 	jmp	0x388a	; 0x388a <__epilogue_restores__+0x20>
+     94e:	0c 94 a9 1b 	jmp	0x3752	; 0x3752 <__epilogue_restores__+0x20>
 
 00000952 <__pack_f>:
      952:	df 92       	push	r13
@@ -1703,35 +1703,38 @@ void MADC_voidInit(void)
      cf4:	80 81       	ld	r24, Z
      cf6:	87 7f       	andi	r24, 0xF7	; 247
      cf8:	8c 93       	st	X, r24
-	SET_BIT(ADCSRA, ADPS1);
-	CLR_BIT(ADCSRA, ADPS0);
 
-#elif ADC_PRESCALER == ADC_PRESCALER_128
+	/* Select ADC Prescaler */
 
-	SET_BIT(ADCSRA, ADPS2);
+#if ADC_PRESCALER == ADC_PRESCALER_2
+
+	CLR_BIT(ADCSRA, ADPS2);
      cfa:	a6 e2       	ldi	r26, 0x26	; 38
      cfc:	b0 e0       	ldi	r27, 0x00	; 0
      cfe:	e6 e2       	ldi	r30, 0x26	; 38
      d00:	f0 e0       	ldi	r31, 0x00	; 0
      d02:	80 81       	ld	r24, Z
-     d04:	84 60       	ori	r24, 0x04	; 4
+     d04:	8b 7f       	andi	r24, 0xFB	; 251
      d06:	8c 93       	st	X, r24
-	SET_BIT(ADCSRA, ADPS1);
+	CLR_BIT(ADCSRA, ADPS1);
      d08:	a6 e2       	ldi	r26, 0x26	; 38
      d0a:	b0 e0       	ldi	r27, 0x00	; 0
      d0c:	e6 e2       	ldi	r30, 0x26	; 38
      d0e:	f0 e0       	ldi	r31, 0x00	; 0
      d10:	80 81       	ld	r24, Z
-     d12:	82 60       	ori	r24, 0x02	; 2
+     d12:	8d 7f       	andi	r24, 0xFD	; 253
      d14:	8c 93       	st	X, r24
-	SET_BIT(ADCSRA, ADPS0);
+	CLR_BIT(ADCSRA, ADPS0);
      d16:	a6 e2       	ldi	r26, 0x26	; 38
      d18:	b0 e0       	ldi	r27, 0x00	; 0
      d1a:	e6 e2       	ldi	r30, 0x26	; 38
      d1c:	f0 e0       	ldi	r31, 0x00	; 0
      d1e:	80 81       	ld	r24, Z
-     d20:	81 60       	ori	r24, 0x01	; 1
+     d20:	8e 7f       	andi	r24, 0xFE	; 254
      d22:	8c 93       	st	X, r24
+	SET_BIT(ADCSRA, ADPS2);
+	SET_BIT(ADCSRA, ADPS1);
+	SET_BIT(ADCSRA, ADPS0);
 
 #endif
 }
@@ -4023,7 +4026,7 @@ u16 HGLUCOSE_u16GetGlucoseValue(void)
     1b3c:	2f ef       	ldi	r18, 0xFF	; 255
     1b3e:	33 e0       	ldi	r19, 0x03	; 3
     1b40:	b9 01       	movw	r22, r18
-    1b42:	0e 94 e3 1b 	call	0x37c6	; 0x37c6 <__udivmodhi4>
+    1b42:	0e 94 47 1b 	call	0x368e	; 0x368e <__udivmodhi4>
     1b46:	cb 01       	movw	r24, r22
     1b48:	88 96       	adiw	r24, 0x28	; 40
     1b4a:	9a 83       	std	Y+2, r25	; 0x02
@@ -6164,7 +6167,7 @@ void HLCD_voidDisplayNumber(u32 copy_u8Number) {
     2926:	50 e0       	ldi	r21, 0x00	; 0
     2928:	bc 01       	movw	r22, r24
     292a:	cd 01       	movw	r24, r26
-    292c:	0e 94 f7 1b 	call	0x37ee	; 0x37ee <__udivmodsi4>
+    292c:	0e 94 5b 1b 	call	0x36b6	; 0x36b6 <__udivmodsi4>
     2930:	dc 01       	movw	r26, r24
     2932:	cb 01       	movw	r24, r22
     2934:	28 2f       	mov	r18, r24
@@ -6186,7 +6189,7 @@ void HLCD_voidDisplayNumber(u32 copy_u8Number) {
     2952:	50 e0       	ldi	r21, 0x00	; 0
     2954:	bc 01       	movw	r22, r24
     2956:	cd 01       	movw	r24, r26
-    2958:	0e 94 f7 1b 	call	0x37ee	; 0x37ee <__udivmodsi4>
+    2958:	0e 94 5b 1b 	call	0x36b6	; 0x36b6 <__udivmodsi4>
     295c:	da 01       	movw	r26, r20
     295e:	c9 01       	movw	r24, r18
     2960:	8c 87       	std	Y+12, r24	; 0x0c
@@ -6456,7 +6459,7 @@ static u8 DEC_to_BCD(u8 A_u8DECValue)
     2ae0:	89 81       	ldd	r24, Y+1	; 0x01
     2ae2:	9a e0       	ldi	r25, 0x0A	; 10
     2ae4:	69 2f       	mov	r22, r25
-    2ae6:	0e 94 d7 1b 	call	0x37ae	; 0x37ae <__udivmodqi4>
+    2ae6:	0e 94 3b 1b 	call	0x3676	; 0x3676 <__udivmodqi4>
     2aea:	88 2f       	mov	r24, r24
     2aec:	90 e0       	ldi	r25, 0x00	; 0
     2aee:	82 95       	swap	r24
@@ -6469,7 +6472,7 @@ static u8 DEC_to_BCD(u8 A_u8DECValue)
     2afc:	89 81       	ldd	r24, Y+1	; 0x01
     2afe:	9a e0       	ldi	r25, 0x0A	; 10
     2b00:	69 2f       	mov	r22, r25
-    2b02:	0e 94 d7 1b 	call	0x37ae	; 0x37ae <__udivmodqi4>
+    2b02:	0e 94 3b 1b 	call	0x3676	; 0x3676 <__udivmodqi4>
     2b06:	89 2f       	mov	r24, r25
     2b08:	82 2b       	or	r24, r18
 }
@@ -6919,10 +6922,10 @@ int main(void) {
     System_Init();
     2d8a:	0e 94 7a 17 	call	0x2ef4	; 0x2ef4 <System_Init>
     Display_StartupAnimation();
-    2d8e:	0e 94 0e 18 	call	0x301c	; 0x301c <Display_StartupAnimation>
+    2d8e:	0e 94 fc 17 	call	0x2ff8	; 0x2ff8 <Display_StartupAnimation>
 
     /* Set Initial RTC Time for Testing (11:59:50 AM) */
-    RTC_Time_t initTime = {50, 59, 11};
+    RTC_Time_t initTime = {00, 00, 10};
     2d92:	ce 01       	movw	r24, r28
     2d94:	42 96       	adiw	r24, 0x12	; 18
     2d96:	9e 8b       	std	Y+22, r25	; 0x16
@@ -6969,11 +6972,11 @@ int main(void) {
     while(1) {
         // 1. Read RTC Time and check Doses
         Check_DoseTime();
-    2de0:	0e 94 ed 17 	call	0x2fda	; 0x2fda <Check_DoseTime>
+    2de0:	0e 94 ac 1a 	call	0x3558	; 0x3558 <Check_DoseTime>
 
         // 2. Read Glucose via Moving Average Filter
         glucoseValue = Read_Glucose_Filtered();
-    2de4:	0e 94 2a 19 	call	0x3254	; 0x3254 <Read_Glucose_Filtered>
+    2de4:	0e 94 18 19 	call	0x3230	; 0x3230 <Read_Glucose_Filtered>
     2de8:	99 8b       	std	Y+17, r25	; 0x11
     2dea:	88 8b       	std	Y+16, r24	; 0x10
 
@@ -6991,13 +6994,13 @@ int main(void) {
     2dfc:	88 89       	ldd	r24, Y+16	; 0x10
     2dfe:	99 89       	ldd	r25, Y+17	; 0x11
     2e00:	6f 85       	ldd	r22, Y+15	; 0x0f
-    2e02:	0e 94 db 19 	call	0x33b6	; 0x33b6 <Display_RenderScreen>
+    2e02:	0e 94 c9 19 	call	0x3392	; 0x3392 <Display_RenderScreen>
 
         // 4. Process Alerts & LED/Buzzer Outputs
         Handle_AlertsAndLEDs(glucoseValue);
     2e06:	88 89       	ldd	r24, Y+16	; 0x10
     2e08:	99 89       	ldd	r25, Y+17	; 0x11
-    2e0a:	0e 94 be 1a 	call	0x357c	; 0x357c <Handle_AlertsAndLEDs>
+    2e0a:	0e 94 cd 1a 	call	0x359a	; 0x359a <Handle_AlertsAndLEDs>
     2e0e:	80 e0       	ldi	r24, 0x00	; 0
     2e10:	90 e0       	ldi	r25, 0x00	; 0
     2e12:	a6 e9       	ldi	r26, 0x96	; 150
@@ -7148,7 +7151,6 @@ void System_Init(void) {
     2ef6:	cf 93       	push	r28
     2ef8:	cd b7       	in	r28, 0x3d	; 61
     2efa:	de b7       	in	r29, 0x3e	; 62
-    /* Initialize MCAL and Hardware Drivers via Pre-Compile Configurations */
     MDIO_voidInit();
     2efc:	0e 94 12 07 	call	0xe24	; 0xe24 <MDIO_voidInit>
     HLCD_voidInit();
@@ -7160,7 +7162,6 @@ void System_Init(void) {
     HRTC_voidInit();
     2f0c:	0e 94 89 15 	call	0x2b12	; 0x2b12 <HRTC_voidInit>
 
-    /* Setup LEDs on PORTD pins (PD5: Green, PD6: Yellow, PD7: Red) */
     MDIO_voidSetPinDirection(PORTD, PIN5, DIO_OUTPUT);
     2f10:	83 e0       	ldi	r24, 0x03	; 3
     2f12:	65 e0       	ldi	r22, 0x05	; 5
@@ -7177,1419 +7178,1226 @@ void System_Init(void) {
     2f28:	41 e0       	ldi	r20, 0x01	; 1
     2f2a:	0e 94 35 07 	call	0xe6a	; 0xe6a <MDIO_voidSetPinDirection>
 
-    /* Load Custom Characters to CGRAM */
+    MDIO_voidSetPinValue(PORTD, PIN5, DIO_LOW);
+    2f2e:	83 e0       	ldi	r24, 0x03	; 3
+    2f30:	65 e0       	ldi	r22, 0x05	; 5
+    2f32:	40 e0       	ldi	r20, 0x00	; 0
+    2f34:	0e 94 57 08 	call	0x10ae	; 0x10ae <MDIO_voidSetPinValue>
+    MDIO_voidSetPinValue(PORTD, PIN6, DIO_LOW);
+    2f38:	83 e0       	ldi	r24, 0x03	; 3
+    2f3a:	66 e0       	ldi	r22, 0x06	; 6
+    2f3c:	40 e0       	ldi	r20, 0x00	; 0
+    2f3e:	0e 94 57 08 	call	0x10ae	; 0x10ae <MDIO_voidSetPinValue>
+    MDIO_voidSetPinValue(PORTD, PIN7, DIO_LOW);
+    2f42:	83 e0       	ldi	r24, 0x03	; 3
+    2f44:	67 e0       	ldi	r22, 0x07	; 7
+    2f46:	40 e0       	ldi	r20, 0x00	; 0
+    2f48:	0e 94 57 08 	call	0x10ae	; 0x10ae <MDIO_voidSetPinValue>
+
     HLCD_voidSendSpecialCharacter(Heart_Full, 0, ROW1, col1);
-    2f2e:	89 ee       	ldi	r24, 0xE9	; 233
-    2f30:	90 e0       	ldi	r25, 0x00	; 0
-    2f32:	60 e0       	ldi	r22, 0x00	; 0
-    2f34:	41 e0       	ldi	r20, 0x01	; 1
-    2f36:	21 e0       	ldi	r18, 0x01	; 1
-    2f38:	0e 94 0d 15 	call	0x2a1a	; 0x2a1a <HLCD_voidSendSpecialCharacter>
+    2f4c:	89 ee       	ldi	r24, 0xE9	; 233
+    2f4e:	90 e0       	ldi	r25, 0x00	; 0
+    2f50:	60 e0       	ldi	r22, 0x00	; 0
+    2f52:	41 e0       	ldi	r20, 0x01	; 1
+    2f54:	21 e0       	ldi	r18, 0x01	; 1
+    2f56:	0e 94 0d 15 	call	0x2a1a	; 0x2a1a <HLCD_voidSendSpecialCharacter>
     HLCD_voidSendSpecialCharacter(Heart_Empty, 1, ROW1, col1);
-    2f3c:	81 ef       	ldi	r24, 0xF1	; 241
-    2f3e:	90 e0       	ldi	r25, 0x00	; 0
-    2f40:	61 e0       	ldi	r22, 0x01	; 1
-    2f42:	41 e0       	ldi	r20, 0x01	; 1
-    2f44:	21 e0       	ldi	r18, 0x01	; 1
-    2f46:	0e 94 0d 15 	call	0x2a1a	; 0x2a1a <HLCD_voidSendSpecialCharacter>
+    2f5a:	81 ef       	ldi	r24, 0xF1	; 241
+    2f5c:	90 e0       	ldi	r25, 0x00	; 0
+    2f5e:	61 e0       	ldi	r22, 0x01	; 1
+    2f60:	41 e0       	ldi	r20, 0x01	; 1
+    2f62:	21 e0       	ldi	r18, 0x01	; 1
+    2f64:	0e 94 0d 15 	call	0x2a1a	; 0x2a1a <HLCD_voidSendSpecialCharacter>
     HLCD_voidSendSpecialCharacter(Arrow_Up, 2, ROW1, col1);
-    2f4a:	89 ef       	ldi	r24, 0xF9	; 249
-    2f4c:	90 e0       	ldi	r25, 0x00	; 0
-    2f4e:	62 e0       	ldi	r22, 0x02	; 2
-    2f50:	41 e0       	ldi	r20, 0x01	; 1
-    2f52:	21 e0       	ldi	r18, 0x01	; 1
-    2f54:	0e 94 0d 15 	call	0x2a1a	; 0x2a1a <HLCD_voidSendSpecialCharacter>
+    2f68:	89 ef       	ldi	r24, 0xF9	; 249
+    2f6a:	90 e0       	ldi	r25, 0x00	; 0
+    2f6c:	62 e0       	ldi	r22, 0x02	; 2
+    2f6e:	41 e0       	ldi	r20, 0x01	; 1
+    2f70:	21 e0       	ldi	r18, 0x01	; 1
+    2f72:	0e 94 0d 15 	call	0x2a1a	; 0x2a1a <HLCD_voidSendSpecialCharacter>
     HLCD_voidSendSpecialCharacter(Arrow_Down, 3, ROW1, col1);
-    2f58:	81 e0       	ldi	r24, 0x01	; 1
-    2f5a:	91 e0       	ldi	r25, 0x01	; 1
-    2f5c:	63 e0       	ldi	r22, 0x03	; 3
-    2f5e:	41 e0       	ldi	r20, 0x01	; 1
-    2f60:	21 e0       	ldi	r18, 0x01	; 1
-    2f62:	0e 94 0d 15 	call	0x2a1a	; 0x2a1a <HLCD_voidSendSpecialCharacter>
+    2f76:	81 e0       	ldi	r24, 0x01	; 1
+    2f78:	91 e0       	ldi	r25, 0x01	; 1
+    2f7a:	63 e0       	ldi	r22, 0x03	; 3
+    2f7c:	41 e0       	ldi	r20, 0x01	; 1
+    2f7e:	21 e0       	ldi	r18, 0x01	; 1
+    2f80:	0e 94 0d 15 	call	0x2a1a	; 0x2a1a <HLCD_voidSendSpecialCharacter>
     HLCD_voidSendSpecialCharacter(Arrow_Right, 4, ROW1, col1);
-    2f66:	89 e0       	ldi	r24, 0x09	; 9
-    2f68:	91 e0       	ldi	r25, 0x01	; 1
-    2f6a:	64 e0       	ldi	r22, 0x04	; 4
-    2f6c:	41 e0       	ldi	r20, 0x01	; 1
-    2f6e:	21 e0       	ldi	r18, 0x01	; 1
-    2f70:	0e 94 0d 15 	call	0x2a1a	; 0x2a1a <HLCD_voidSendSpecialCharacter>
+    2f84:	89 e0       	ldi	r24, 0x09	; 9
+    2f86:	91 e0       	ldi	r25, 0x01	; 1
+    2f88:	64 e0       	ldi	r22, 0x04	; 4
+    2f8a:	41 e0       	ldi	r20, 0x01	; 1
+    2f8c:	21 e0       	ldi	r18, 0x01	; 1
+    2f8e:	0e 94 0d 15 	call	0x2a1a	; 0x2a1a <HLCD_voidSendSpecialCharacter>
     HLCD_voidSendSpecialCharacter(Bell_Icon, 5, ROW1, col1);
-    2f74:	81 e1       	ldi	r24, 0x11	; 17
-    2f76:	91 e0       	ldi	r25, 0x01	; 1
-    2f78:	65 e0       	ldi	r22, 0x05	; 5
-    2f7a:	41 e0       	ldi	r20, 0x01	; 1
-    2f7c:	21 e0       	ldi	r18, 0x01	; 1
-    2f7e:	0e 94 0d 15 	call	0x2a1a	; 0x2a1a <HLCD_voidSendSpecialCharacter>
+    2f92:	81 e1       	ldi	r24, 0x11	; 17
+    2f94:	91 e0       	ldi	r25, 0x01	; 1
+    2f96:	65 e0       	ldi	r22, 0x05	; 5
+    2f98:	41 e0       	ldi	r20, 0x01	; 1
+    2f9a:	21 e0       	ldi	r18, 0x01	; 1
+    2f9c:	0e 94 0d 15 	call	0x2a1a	; 0x2a1a <HLCD_voidSendSpecialCharacter>
 
-    /* Setup EXTI INT0 for Alarm Toggle Button (PD2) */
     MEXTI_voidConfig(EXTI0, FALLING_EDGE);
-    2f82:	80 e0       	ldi	r24, 0x00	; 0
-    2f84:	62 e0       	ldi	r22, 0x02	; 2
-    2f86:	0e 94 8c 0b 	call	0x1718	; 0x1718 <MEXTI_voidConfig>
+    2fa0:	80 e0       	ldi	r24, 0x00	; 0
+    2fa2:	62 e0       	ldi	r22, 0x02	; 2
+    2fa4:	0e 94 8c 0b 	call	0x1718	; 0x1718 <MEXTI_voidConfig>
     MEXTI_voidSetCallBack(EXTI0, &ISR_Button_ToggleAlarm);
-    2f8a:	25 e9       	ldi	r18, 0x95	; 149
-    2f8c:	36 e1       	ldi	r19, 0x16	; 22
-    2f8e:	80 e0       	ldi	r24, 0x00	; 0
-    2f90:	b9 01       	movw	r22, r18
-    2f92:	0e 94 a5 0c 	call	0x194a	; 0x194a <MEXTI_voidSetCallBack>
+    2fa8:	25 e9       	ldi	r18, 0x95	; 149
+    2faa:	36 e1       	ldi	r19, 0x16	; 22
+    2fac:	80 e0       	ldi	r24, 0x00	; 0
+    2fae:	b9 01       	movw	r22, r18
+    2fb0:	0e 94 a5 0c 	call	0x194a	; 0x194a <MEXTI_voidSetCallBack>
     MEXTI_voidEnable(EXTI0);
-    2f96:	80 e0       	ldi	r24, 0x00	; 0
-    2f98:	0e 94 00 0c 	call	0x1800	; 0x1800 <MEXTI_voidEnable>
+    2fb4:	80 e0       	ldi	r24, 0x00	; 0
+    2fb6:	0e 94 00 0c 	call	0x1800	; 0x1800 <MEXTI_voidEnable>
 
-    /* Setup EXTI INT1 for Fasting Button (PD3) */
     MEXTI_voidConfig(EXTI1, FALLING_EDGE);
-    2f9c:	81 e0       	ldi	r24, 0x01	; 1
-    2f9e:	62 e0       	ldi	r22, 0x02	; 2
-    2fa0:	0e 94 8c 0b 	call	0x1718	; 0x1718 <MEXTI_voidConfig>
+    2fba:	81 e0       	ldi	r24, 0x01	; 1
+    2fbc:	62 e0       	ldi	r22, 0x02	; 2
+    2fbe:	0e 94 8c 0b 	call	0x1718	; 0x1718 <MEXTI_voidConfig>
     MEXTI_voidSetCallBack(EXTI1, &ISR_Button_Fasting);
-    2fa4:	28 ea       	ldi	r18, 0xA8	; 168
-    2fa6:	36 e1       	ldi	r19, 0x16	; 22
-    2fa8:	81 e0       	ldi	r24, 0x01	; 1
-    2faa:	b9 01       	movw	r22, r18
-    2fac:	0e 94 a5 0c 	call	0x194a	; 0x194a <MEXTI_voidSetCallBack>
+    2fc2:	28 ea       	ldi	r18, 0xA8	; 168
+    2fc4:	36 e1       	ldi	r19, 0x16	; 22
+    2fc6:	81 e0       	ldi	r24, 0x01	; 1
+    2fc8:	b9 01       	movw	r22, r18
+    2fca:	0e 94 a5 0c 	call	0x194a	; 0x194a <MEXTI_voidSetCallBack>
     MEXTI_voidEnable(EXTI1);
-    2fb0:	81 e0       	ldi	r24, 0x01	; 1
-    2fb2:	0e 94 00 0c 	call	0x1800	; 0x1800 <MEXTI_voidEnable>
+    2fce:	81 e0       	ldi	r24, 0x01	; 1
+    2fd0:	0e 94 00 0c 	call	0x1800	; 0x1800 <MEXTI_voidEnable>
 
-    /* Setup EXTI INT2 for Post-Meal Button (PB2) */
     MEXTI_voidConfig(EXTI2, FALLING_EDGE);
-    2fb6:	82 e0       	ldi	r24, 0x02	; 2
-    2fb8:	62 e0       	ldi	r22, 0x02	; 2
-    2fba:	0e 94 8c 0b 	call	0x1718	; 0x1718 <MEXTI_voidConfig>
+    2fd4:	82 e0       	ldi	r24, 0x02	; 2
+    2fd6:	62 e0       	ldi	r22, 0x02	; 2
+    2fd8:	0e 94 8c 0b 	call	0x1718	; 0x1718 <MEXTI_voidConfig>
     MEXTI_voidSetCallBack(EXTI2, &ISR_Button_PostMeal);
-    2fbe:	21 eb       	ldi	r18, 0xB1	; 177
-    2fc0:	36 e1       	ldi	r19, 0x16	; 22
-    2fc2:	82 e0       	ldi	r24, 0x02	; 2
-    2fc4:	b9 01       	movw	r22, r18
-    2fc6:	0e 94 a5 0c 	call	0x194a	; 0x194a <MEXTI_voidSetCallBack>
+    2fdc:	21 eb       	ldi	r18, 0xB1	; 177
+    2fde:	36 e1       	ldi	r19, 0x16	; 22
+    2fe0:	82 e0       	ldi	r24, 0x02	; 2
+    2fe2:	b9 01       	movw	r22, r18
+    2fe4:	0e 94 a5 0c 	call	0x194a	; 0x194a <MEXTI_voidSetCallBack>
     MEXTI_voidEnable(EXTI2);
-    2fca:	82 e0       	ldi	r24, 0x02	; 2
-    2fcc:	0e 94 00 0c 	call	0x1800	; 0x1800 <MEXTI_voidEnable>
+    2fe8:	82 e0       	ldi	r24, 0x02	; 2
+    2fea:	0e 94 00 0c 	call	0x1800	; 0x1800 <MEXTI_voidEnable>
 
-    /* Enable Global Interrupts */
     MGI_voidEnable();
-    2fd0:	0e 94 b0 0d 	call	0x1b60	; 0x1b60 <MGI_voidEnable>
+    2fee:	0e 94 b0 0d 	call	0x1b60	; 0x1b60 <MGI_voidEnable>
 }
-    2fd4:	cf 91       	pop	r28
-    2fd6:	df 91       	pop	r29
-    2fd8:	08 95       	ret
+    2ff2:	cf 91       	pop	r28
+    2ff4:	df 91       	pop	r29
+    2ff6:	08 95       	ret
 
-00002fda <Check_DoseTime>:
-
-void Check_DoseTime(void) {
-    2fda:	df 93       	push	r29
-    2fdc:	cf 93       	push	r28
-    2fde:	cd b7       	in	r28, 0x3d	; 61
-    2fe0:	de b7       	in	r29, 0x3e	; 62
-    HRTC_voidGetTime(&g_currentTime);
-    2fe2:	84 e2       	ldi	r24, 0x24	; 36
-    2fe4:	91 e0       	ldi	r25, 0x01	; 1
-    2fe6:	0e 94 bd 15 	call	0x2b7a	; 0x2b7a <HRTC_voidGetTime>
-
-    // Check Scheduled Dose Reminders (12:00:00 PM or 09:00:00 PM)
-    if ((g_currentTime.Hours == 12 && g_currentTime.Minutes == 0) ||
-    2fea:	80 91 26 01 	lds	r24, 0x0126
-    2fee:	8c 30       	cpi	r24, 0x0C	; 12
-    2ff0:	21 f4       	brne	.+8      	; 0x2ffa <Check_DoseTime+0x20>
-    2ff2:	80 91 25 01 	lds	r24, 0x0125
-    2ff6:	88 23       	and	r24, r24
-    2ff8:	41 f0       	breq	.+16     	; 0x300a <Check_DoseTime+0x30>
-    2ffa:	80 91 26 01 	lds	r24, 0x0126
-    2ffe:	85 31       	cpi	r24, 0x15	; 21
-    3000:	41 f4       	brne	.+16     	; 0x3012 <Check_DoseTime+0x38>
-    3002:	80 91 25 01 	lds	r24, 0x0125
-    3006:	88 23       	and	r24, r24
-    3008:	21 f4       	brne	.+8      	; 0x3012 <Check_DoseTime+0x38>
-        (g_currentTime.Hours == 21 && g_currentTime.Minutes == 0)) {
-        g_isDoseTime = 1;
-    300a:	81 e0       	ldi	r24, 0x01	; 1
-    300c:	80 93 23 01 	sts	0x0123, r24
-    3010:	02 c0       	rjmp	.+4      	; 0x3016 <Check_DoseTime+0x3c>
-    } else {
-        g_isDoseTime = 0;
-    3012:	10 92 23 01 	sts	0x0123, r1
-    }
-}
-    3016:	cf 91       	pop	r28
-    3018:	df 91       	pop	r29
-    301a:	08 95       	ret
-
-0000301c <Display_StartupAnimation>:
+00002ff8 <Display_StartupAnimation>:
 
 void Display_StartupAnimation(void) {
-    301c:	df 93       	push	r29
-    301e:	cf 93       	push	r28
-    3020:	cd b7       	in	r28, 0x3d	; 61
-    3022:	de b7       	in	r29, 0x3e	; 62
-    3024:	6d 97       	sbiw	r28, 0x1d	; 29
-    3026:	0f b6       	in	r0, 0x3f	; 63
-    3028:	f8 94       	cli
-    302a:	de bf       	out	0x3e, r29	; 62
-    302c:	0f be       	out	0x3f, r0	; 63
-    302e:	cd bf       	out	0x3d, r28	; 61
+    2ff8:	df 93       	push	r29
+    2ffa:	cf 93       	push	r28
+    2ffc:	cd b7       	in	r28, 0x3d	; 61
+    2ffe:	de b7       	in	r29, 0x3e	; 62
+    3000:	6d 97       	sbiw	r28, 0x1d	; 29
+    3002:	0f b6       	in	r0, 0x3f	; 63
+    3004:	f8 94       	cli
+    3006:	de bf       	out	0x3e, r29	; 62
+    3008:	0f be       	out	0x3f, r0	; 63
+    300a:	cd bf       	out	0x3d, r28	; 61
     HLCD_voidClearDisplay();
-    3030:	0e 94 b9 13 	call	0x2772	; 0x2772 <HLCD_voidClearDisplay>
+    300c:	0e 94 b9 13 	call	0x2772	; 0x2772 <HLCD_voidClearDisplay>
     HLCD_voidGoToPos(ROW1, col1);
-    3034:	81 e0       	ldi	r24, 0x01	; 1
-    3036:	61 e0       	ldi	r22, 0x01	; 1
-    3038:	0e 94 e1 14 	call	0x29c2	; 0x29c2 <HLCD_voidGoToPos>
+    3010:	81 e0       	ldi	r24, 0x01	; 1
+    3012:	61 e0       	ldi	r22, 0x01	; 1
+    3014:	0e 94 e1 14 	call	0x29c2	; 0x29c2 <HLCD_voidGoToPos>
     HLCD_voidSendString((u8*)" Glucose Monitor");
-    303c:	80 e6       	ldi	r24, 0x60	; 96
-    303e:	90 e0       	ldi	r25, 0x00	; 0
-    3040:	0e 94 41 14 	call	0x2882	; 0x2882 <HLCD_voidSendString>
+    3018:	80 e6       	ldi	r24, 0x60	; 96
+    301a:	90 e0       	ldi	r25, 0x00	; 0
+    301c:	0e 94 41 14 	call	0x2882	; 0x2882 <HLCD_voidSendString>
 
     HLCD_voidGoToPos(ROW2, col1);
-    3044:	82 e0       	ldi	r24, 0x02	; 2
-    3046:	61 e0       	ldi	r22, 0x01	; 1
-    3048:	0e 94 e1 14 	call	0x29c2	; 0x29c2 <HLCD_voidGoToPos>
+    3020:	82 e0       	ldi	r24, 0x02	; 2
+    3022:	61 e0       	ldi	r22, 0x01	; 1
+    3024:	0e 94 e1 14 	call	0x29c2	; 0x29c2 <HLCD_voidGoToPos>
     HLCD_voidSendString((u8*)"Booting [");
-    304c:	81 e7       	ldi	r24, 0x71	; 113
-    304e:	90 e0       	ldi	r25, 0x00	; 0
-    3050:	0e 94 41 14 	call	0x2882	; 0x2882 <HLCD_voidSendString>
+    3028:	81 e7       	ldi	r24, 0x71	; 113
+    302a:	90 e0       	ldi	r25, 0x00	; 0
+    302c:	0e 94 41 14 	call	0x2882	; 0x2882 <HLCD_voidSendString>
     for(u8 i = 0; i < 6; i++) {
-    3054:	1d 8e       	std	Y+29, r1	; 0x1d
-    3056:	79 c0       	rjmp	.+242    	; 0x314a <Display_StartupAnimation+0x12e>
+    3030:	1d 8e       	std	Y+29, r1	; 0x1d
+    3032:	79 c0       	rjmp	.+242    	; 0x3126 <Display_StartupAnimation+0x12e>
         HLCD_voidSendString((u8*)"=");
-    3058:	8b e7       	ldi	r24, 0x7B	; 123
-    305a:	90 e0       	ldi	r25, 0x00	; 0
-    305c:	0e 94 41 14 	call	0x2882	; 0x2882 <HLCD_voidSendString>
-    3060:	80 e0       	ldi	r24, 0x00	; 0
-    3062:	90 e0       	ldi	r25, 0x00	; 0
-    3064:	a6 e1       	ldi	r26, 0x16	; 22
-    3066:	b3 e4       	ldi	r27, 0x43	; 67
-    3068:	89 8f       	std	Y+25, r24	; 0x19
-    306a:	9a 8f       	std	Y+26, r25	; 0x1a
-    306c:	ab 8f       	std	Y+27, r26	; 0x1b
-    306e:	bc 8f       	std	Y+28, r27	; 0x1c
+    3034:	8b e7       	ldi	r24, 0x7B	; 123
+    3036:	90 e0       	ldi	r25, 0x00	; 0
+    3038:	0e 94 41 14 	call	0x2882	; 0x2882 <HLCD_voidSendString>
+    303c:	80 e0       	ldi	r24, 0x00	; 0
+    303e:	90 e0       	ldi	r25, 0x00	; 0
+    3040:	a6 e1       	ldi	r26, 0x16	; 22
+    3042:	b3 e4       	ldi	r27, 0x43	; 67
+    3044:	89 8f       	std	Y+25, r24	; 0x19
+    3046:	9a 8f       	std	Y+26, r25	; 0x1a
+    3048:	ab 8f       	std	Y+27, r26	; 0x1b
+    304a:	bc 8f       	std	Y+28, r27	; 0x1c
  */
 void
 _delay_ms(double __ms)
 {
 	uint16_t __ticks;
 	double __tmp = ((F_CPU) / 4e3) * __ms;
-    3070:	69 8d       	ldd	r22, Y+25	; 0x19
-    3072:	7a 8d       	ldd	r23, Y+26	; 0x1a
-    3074:	8b 8d       	ldd	r24, Y+27	; 0x1b
-    3076:	9c 8d       	ldd	r25, Y+28	; 0x1c
-    3078:	20 e0       	ldi	r18, 0x00	; 0
-    307a:	30 e0       	ldi	r19, 0x00	; 0
-    307c:	4a ef       	ldi	r20, 0xFA	; 250
-    307e:	54 e4       	ldi	r21, 0x44	; 68
-    3080:	0e 94 1f 02 	call	0x43e	; 0x43e <__mulsf3>
-    3084:	dc 01       	movw	r26, r24
-    3086:	cb 01       	movw	r24, r22
-    3088:	8d 8b       	std	Y+21, r24	; 0x15
-    308a:	9e 8b       	std	Y+22, r25	; 0x16
-    308c:	af 8b       	std	Y+23, r26	; 0x17
-    308e:	b8 8f       	std	Y+24, r27	; 0x18
+    304c:	69 8d       	ldd	r22, Y+25	; 0x19
+    304e:	7a 8d       	ldd	r23, Y+26	; 0x1a
+    3050:	8b 8d       	ldd	r24, Y+27	; 0x1b
+    3052:	9c 8d       	ldd	r25, Y+28	; 0x1c
+    3054:	20 e0       	ldi	r18, 0x00	; 0
+    3056:	30 e0       	ldi	r19, 0x00	; 0
+    3058:	4a ef       	ldi	r20, 0xFA	; 250
+    305a:	54 e4       	ldi	r21, 0x44	; 68
+    305c:	0e 94 1f 02 	call	0x43e	; 0x43e <__mulsf3>
+    3060:	dc 01       	movw	r26, r24
+    3062:	cb 01       	movw	r24, r22
+    3064:	8d 8b       	std	Y+21, r24	; 0x15
+    3066:	9e 8b       	std	Y+22, r25	; 0x16
+    3068:	af 8b       	std	Y+23, r26	; 0x17
+    306a:	b8 8f       	std	Y+24, r27	; 0x18
 	if (__tmp < 1.0)
-    3090:	6d 89       	ldd	r22, Y+21	; 0x15
-    3092:	7e 89       	ldd	r23, Y+22	; 0x16
-    3094:	8f 89       	ldd	r24, Y+23	; 0x17
-    3096:	98 8d       	ldd	r25, Y+24	; 0x18
-    3098:	20 e0       	ldi	r18, 0x00	; 0
-    309a:	30 e0       	ldi	r19, 0x00	; 0
-    309c:	40 e8       	ldi	r20, 0x80	; 128
-    309e:	5f e3       	ldi	r21, 0x3F	; 63
-    30a0:	0e 94 25 04 	call	0x84a	; 0x84a <__ltsf2>
-    30a4:	88 23       	and	r24, r24
-    30a6:	2c f4       	brge	.+10     	; 0x30b2 <Display_StartupAnimation+0x96>
+    306c:	6d 89       	ldd	r22, Y+21	; 0x15
+    306e:	7e 89       	ldd	r23, Y+22	; 0x16
+    3070:	8f 89       	ldd	r24, Y+23	; 0x17
+    3072:	98 8d       	ldd	r25, Y+24	; 0x18
+    3074:	20 e0       	ldi	r18, 0x00	; 0
+    3076:	30 e0       	ldi	r19, 0x00	; 0
+    3078:	40 e8       	ldi	r20, 0x80	; 128
+    307a:	5f e3       	ldi	r21, 0x3F	; 63
+    307c:	0e 94 25 04 	call	0x84a	; 0x84a <__ltsf2>
+    3080:	88 23       	and	r24, r24
+    3082:	2c f4       	brge	.+10     	; 0x308e <Display_StartupAnimation+0x96>
 		__ticks = 1;
-    30a8:	81 e0       	ldi	r24, 0x01	; 1
-    30aa:	90 e0       	ldi	r25, 0x00	; 0
-    30ac:	9c 8b       	std	Y+20, r25	; 0x14
-    30ae:	8b 8b       	std	Y+19, r24	; 0x13
-    30b0:	3f c0       	rjmp	.+126    	; 0x3130 <Display_StartupAnimation+0x114>
+    3084:	81 e0       	ldi	r24, 0x01	; 1
+    3086:	90 e0       	ldi	r25, 0x00	; 0
+    3088:	9c 8b       	std	Y+20, r25	; 0x14
+    308a:	8b 8b       	std	Y+19, r24	; 0x13
+    308c:	3f c0       	rjmp	.+126    	; 0x310c <Display_StartupAnimation+0x114>
 	else if (__tmp > 65535)
-    30b2:	6d 89       	ldd	r22, Y+21	; 0x15
-    30b4:	7e 89       	ldd	r23, Y+22	; 0x16
-    30b6:	8f 89       	ldd	r24, Y+23	; 0x17
-    30b8:	98 8d       	ldd	r25, Y+24	; 0x18
-    30ba:	20 e0       	ldi	r18, 0x00	; 0
-    30bc:	3f ef       	ldi	r19, 0xFF	; 255
-    30be:	4f e7       	ldi	r20, 0x7F	; 127
-    30c0:	57 e4       	ldi	r21, 0x47	; 71
-    30c2:	0e 94 c5 03 	call	0x78a	; 0x78a <__gtsf2>
-    30c6:	18 16       	cp	r1, r24
-    30c8:	4c f5       	brge	.+82     	; 0x311c <Display_StartupAnimation+0x100>
+    308e:	6d 89       	ldd	r22, Y+21	; 0x15
+    3090:	7e 89       	ldd	r23, Y+22	; 0x16
+    3092:	8f 89       	ldd	r24, Y+23	; 0x17
+    3094:	98 8d       	ldd	r25, Y+24	; 0x18
+    3096:	20 e0       	ldi	r18, 0x00	; 0
+    3098:	3f ef       	ldi	r19, 0xFF	; 255
+    309a:	4f e7       	ldi	r20, 0x7F	; 127
+    309c:	57 e4       	ldi	r21, 0x47	; 71
+    309e:	0e 94 c5 03 	call	0x78a	; 0x78a <__gtsf2>
+    30a2:	18 16       	cp	r1, r24
+    30a4:	4c f5       	brge	.+82     	; 0x30f8 <Display_StartupAnimation+0x100>
 	{
 		//	__ticks = requested delay in 1/10 ms
 		__ticks = (uint16_t) (__ms * 10.0);
-    30ca:	69 8d       	ldd	r22, Y+25	; 0x19
-    30cc:	7a 8d       	ldd	r23, Y+26	; 0x1a
-    30ce:	8b 8d       	ldd	r24, Y+27	; 0x1b
-    30d0:	9c 8d       	ldd	r25, Y+28	; 0x1c
-    30d2:	20 e0       	ldi	r18, 0x00	; 0
-    30d4:	30 e0       	ldi	r19, 0x00	; 0
-    30d6:	40 e2       	ldi	r20, 0x20	; 32
-    30d8:	51 e4       	ldi	r21, 0x41	; 65
-    30da:	0e 94 1f 02 	call	0x43e	; 0x43e <__mulsf3>
-    30de:	dc 01       	movw	r26, r24
-    30e0:	cb 01       	movw	r24, r22
-    30e2:	bc 01       	movw	r22, r24
-    30e4:	cd 01       	movw	r24, r26
-    30e6:	0e 94 49 00 	call	0x92	; 0x92 <__fixunssfsi>
-    30ea:	dc 01       	movw	r26, r24
-    30ec:	cb 01       	movw	r24, r22
-    30ee:	9c 8b       	std	Y+20, r25	; 0x14
-    30f0:	8b 8b       	std	Y+19, r24	; 0x13
-    30f2:	0f c0       	rjmp	.+30     	; 0x3112 <Display_StartupAnimation+0xf6>
-    30f4:	88 ec       	ldi	r24, 0xC8	; 200
-    30f6:	90 e0       	ldi	r25, 0x00	; 0
-    30f8:	9a 8b       	std	Y+18, r25	; 0x12
-    30fa:	89 8b       	std	Y+17, r24	; 0x11
-    30fc:	89 89       	ldd	r24, Y+17	; 0x11
-    30fe:	9a 89       	ldd	r25, Y+18	; 0x12
-    3100:	01 97       	sbiw	r24, 0x01	; 1
-    3102:	f1 f7       	brne	.-4      	; 0x3100 <Display_StartupAnimation+0xe4>
-    3104:	9a 8b       	std	Y+18, r25	; 0x12
-    3106:	89 8b       	std	Y+17, r24	; 0x11
+    30a6:	69 8d       	ldd	r22, Y+25	; 0x19
+    30a8:	7a 8d       	ldd	r23, Y+26	; 0x1a
+    30aa:	8b 8d       	ldd	r24, Y+27	; 0x1b
+    30ac:	9c 8d       	ldd	r25, Y+28	; 0x1c
+    30ae:	20 e0       	ldi	r18, 0x00	; 0
+    30b0:	30 e0       	ldi	r19, 0x00	; 0
+    30b2:	40 e2       	ldi	r20, 0x20	; 32
+    30b4:	51 e4       	ldi	r21, 0x41	; 65
+    30b6:	0e 94 1f 02 	call	0x43e	; 0x43e <__mulsf3>
+    30ba:	dc 01       	movw	r26, r24
+    30bc:	cb 01       	movw	r24, r22
+    30be:	bc 01       	movw	r22, r24
+    30c0:	cd 01       	movw	r24, r26
+    30c2:	0e 94 49 00 	call	0x92	; 0x92 <__fixunssfsi>
+    30c6:	dc 01       	movw	r26, r24
+    30c8:	cb 01       	movw	r24, r22
+    30ca:	9c 8b       	std	Y+20, r25	; 0x14
+    30cc:	8b 8b       	std	Y+19, r24	; 0x13
+    30ce:	0f c0       	rjmp	.+30     	; 0x30ee <Display_StartupAnimation+0xf6>
+    30d0:	88 ec       	ldi	r24, 0xC8	; 200
+    30d2:	90 e0       	ldi	r25, 0x00	; 0
+    30d4:	9a 8b       	std	Y+18, r25	; 0x12
+    30d6:	89 8b       	std	Y+17, r24	; 0x11
+    30d8:	89 89       	ldd	r24, Y+17	; 0x11
+    30da:	9a 89       	ldd	r25, Y+18	; 0x12
+    30dc:	01 97       	sbiw	r24, 0x01	; 1
+    30de:	f1 f7       	brne	.-4      	; 0x30dc <Display_StartupAnimation+0xe4>
+    30e0:	9a 8b       	std	Y+18, r25	; 0x12
+    30e2:	89 8b       	std	Y+17, r24	; 0x11
 		while(__ticks)
 		{
 			// wait 1/10 ms
 			_delay_loop_2(((F_CPU) / 4e3) / 10);
 			__ticks --;
-    3108:	8b 89       	ldd	r24, Y+19	; 0x13
-    310a:	9c 89       	ldd	r25, Y+20	; 0x14
-    310c:	01 97       	sbiw	r24, 0x01	; 1
-    310e:	9c 8b       	std	Y+20, r25	; 0x14
-    3110:	8b 8b       	std	Y+19, r24	; 0x13
+    30e4:	8b 89       	ldd	r24, Y+19	; 0x13
+    30e6:	9c 89       	ldd	r25, Y+20	; 0x14
+    30e8:	01 97       	sbiw	r24, 0x01	; 1
+    30ea:	9c 8b       	std	Y+20, r25	; 0x14
+    30ec:	8b 8b       	std	Y+19, r24	; 0x13
 		__ticks = 1;
 	else if (__tmp > 65535)
 	{
 		//	__ticks = requested delay in 1/10 ms
 		__ticks = (uint16_t) (__ms * 10.0);
 		while(__ticks)
-    3112:	8b 89       	ldd	r24, Y+19	; 0x13
-    3114:	9c 89       	ldd	r25, Y+20	; 0x14
-    3116:	00 97       	sbiw	r24, 0x00	; 0
-    3118:	69 f7       	brne	.-38     	; 0x30f4 <Display_StartupAnimation+0xd8>
-    311a:	14 c0       	rjmp	.+40     	; 0x3144 <Display_StartupAnimation+0x128>
+    30ee:	8b 89       	ldd	r24, Y+19	; 0x13
+    30f0:	9c 89       	ldd	r25, Y+20	; 0x14
+    30f2:	00 97       	sbiw	r24, 0x00	; 0
+    30f4:	69 f7       	brne	.-38     	; 0x30d0 <Display_StartupAnimation+0xd8>
+    30f6:	14 c0       	rjmp	.+40     	; 0x3120 <Display_StartupAnimation+0x128>
 			__ticks --;
 		}
 		return;
 	}
 	else
 		__ticks = (uint16_t)__tmp;
-    311c:	6d 89       	ldd	r22, Y+21	; 0x15
-    311e:	7e 89       	ldd	r23, Y+22	; 0x16
-    3120:	8f 89       	ldd	r24, Y+23	; 0x17
-    3122:	98 8d       	ldd	r25, Y+24	; 0x18
-    3124:	0e 94 49 00 	call	0x92	; 0x92 <__fixunssfsi>
-    3128:	dc 01       	movw	r26, r24
-    312a:	cb 01       	movw	r24, r22
-    312c:	9c 8b       	std	Y+20, r25	; 0x14
-    312e:	8b 8b       	std	Y+19, r24	; 0x13
-    3130:	8b 89       	ldd	r24, Y+19	; 0x13
-    3132:	9c 89       	ldd	r25, Y+20	; 0x14
-    3134:	98 8b       	std	Y+16, r25	; 0x10
-    3136:	8f 87       	std	Y+15, r24	; 0x0f
-    3138:	8f 85       	ldd	r24, Y+15	; 0x0f
-    313a:	98 89       	ldd	r25, Y+16	; 0x10
-    313c:	01 97       	sbiw	r24, 0x01	; 1
-    313e:	f1 f7       	brne	.-4      	; 0x313c <Display_StartupAnimation+0x120>
-    3140:	98 8b       	std	Y+16, r25	; 0x10
-    3142:	8f 87       	std	Y+15, r24	; 0x0f
+    30f8:	6d 89       	ldd	r22, Y+21	; 0x15
+    30fa:	7e 89       	ldd	r23, Y+22	; 0x16
+    30fc:	8f 89       	ldd	r24, Y+23	; 0x17
+    30fe:	98 8d       	ldd	r25, Y+24	; 0x18
+    3100:	0e 94 49 00 	call	0x92	; 0x92 <__fixunssfsi>
+    3104:	dc 01       	movw	r26, r24
+    3106:	cb 01       	movw	r24, r22
+    3108:	9c 8b       	std	Y+20, r25	; 0x14
+    310a:	8b 8b       	std	Y+19, r24	; 0x13
+    310c:	8b 89       	ldd	r24, Y+19	; 0x13
+    310e:	9c 89       	ldd	r25, Y+20	; 0x14
+    3110:	98 8b       	std	Y+16, r25	; 0x10
+    3112:	8f 87       	std	Y+15, r24	; 0x0f
+    3114:	8f 85       	ldd	r24, Y+15	; 0x0f
+    3116:	98 89       	ldd	r25, Y+16	; 0x10
+    3118:	01 97       	sbiw	r24, 0x01	; 1
+    311a:	f1 f7       	brne	.-4      	; 0x3118 <Display_StartupAnimation+0x120>
+    311c:	98 8b       	std	Y+16, r25	; 0x10
+    311e:	8f 87       	std	Y+15, r24	; 0x0f
     HLCD_voidGoToPos(ROW1, col1);
     HLCD_voidSendString((u8*)" Glucose Monitor");
 
     HLCD_voidGoToPos(ROW2, col1);
     HLCD_voidSendString((u8*)"Booting [");
     for(u8 i = 0; i < 6; i++) {
-    3144:	8d 8d       	ldd	r24, Y+29	; 0x1d
-    3146:	8f 5f       	subi	r24, 0xFF	; 255
-    3148:	8d 8f       	std	Y+29, r24	; 0x1d
-    314a:	8d 8d       	ldd	r24, Y+29	; 0x1d
-    314c:	86 30       	cpi	r24, 0x06	; 6
-    314e:	08 f4       	brcc	.+2      	; 0x3152 <Display_StartupAnimation+0x136>
-    3150:	83 cf       	rjmp	.-250    	; 0x3058 <Display_StartupAnimation+0x3c>
+    3120:	8d 8d       	ldd	r24, Y+29	; 0x1d
+    3122:	8f 5f       	subi	r24, 0xFF	; 255
+    3124:	8d 8f       	std	Y+29, r24	; 0x1d
+    3126:	8d 8d       	ldd	r24, Y+29	; 0x1d
+    3128:	86 30       	cpi	r24, 0x06	; 6
+    312a:	08 f4       	brcc	.+2      	; 0x312e <Display_StartupAnimation+0x136>
+    312c:	83 cf       	rjmp	.-250    	; 0x3034 <Display_StartupAnimation+0x3c>
         HLCD_voidSendString((u8*)"=");
         _delay_ms(150);
     }
     HLCD_voidSendString((u8*)"]");
-    3152:	8d e7       	ldi	r24, 0x7D	; 125
-    3154:	90 e0       	ldi	r25, 0x00	; 0
-    3156:	0e 94 41 14 	call	0x2882	; 0x2882 <HLCD_voidSendString>
-    315a:	80 e0       	ldi	r24, 0x00	; 0
-    315c:	90 e0       	ldi	r25, 0x00	; 0
-    315e:	a6 e9       	ldi	r26, 0x96	; 150
-    3160:	b3 e4       	ldi	r27, 0x43	; 67
-    3162:	8b 87       	std	Y+11, r24	; 0x0b
-    3164:	9c 87       	std	Y+12, r25	; 0x0c
-    3166:	ad 87       	std	Y+13, r26	; 0x0d
-    3168:	be 87       	std	Y+14, r27	; 0x0e
+    312e:	8d e7       	ldi	r24, 0x7D	; 125
+    3130:	90 e0       	ldi	r25, 0x00	; 0
+    3132:	0e 94 41 14 	call	0x2882	; 0x2882 <HLCD_voidSendString>
+    3136:	80 e0       	ldi	r24, 0x00	; 0
+    3138:	90 e0       	ldi	r25, 0x00	; 0
+    313a:	a6 e9       	ldi	r26, 0x96	; 150
+    313c:	b3 e4       	ldi	r27, 0x43	; 67
+    313e:	8b 87       	std	Y+11, r24	; 0x0b
+    3140:	9c 87       	std	Y+12, r25	; 0x0c
+    3142:	ad 87       	std	Y+13, r26	; 0x0d
+    3144:	be 87       	std	Y+14, r27	; 0x0e
  */
 void
 _delay_ms(double __ms)
 {
 	uint16_t __ticks;
 	double __tmp = ((F_CPU) / 4e3) * __ms;
-    316a:	6b 85       	ldd	r22, Y+11	; 0x0b
-    316c:	7c 85       	ldd	r23, Y+12	; 0x0c
-    316e:	8d 85       	ldd	r24, Y+13	; 0x0d
-    3170:	9e 85       	ldd	r25, Y+14	; 0x0e
-    3172:	20 e0       	ldi	r18, 0x00	; 0
-    3174:	30 e0       	ldi	r19, 0x00	; 0
-    3176:	4a ef       	ldi	r20, 0xFA	; 250
-    3178:	54 e4       	ldi	r21, 0x44	; 68
-    317a:	0e 94 1f 02 	call	0x43e	; 0x43e <__mulsf3>
-    317e:	dc 01       	movw	r26, r24
-    3180:	cb 01       	movw	r24, r22
-    3182:	8f 83       	std	Y+7, r24	; 0x07
-    3184:	98 87       	std	Y+8, r25	; 0x08
-    3186:	a9 87       	std	Y+9, r26	; 0x09
-    3188:	ba 87       	std	Y+10, r27	; 0x0a
+    3146:	6b 85       	ldd	r22, Y+11	; 0x0b
+    3148:	7c 85       	ldd	r23, Y+12	; 0x0c
+    314a:	8d 85       	ldd	r24, Y+13	; 0x0d
+    314c:	9e 85       	ldd	r25, Y+14	; 0x0e
+    314e:	20 e0       	ldi	r18, 0x00	; 0
+    3150:	30 e0       	ldi	r19, 0x00	; 0
+    3152:	4a ef       	ldi	r20, 0xFA	; 250
+    3154:	54 e4       	ldi	r21, 0x44	; 68
+    3156:	0e 94 1f 02 	call	0x43e	; 0x43e <__mulsf3>
+    315a:	dc 01       	movw	r26, r24
+    315c:	cb 01       	movw	r24, r22
+    315e:	8f 83       	std	Y+7, r24	; 0x07
+    3160:	98 87       	std	Y+8, r25	; 0x08
+    3162:	a9 87       	std	Y+9, r26	; 0x09
+    3164:	ba 87       	std	Y+10, r27	; 0x0a
 	if (__tmp < 1.0)
-    318a:	6f 81       	ldd	r22, Y+7	; 0x07
-    318c:	78 85       	ldd	r23, Y+8	; 0x08
-    318e:	89 85       	ldd	r24, Y+9	; 0x09
-    3190:	9a 85       	ldd	r25, Y+10	; 0x0a
-    3192:	20 e0       	ldi	r18, 0x00	; 0
-    3194:	30 e0       	ldi	r19, 0x00	; 0
-    3196:	40 e8       	ldi	r20, 0x80	; 128
-    3198:	5f e3       	ldi	r21, 0x3F	; 63
-    319a:	0e 94 25 04 	call	0x84a	; 0x84a <__ltsf2>
-    319e:	88 23       	and	r24, r24
-    31a0:	2c f4       	brge	.+10     	; 0x31ac <Display_StartupAnimation+0x190>
+    3166:	6f 81       	ldd	r22, Y+7	; 0x07
+    3168:	78 85       	ldd	r23, Y+8	; 0x08
+    316a:	89 85       	ldd	r24, Y+9	; 0x09
+    316c:	9a 85       	ldd	r25, Y+10	; 0x0a
+    316e:	20 e0       	ldi	r18, 0x00	; 0
+    3170:	30 e0       	ldi	r19, 0x00	; 0
+    3172:	40 e8       	ldi	r20, 0x80	; 128
+    3174:	5f e3       	ldi	r21, 0x3F	; 63
+    3176:	0e 94 25 04 	call	0x84a	; 0x84a <__ltsf2>
+    317a:	88 23       	and	r24, r24
+    317c:	2c f4       	brge	.+10     	; 0x3188 <Display_StartupAnimation+0x190>
 		__ticks = 1;
-    31a2:	81 e0       	ldi	r24, 0x01	; 1
-    31a4:	90 e0       	ldi	r25, 0x00	; 0
-    31a6:	9e 83       	std	Y+6, r25	; 0x06
-    31a8:	8d 83       	std	Y+5, r24	; 0x05
-    31aa:	3f c0       	rjmp	.+126    	; 0x322a <Display_StartupAnimation+0x20e>
+    317e:	81 e0       	ldi	r24, 0x01	; 1
+    3180:	90 e0       	ldi	r25, 0x00	; 0
+    3182:	9e 83       	std	Y+6, r25	; 0x06
+    3184:	8d 83       	std	Y+5, r24	; 0x05
+    3186:	3f c0       	rjmp	.+126    	; 0x3206 <Display_StartupAnimation+0x20e>
 	else if (__tmp > 65535)
-    31ac:	6f 81       	ldd	r22, Y+7	; 0x07
-    31ae:	78 85       	ldd	r23, Y+8	; 0x08
-    31b0:	89 85       	ldd	r24, Y+9	; 0x09
-    31b2:	9a 85       	ldd	r25, Y+10	; 0x0a
-    31b4:	20 e0       	ldi	r18, 0x00	; 0
-    31b6:	3f ef       	ldi	r19, 0xFF	; 255
-    31b8:	4f e7       	ldi	r20, 0x7F	; 127
-    31ba:	57 e4       	ldi	r21, 0x47	; 71
-    31bc:	0e 94 c5 03 	call	0x78a	; 0x78a <__gtsf2>
-    31c0:	18 16       	cp	r1, r24
-    31c2:	4c f5       	brge	.+82     	; 0x3216 <Display_StartupAnimation+0x1fa>
+    3188:	6f 81       	ldd	r22, Y+7	; 0x07
+    318a:	78 85       	ldd	r23, Y+8	; 0x08
+    318c:	89 85       	ldd	r24, Y+9	; 0x09
+    318e:	9a 85       	ldd	r25, Y+10	; 0x0a
+    3190:	20 e0       	ldi	r18, 0x00	; 0
+    3192:	3f ef       	ldi	r19, 0xFF	; 255
+    3194:	4f e7       	ldi	r20, 0x7F	; 127
+    3196:	57 e4       	ldi	r21, 0x47	; 71
+    3198:	0e 94 c5 03 	call	0x78a	; 0x78a <__gtsf2>
+    319c:	18 16       	cp	r1, r24
+    319e:	4c f5       	brge	.+82     	; 0x31f2 <Display_StartupAnimation+0x1fa>
 	{
 		//	__ticks = requested delay in 1/10 ms
 		__ticks = (uint16_t) (__ms * 10.0);
-    31c4:	6b 85       	ldd	r22, Y+11	; 0x0b
-    31c6:	7c 85       	ldd	r23, Y+12	; 0x0c
-    31c8:	8d 85       	ldd	r24, Y+13	; 0x0d
-    31ca:	9e 85       	ldd	r25, Y+14	; 0x0e
-    31cc:	20 e0       	ldi	r18, 0x00	; 0
-    31ce:	30 e0       	ldi	r19, 0x00	; 0
-    31d0:	40 e2       	ldi	r20, 0x20	; 32
-    31d2:	51 e4       	ldi	r21, 0x41	; 65
-    31d4:	0e 94 1f 02 	call	0x43e	; 0x43e <__mulsf3>
-    31d8:	dc 01       	movw	r26, r24
-    31da:	cb 01       	movw	r24, r22
-    31dc:	bc 01       	movw	r22, r24
-    31de:	cd 01       	movw	r24, r26
-    31e0:	0e 94 49 00 	call	0x92	; 0x92 <__fixunssfsi>
-    31e4:	dc 01       	movw	r26, r24
-    31e6:	cb 01       	movw	r24, r22
-    31e8:	9e 83       	std	Y+6, r25	; 0x06
-    31ea:	8d 83       	std	Y+5, r24	; 0x05
-    31ec:	0f c0       	rjmp	.+30     	; 0x320c <Display_StartupAnimation+0x1f0>
-    31ee:	88 ec       	ldi	r24, 0xC8	; 200
-    31f0:	90 e0       	ldi	r25, 0x00	; 0
-    31f2:	9c 83       	std	Y+4, r25	; 0x04
-    31f4:	8b 83       	std	Y+3, r24	; 0x03
-    31f6:	8b 81       	ldd	r24, Y+3	; 0x03
-    31f8:	9c 81       	ldd	r25, Y+4	; 0x04
-    31fa:	01 97       	sbiw	r24, 0x01	; 1
-    31fc:	f1 f7       	brne	.-4      	; 0x31fa <Display_StartupAnimation+0x1de>
-    31fe:	9c 83       	std	Y+4, r25	; 0x04
-    3200:	8b 83       	std	Y+3, r24	; 0x03
+    31a0:	6b 85       	ldd	r22, Y+11	; 0x0b
+    31a2:	7c 85       	ldd	r23, Y+12	; 0x0c
+    31a4:	8d 85       	ldd	r24, Y+13	; 0x0d
+    31a6:	9e 85       	ldd	r25, Y+14	; 0x0e
+    31a8:	20 e0       	ldi	r18, 0x00	; 0
+    31aa:	30 e0       	ldi	r19, 0x00	; 0
+    31ac:	40 e2       	ldi	r20, 0x20	; 32
+    31ae:	51 e4       	ldi	r21, 0x41	; 65
+    31b0:	0e 94 1f 02 	call	0x43e	; 0x43e <__mulsf3>
+    31b4:	dc 01       	movw	r26, r24
+    31b6:	cb 01       	movw	r24, r22
+    31b8:	bc 01       	movw	r22, r24
+    31ba:	cd 01       	movw	r24, r26
+    31bc:	0e 94 49 00 	call	0x92	; 0x92 <__fixunssfsi>
+    31c0:	dc 01       	movw	r26, r24
+    31c2:	cb 01       	movw	r24, r22
+    31c4:	9e 83       	std	Y+6, r25	; 0x06
+    31c6:	8d 83       	std	Y+5, r24	; 0x05
+    31c8:	0f c0       	rjmp	.+30     	; 0x31e8 <Display_StartupAnimation+0x1f0>
+    31ca:	88 ec       	ldi	r24, 0xC8	; 200
+    31cc:	90 e0       	ldi	r25, 0x00	; 0
+    31ce:	9c 83       	std	Y+4, r25	; 0x04
+    31d0:	8b 83       	std	Y+3, r24	; 0x03
+    31d2:	8b 81       	ldd	r24, Y+3	; 0x03
+    31d4:	9c 81       	ldd	r25, Y+4	; 0x04
+    31d6:	01 97       	sbiw	r24, 0x01	; 1
+    31d8:	f1 f7       	brne	.-4      	; 0x31d6 <Display_StartupAnimation+0x1de>
+    31da:	9c 83       	std	Y+4, r25	; 0x04
+    31dc:	8b 83       	std	Y+3, r24	; 0x03
 		while(__ticks)
 		{
 			// wait 1/10 ms
 			_delay_loop_2(((F_CPU) / 4e3) / 10);
 			__ticks --;
-    3202:	8d 81       	ldd	r24, Y+5	; 0x05
-    3204:	9e 81       	ldd	r25, Y+6	; 0x06
-    3206:	01 97       	sbiw	r24, 0x01	; 1
-    3208:	9e 83       	std	Y+6, r25	; 0x06
-    320a:	8d 83       	std	Y+5, r24	; 0x05
+    31de:	8d 81       	ldd	r24, Y+5	; 0x05
+    31e0:	9e 81       	ldd	r25, Y+6	; 0x06
+    31e2:	01 97       	sbiw	r24, 0x01	; 1
+    31e4:	9e 83       	std	Y+6, r25	; 0x06
+    31e6:	8d 83       	std	Y+5, r24	; 0x05
 		__ticks = 1;
 	else if (__tmp > 65535)
 	{
 		//	__ticks = requested delay in 1/10 ms
 		__ticks = (uint16_t) (__ms * 10.0);
 		while(__ticks)
-    320c:	8d 81       	ldd	r24, Y+5	; 0x05
-    320e:	9e 81       	ldd	r25, Y+6	; 0x06
-    3210:	00 97       	sbiw	r24, 0x00	; 0
-    3212:	69 f7       	brne	.-38     	; 0x31ee <Display_StartupAnimation+0x1d2>
-    3214:	14 c0       	rjmp	.+40     	; 0x323e <Display_StartupAnimation+0x222>
+    31e8:	8d 81       	ldd	r24, Y+5	; 0x05
+    31ea:	9e 81       	ldd	r25, Y+6	; 0x06
+    31ec:	00 97       	sbiw	r24, 0x00	; 0
+    31ee:	69 f7       	brne	.-38     	; 0x31ca <Display_StartupAnimation+0x1d2>
+    31f0:	14 c0       	rjmp	.+40     	; 0x321a <Display_StartupAnimation+0x222>
 			__ticks --;
 		}
 		return;
 	}
 	else
 		__ticks = (uint16_t)__tmp;
-    3216:	6f 81       	ldd	r22, Y+7	; 0x07
-    3218:	78 85       	ldd	r23, Y+8	; 0x08
-    321a:	89 85       	ldd	r24, Y+9	; 0x09
-    321c:	9a 85       	ldd	r25, Y+10	; 0x0a
-    321e:	0e 94 49 00 	call	0x92	; 0x92 <__fixunssfsi>
-    3222:	dc 01       	movw	r26, r24
-    3224:	cb 01       	movw	r24, r22
-    3226:	9e 83       	std	Y+6, r25	; 0x06
-    3228:	8d 83       	std	Y+5, r24	; 0x05
-    322a:	8d 81       	ldd	r24, Y+5	; 0x05
-    322c:	9e 81       	ldd	r25, Y+6	; 0x06
-    322e:	9a 83       	std	Y+2, r25	; 0x02
-    3230:	89 83       	std	Y+1, r24	; 0x01
-    3232:	89 81       	ldd	r24, Y+1	; 0x01
-    3234:	9a 81       	ldd	r25, Y+2	; 0x02
-    3236:	01 97       	sbiw	r24, 0x01	; 1
-    3238:	f1 f7       	brne	.-4      	; 0x3236 <Display_StartupAnimation+0x21a>
-    323a:	9a 83       	std	Y+2, r25	; 0x02
-    323c:	89 83       	std	Y+1, r24	; 0x01
+    31f2:	6f 81       	ldd	r22, Y+7	; 0x07
+    31f4:	78 85       	ldd	r23, Y+8	; 0x08
+    31f6:	89 85       	ldd	r24, Y+9	; 0x09
+    31f8:	9a 85       	ldd	r25, Y+10	; 0x0a
+    31fa:	0e 94 49 00 	call	0x92	; 0x92 <__fixunssfsi>
+    31fe:	dc 01       	movw	r26, r24
+    3200:	cb 01       	movw	r24, r22
+    3202:	9e 83       	std	Y+6, r25	; 0x06
+    3204:	8d 83       	std	Y+5, r24	; 0x05
+    3206:	8d 81       	ldd	r24, Y+5	; 0x05
+    3208:	9e 81       	ldd	r25, Y+6	; 0x06
+    320a:	9a 83       	std	Y+2, r25	; 0x02
+    320c:	89 83       	std	Y+1, r24	; 0x01
+    320e:	89 81       	ldd	r24, Y+1	; 0x01
+    3210:	9a 81       	ldd	r25, Y+2	; 0x02
+    3212:	01 97       	sbiw	r24, 0x01	; 1
+    3214:	f1 f7       	brne	.-4      	; 0x3212 <Display_StartupAnimation+0x21a>
+    3216:	9a 83       	std	Y+2, r25	; 0x02
+    3218:	89 83       	std	Y+1, r24	; 0x01
     _delay_ms(300);
     HLCD_voidClearDisplay();
-    323e:	0e 94 b9 13 	call	0x2772	; 0x2772 <HLCD_voidClearDisplay>
+    321a:	0e 94 b9 13 	call	0x2772	; 0x2772 <HLCD_voidClearDisplay>
 }
-    3242:	6d 96       	adiw	r28, 0x1d	; 29
-    3244:	0f b6       	in	r0, 0x3f	; 63
-    3246:	f8 94       	cli
-    3248:	de bf       	out	0x3e, r29	; 62
-    324a:	0f be       	out	0x3f, r0	; 63
-    324c:	cd bf       	out	0x3d, r28	; 61
-    324e:	cf 91       	pop	r28
-    3250:	df 91       	pop	r29
-    3252:	08 95       	ret
+    321e:	6d 96       	adiw	r28, 0x1d	; 29
+    3220:	0f b6       	in	r0, 0x3f	; 63
+    3222:	f8 94       	cli
+    3224:	de bf       	out	0x3e, r29	; 62
+    3226:	0f be       	out	0x3f, r0	; 63
+    3228:	cd bf       	out	0x3d, r28	; 61
+    322a:	cf 91       	pop	r28
+    322c:	df 91       	pop	r29
+    322e:	08 95       	ret
 
-00003254 <Read_Glucose_Filtered>:
+00003230 <Read_Glucose_Filtered>:
 
 u16 Read_Glucose_Filtered(void) {
-    3254:	df 93       	push	r29
-    3256:	cf 93       	push	r28
-    3258:	cd b7       	in	r28, 0x3d	; 61
-    325a:	de b7       	in	r29, 0x3e	; 62
-    325c:	63 97       	sbiw	r28, 0x13	; 19
-    325e:	0f b6       	in	r0, 0x3f	; 63
-    3260:	f8 94       	cli
-    3262:	de bf       	out	0x3e, r29	; 62
-    3264:	0f be       	out	0x3f, r0	; 63
-    3266:	cd bf       	out	0x3d, r28	; 61
+    3230:	df 93       	push	r29
+    3232:	cf 93       	push	r28
+    3234:	cd b7       	in	r28, 0x3d	; 61
+    3236:	de b7       	in	r29, 0x3e	; 62
+    3238:	63 97       	sbiw	r28, 0x13	; 19
+    323a:	0f b6       	in	r0, 0x3f	; 63
+    323c:	f8 94       	cli
+    323e:	de bf       	out	0x3e, r29	; 62
+    3240:	0f be       	out	0x3f, r0	; 63
+    3242:	cd bf       	out	0x3d, r28	; 61
     u32 glucoseSum = 0;
-    3268:	18 8a       	std	Y+16, r1	; 0x10
-    326a:	19 8a       	std	Y+17, r1	; 0x11
-    326c:	1a 8a       	std	Y+18, r1	; 0x12
-    326e:	1b 8a       	std	Y+19, r1	; 0x13
+    3244:	18 8a       	std	Y+16, r1	; 0x10
+    3246:	19 8a       	std	Y+17, r1	; 0x11
+    3248:	1a 8a       	std	Y+18, r1	; 0x12
+    324a:	1b 8a       	std	Y+19, r1	; 0x13
     for(u8 i = 0; i < 10; i++) {
-    3270:	1f 86       	std	Y+15, r1	; 0x0f
-    3272:	86 c0       	rjmp	.+268    	; 0x3380 <Read_Glucose_Filtered+0x12c>
+    324c:	1f 86       	std	Y+15, r1	; 0x0f
+    324e:	86 c0       	rjmp	.+268    	; 0x335c <Read_Glucose_Filtered+0x12c>
         glucoseSum += HGLUCOSE_u16GetGlucoseValue();
-    3274:	0e 94 87 0d 	call	0x1b0e	; 0x1b0e <HGLUCOSE_u16GetGlucoseValue>
-    3278:	9c 01       	movw	r18, r24
-    327a:	40 e0       	ldi	r20, 0x00	; 0
-    327c:	50 e0       	ldi	r21, 0x00	; 0
-    327e:	88 89       	ldd	r24, Y+16	; 0x10
-    3280:	99 89       	ldd	r25, Y+17	; 0x11
-    3282:	aa 89       	ldd	r26, Y+18	; 0x12
-    3284:	bb 89       	ldd	r27, Y+19	; 0x13
-    3286:	82 0f       	add	r24, r18
-    3288:	93 1f       	adc	r25, r19
-    328a:	a4 1f       	adc	r26, r20
-    328c:	b5 1f       	adc	r27, r21
-    328e:	88 8b       	std	Y+16, r24	; 0x10
-    3290:	99 8b       	std	Y+17, r25	; 0x11
-    3292:	aa 8b       	std	Y+18, r26	; 0x12
-    3294:	bb 8b       	std	Y+19, r27	; 0x13
-    3296:	80 e0       	ldi	r24, 0x00	; 0
-    3298:	90 e0       	ldi	r25, 0x00	; 0
-    329a:	a0 e0       	ldi	r26, 0x00	; 0
-    329c:	b0 e4       	ldi	r27, 0x40	; 64
-    329e:	8b 87       	std	Y+11, r24	; 0x0b
-    32a0:	9c 87       	std	Y+12, r25	; 0x0c
-    32a2:	ad 87       	std	Y+13, r26	; 0x0d
-    32a4:	be 87       	std	Y+14, r27	; 0x0e
+    3250:	0e 94 87 0d 	call	0x1b0e	; 0x1b0e <HGLUCOSE_u16GetGlucoseValue>
+    3254:	9c 01       	movw	r18, r24
+    3256:	40 e0       	ldi	r20, 0x00	; 0
+    3258:	50 e0       	ldi	r21, 0x00	; 0
+    325a:	88 89       	ldd	r24, Y+16	; 0x10
+    325c:	99 89       	ldd	r25, Y+17	; 0x11
+    325e:	aa 89       	ldd	r26, Y+18	; 0x12
+    3260:	bb 89       	ldd	r27, Y+19	; 0x13
+    3262:	82 0f       	add	r24, r18
+    3264:	93 1f       	adc	r25, r19
+    3266:	a4 1f       	adc	r26, r20
+    3268:	b5 1f       	adc	r27, r21
+    326a:	88 8b       	std	Y+16, r24	; 0x10
+    326c:	99 8b       	std	Y+17, r25	; 0x11
+    326e:	aa 8b       	std	Y+18, r26	; 0x12
+    3270:	bb 8b       	std	Y+19, r27	; 0x13
+    3272:	80 e0       	ldi	r24, 0x00	; 0
+    3274:	90 e0       	ldi	r25, 0x00	; 0
+    3276:	a0 e0       	ldi	r26, 0x00	; 0
+    3278:	b0 e4       	ldi	r27, 0x40	; 64
+    327a:	8b 87       	std	Y+11, r24	; 0x0b
+    327c:	9c 87       	std	Y+12, r25	; 0x0c
+    327e:	ad 87       	std	Y+13, r26	; 0x0d
+    3280:	be 87       	std	Y+14, r27	; 0x0e
  */
 void
 _delay_ms(double __ms)
 {
 	uint16_t __ticks;
 	double __tmp = ((F_CPU) / 4e3) * __ms;
-    32a6:	6b 85       	ldd	r22, Y+11	; 0x0b
-    32a8:	7c 85       	ldd	r23, Y+12	; 0x0c
-    32aa:	8d 85       	ldd	r24, Y+13	; 0x0d
-    32ac:	9e 85       	ldd	r25, Y+14	; 0x0e
-    32ae:	20 e0       	ldi	r18, 0x00	; 0
-    32b0:	30 e0       	ldi	r19, 0x00	; 0
-    32b2:	4a ef       	ldi	r20, 0xFA	; 250
-    32b4:	54 e4       	ldi	r21, 0x44	; 68
-    32b6:	0e 94 1f 02 	call	0x43e	; 0x43e <__mulsf3>
-    32ba:	dc 01       	movw	r26, r24
-    32bc:	cb 01       	movw	r24, r22
-    32be:	8f 83       	std	Y+7, r24	; 0x07
-    32c0:	98 87       	std	Y+8, r25	; 0x08
-    32c2:	a9 87       	std	Y+9, r26	; 0x09
-    32c4:	ba 87       	std	Y+10, r27	; 0x0a
+    3282:	6b 85       	ldd	r22, Y+11	; 0x0b
+    3284:	7c 85       	ldd	r23, Y+12	; 0x0c
+    3286:	8d 85       	ldd	r24, Y+13	; 0x0d
+    3288:	9e 85       	ldd	r25, Y+14	; 0x0e
+    328a:	20 e0       	ldi	r18, 0x00	; 0
+    328c:	30 e0       	ldi	r19, 0x00	; 0
+    328e:	4a ef       	ldi	r20, 0xFA	; 250
+    3290:	54 e4       	ldi	r21, 0x44	; 68
+    3292:	0e 94 1f 02 	call	0x43e	; 0x43e <__mulsf3>
+    3296:	dc 01       	movw	r26, r24
+    3298:	cb 01       	movw	r24, r22
+    329a:	8f 83       	std	Y+7, r24	; 0x07
+    329c:	98 87       	std	Y+8, r25	; 0x08
+    329e:	a9 87       	std	Y+9, r26	; 0x09
+    32a0:	ba 87       	std	Y+10, r27	; 0x0a
 	if (__tmp < 1.0)
-    32c6:	6f 81       	ldd	r22, Y+7	; 0x07
-    32c8:	78 85       	ldd	r23, Y+8	; 0x08
-    32ca:	89 85       	ldd	r24, Y+9	; 0x09
-    32cc:	9a 85       	ldd	r25, Y+10	; 0x0a
-    32ce:	20 e0       	ldi	r18, 0x00	; 0
-    32d0:	30 e0       	ldi	r19, 0x00	; 0
-    32d2:	40 e8       	ldi	r20, 0x80	; 128
-    32d4:	5f e3       	ldi	r21, 0x3F	; 63
-    32d6:	0e 94 25 04 	call	0x84a	; 0x84a <__ltsf2>
-    32da:	88 23       	and	r24, r24
-    32dc:	2c f4       	brge	.+10     	; 0x32e8 <Read_Glucose_Filtered+0x94>
+    32a2:	6f 81       	ldd	r22, Y+7	; 0x07
+    32a4:	78 85       	ldd	r23, Y+8	; 0x08
+    32a6:	89 85       	ldd	r24, Y+9	; 0x09
+    32a8:	9a 85       	ldd	r25, Y+10	; 0x0a
+    32aa:	20 e0       	ldi	r18, 0x00	; 0
+    32ac:	30 e0       	ldi	r19, 0x00	; 0
+    32ae:	40 e8       	ldi	r20, 0x80	; 128
+    32b0:	5f e3       	ldi	r21, 0x3F	; 63
+    32b2:	0e 94 25 04 	call	0x84a	; 0x84a <__ltsf2>
+    32b6:	88 23       	and	r24, r24
+    32b8:	2c f4       	brge	.+10     	; 0x32c4 <Read_Glucose_Filtered+0x94>
 		__ticks = 1;
-    32de:	81 e0       	ldi	r24, 0x01	; 1
-    32e0:	90 e0       	ldi	r25, 0x00	; 0
-    32e2:	9e 83       	std	Y+6, r25	; 0x06
-    32e4:	8d 83       	std	Y+5, r24	; 0x05
-    32e6:	3f c0       	rjmp	.+126    	; 0x3366 <Read_Glucose_Filtered+0x112>
+    32ba:	81 e0       	ldi	r24, 0x01	; 1
+    32bc:	90 e0       	ldi	r25, 0x00	; 0
+    32be:	9e 83       	std	Y+6, r25	; 0x06
+    32c0:	8d 83       	std	Y+5, r24	; 0x05
+    32c2:	3f c0       	rjmp	.+126    	; 0x3342 <Read_Glucose_Filtered+0x112>
 	else if (__tmp > 65535)
-    32e8:	6f 81       	ldd	r22, Y+7	; 0x07
-    32ea:	78 85       	ldd	r23, Y+8	; 0x08
-    32ec:	89 85       	ldd	r24, Y+9	; 0x09
-    32ee:	9a 85       	ldd	r25, Y+10	; 0x0a
-    32f0:	20 e0       	ldi	r18, 0x00	; 0
-    32f2:	3f ef       	ldi	r19, 0xFF	; 255
-    32f4:	4f e7       	ldi	r20, 0x7F	; 127
-    32f6:	57 e4       	ldi	r21, 0x47	; 71
-    32f8:	0e 94 c5 03 	call	0x78a	; 0x78a <__gtsf2>
-    32fc:	18 16       	cp	r1, r24
-    32fe:	4c f5       	brge	.+82     	; 0x3352 <Read_Glucose_Filtered+0xfe>
+    32c4:	6f 81       	ldd	r22, Y+7	; 0x07
+    32c6:	78 85       	ldd	r23, Y+8	; 0x08
+    32c8:	89 85       	ldd	r24, Y+9	; 0x09
+    32ca:	9a 85       	ldd	r25, Y+10	; 0x0a
+    32cc:	20 e0       	ldi	r18, 0x00	; 0
+    32ce:	3f ef       	ldi	r19, 0xFF	; 255
+    32d0:	4f e7       	ldi	r20, 0x7F	; 127
+    32d2:	57 e4       	ldi	r21, 0x47	; 71
+    32d4:	0e 94 c5 03 	call	0x78a	; 0x78a <__gtsf2>
+    32d8:	18 16       	cp	r1, r24
+    32da:	4c f5       	brge	.+82     	; 0x332e <Read_Glucose_Filtered+0xfe>
 	{
 		//	__ticks = requested delay in 1/10 ms
 		__ticks = (uint16_t) (__ms * 10.0);
-    3300:	6b 85       	ldd	r22, Y+11	; 0x0b
-    3302:	7c 85       	ldd	r23, Y+12	; 0x0c
-    3304:	8d 85       	ldd	r24, Y+13	; 0x0d
-    3306:	9e 85       	ldd	r25, Y+14	; 0x0e
-    3308:	20 e0       	ldi	r18, 0x00	; 0
-    330a:	30 e0       	ldi	r19, 0x00	; 0
-    330c:	40 e2       	ldi	r20, 0x20	; 32
-    330e:	51 e4       	ldi	r21, 0x41	; 65
-    3310:	0e 94 1f 02 	call	0x43e	; 0x43e <__mulsf3>
-    3314:	dc 01       	movw	r26, r24
-    3316:	cb 01       	movw	r24, r22
-    3318:	bc 01       	movw	r22, r24
-    331a:	cd 01       	movw	r24, r26
-    331c:	0e 94 49 00 	call	0x92	; 0x92 <__fixunssfsi>
-    3320:	dc 01       	movw	r26, r24
-    3322:	cb 01       	movw	r24, r22
-    3324:	9e 83       	std	Y+6, r25	; 0x06
-    3326:	8d 83       	std	Y+5, r24	; 0x05
-    3328:	0f c0       	rjmp	.+30     	; 0x3348 <Read_Glucose_Filtered+0xf4>
-    332a:	88 ec       	ldi	r24, 0xC8	; 200
-    332c:	90 e0       	ldi	r25, 0x00	; 0
-    332e:	9c 83       	std	Y+4, r25	; 0x04
-    3330:	8b 83       	std	Y+3, r24	; 0x03
-    3332:	8b 81       	ldd	r24, Y+3	; 0x03
-    3334:	9c 81       	ldd	r25, Y+4	; 0x04
-    3336:	01 97       	sbiw	r24, 0x01	; 1
-    3338:	f1 f7       	brne	.-4      	; 0x3336 <Read_Glucose_Filtered+0xe2>
-    333a:	9c 83       	std	Y+4, r25	; 0x04
-    333c:	8b 83       	std	Y+3, r24	; 0x03
+    32dc:	6b 85       	ldd	r22, Y+11	; 0x0b
+    32de:	7c 85       	ldd	r23, Y+12	; 0x0c
+    32e0:	8d 85       	ldd	r24, Y+13	; 0x0d
+    32e2:	9e 85       	ldd	r25, Y+14	; 0x0e
+    32e4:	20 e0       	ldi	r18, 0x00	; 0
+    32e6:	30 e0       	ldi	r19, 0x00	; 0
+    32e8:	40 e2       	ldi	r20, 0x20	; 32
+    32ea:	51 e4       	ldi	r21, 0x41	; 65
+    32ec:	0e 94 1f 02 	call	0x43e	; 0x43e <__mulsf3>
+    32f0:	dc 01       	movw	r26, r24
+    32f2:	cb 01       	movw	r24, r22
+    32f4:	bc 01       	movw	r22, r24
+    32f6:	cd 01       	movw	r24, r26
+    32f8:	0e 94 49 00 	call	0x92	; 0x92 <__fixunssfsi>
+    32fc:	dc 01       	movw	r26, r24
+    32fe:	cb 01       	movw	r24, r22
+    3300:	9e 83       	std	Y+6, r25	; 0x06
+    3302:	8d 83       	std	Y+5, r24	; 0x05
+    3304:	0f c0       	rjmp	.+30     	; 0x3324 <Read_Glucose_Filtered+0xf4>
+    3306:	88 ec       	ldi	r24, 0xC8	; 200
+    3308:	90 e0       	ldi	r25, 0x00	; 0
+    330a:	9c 83       	std	Y+4, r25	; 0x04
+    330c:	8b 83       	std	Y+3, r24	; 0x03
+    330e:	8b 81       	ldd	r24, Y+3	; 0x03
+    3310:	9c 81       	ldd	r25, Y+4	; 0x04
+    3312:	01 97       	sbiw	r24, 0x01	; 1
+    3314:	f1 f7       	brne	.-4      	; 0x3312 <Read_Glucose_Filtered+0xe2>
+    3316:	9c 83       	std	Y+4, r25	; 0x04
+    3318:	8b 83       	std	Y+3, r24	; 0x03
 		while(__ticks)
 		{
 			// wait 1/10 ms
 			_delay_loop_2(((F_CPU) / 4e3) / 10);
 			__ticks --;
-    333e:	8d 81       	ldd	r24, Y+5	; 0x05
-    3340:	9e 81       	ldd	r25, Y+6	; 0x06
-    3342:	01 97       	sbiw	r24, 0x01	; 1
-    3344:	9e 83       	std	Y+6, r25	; 0x06
-    3346:	8d 83       	std	Y+5, r24	; 0x05
+    331a:	8d 81       	ldd	r24, Y+5	; 0x05
+    331c:	9e 81       	ldd	r25, Y+6	; 0x06
+    331e:	01 97       	sbiw	r24, 0x01	; 1
+    3320:	9e 83       	std	Y+6, r25	; 0x06
+    3322:	8d 83       	std	Y+5, r24	; 0x05
 		__ticks = 1;
 	else if (__tmp > 65535)
 	{
 		//	__ticks = requested delay in 1/10 ms
 		__ticks = (uint16_t) (__ms * 10.0);
 		while(__ticks)
-    3348:	8d 81       	ldd	r24, Y+5	; 0x05
-    334a:	9e 81       	ldd	r25, Y+6	; 0x06
-    334c:	00 97       	sbiw	r24, 0x00	; 0
-    334e:	69 f7       	brne	.-38     	; 0x332a <Read_Glucose_Filtered+0xd6>
-    3350:	14 c0       	rjmp	.+40     	; 0x337a <Read_Glucose_Filtered+0x126>
+    3324:	8d 81       	ldd	r24, Y+5	; 0x05
+    3326:	9e 81       	ldd	r25, Y+6	; 0x06
+    3328:	00 97       	sbiw	r24, 0x00	; 0
+    332a:	69 f7       	brne	.-38     	; 0x3306 <Read_Glucose_Filtered+0xd6>
+    332c:	14 c0       	rjmp	.+40     	; 0x3356 <Read_Glucose_Filtered+0x126>
 			__ticks --;
 		}
 		return;
 	}
 	else
 		__ticks = (uint16_t)__tmp;
-    3352:	6f 81       	ldd	r22, Y+7	; 0x07
-    3354:	78 85       	ldd	r23, Y+8	; 0x08
-    3356:	89 85       	ldd	r24, Y+9	; 0x09
-    3358:	9a 85       	ldd	r25, Y+10	; 0x0a
-    335a:	0e 94 49 00 	call	0x92	; 0x92 <__fixunssfsi>
-    335e:	dc 01       	movw	r26, r24
-    3360:	cb 01       	movw	r24, r22
-    3362:	9e 83       	std	Y+6, r25	; 0x06
-    3364:	8d 83       	std	Y+5, r24	; 0x05
-    3366:	8d 81       	ldd	r24, Y+5	; 0x05
-    3368:	9e 81       	ldd	r25, Y+6	; 0x06
-    336a:	9a 83       	std	Y+2, r25	; 0x02
-    336c:	89 83       	std	Y+1, r24	; 0x01
-    336e:	89 81       	ldd	r24, Y+1	; 0x01
-    3370:	9a 81       	ldd	r25, Y+2	; 0x02
-    3372:	01 97       	sbiw	r24, 0x01	; 1
-    3374:	f1 f7       	brne	.-4      	; 0x3372 <Read_Glucose_Filtered+0x11e>
-    3376:	9a 83       	std	Y+2, r25	; 0x02
-    3378:	89 83       	std	Y+1, r24	; 0x01
+    332e:	6f 81       	ldd	r22, Y+7	; 0x07
+    3330:	78 85       	ldd	r23, Y+8	; 0x08
+    3332:	89 85       	ldd	r24, Y+9	; 0x09
+    3334:	9a 85       	ldd	r25, Y+10	; 0x0a
+    3336:	0e 94 49 00 	call	0x92	; 0x92 <__fixunssfsi>
+    333a:	dc 01       	movw	r26, r24
+    333c:	cb 01       	movw	r24, r22
+    333e:	9e 83       	std	Y+6, r25	; 0x06
+    3340:	8d 83       	std	Y+5, r24	; 0x05
+    3342:	8d 81       	ldd	r24, Y+5	; 0x05
+    3344:	9e 81       	ldd	r25, Y+6	; 0x06
+    3346:	9a 83       	std	Y+2, r25	; 0x02
+    3348:	89 83       	std	Y+1, r24	; 0x01
+    334a:	89 81       	ldd	r24, Y+1	; 0x01
+    334c:	9a 81       	ldd	r25, Y+2	; 0x02
+    334e:	01 97       	sbiw	r24, 0x01	; 1
+    3350:	f1 f7       	brne	.-4      	; 0x334e <Read_Glucose_Filtered+0x11e>
+    3352:	9a 83       	std	Y+2, r25	; 0x02
+    3354:	89 83       	std	Y+1, r24	; 0x01
     HLCD_voidClearDisplay();
 }
 
 u16 Read_Glucose_Filtered(void) {
     u32 glucoseSum = 0;
     for(u8 i = 0; i < 10; i++) {
-    337a:	8f 85       	ldd	r24, Y+15	; 0x0f
-    337c:	8f 5f       	subi	r24, 0xFF	; 255
-    337e:	8f 87       	std	Y+15, r24	; 0x0f
-    3380:	8f 85       	ldd	r24, Y+15	; 0x0f
-    3382:	8a 30       	cpi	r24, 0x0A	; 10
-    3384:	08 f4       	brcc	.+2      	; 0x3388 <Read_Glucose_Filtered+0x134>
-    3386:	76 cf       	rjmp	.-276    	; 0x3274 <Read_Glucose_Filtered+0x20>
+    3356:	8f 85       	ldd	r24, Y+15	; 0x0f
+    3358:	8f 5f       	subi	r24, 0xFF	; 255
+    335a:	8f 87       	std	Y+15, r24	; 0x0f
+    335c:	8f 85       	ldd	r24, Y+15	; 0x0f
+    335e:	8a 30       	cpi	r24, 0x0A	; 10
+    3360:	08 f4       	brcc	.+2      	; 0x3364 <Read_Glucose_Filtered+0x134>
+    3362:	76 cf       	rjmp	.-276    	; 0x3250 <Read_Glucose_Filtered+0x20>
         glucoseSum += HGLUCOSE_u16GetGlucoseValue();
         _delay_ms(2);
     }
     return (u16)(glucoseSum / 10);
-    3388:	88 89       	ldd	r24, Y+16	; 0x10
-    338a:	99 89       	ldd	r25, Y+17	; 0x11
-    338c:	aa 89       	ldd	r26, Y+18	; 0x12
-    338e:	bb 89       	ldd	r27, Y+19	; 0x13
-    3390:	2a e0       	ldi	r18, 0x0A	; 10
-    3392:	30 e0       	ldi	r19, 0x00	; 0
-    3394:	40 e0       	ldi	r20, 0x00	; 0
-    3396:	50 e0       	ldi	r21, 0x00	; 0
-    3398:	bc 01       	movw	r22, r24
-    339a:	cd 01       	movw	r24, r26
-    339c:	0e 94 f7 1b 	call	0x37ee	; 0x37ee <__udivmodsi4>
-    33a0:	da 01       	movw	r26, r20
-    33a2:	c9 01       	movw	r24, r18
+    3364:	88 89       	ldd	r24, Y+16	; 0x10
+    3366:	99 89       	ldd	r25, Y+17	; 0x11
+    3368:	aa 89       	ldd	r26, Y+18	; 0x12
+    336a:	bb 89       	ldd	r27, Y+19	; 0x13
+    336c:	2a e0       	ldi	r18, 0x0A	; 10
+    336e:	30 e0       	ldi	r19, 0x00	; 0
+    3370:	40 e0       	ldi	r20, 0x00	; 0
+    3372:	50 e0       	ldi	r21, 0x00	; 0
+    3374:	bc 01       	movw	r22, r24
+    3376:	cd 01       	movw	r24, r26
+    3378:	0e 94 5b 1b 	call	0x36b6	; 0x36b6 <__udivmodsi4>
+    337c:	da 01       	movw	r26, r20
+    337e:	c9 01       	movw	r24, r18
 }
-    33a4:	63 96       	adiw	r28, 0x13	; 19
-    33a6:	0f b6       	in	r0, 0x3f	; 63
-    33a8:	f8 94       	cli
-    33aa:	de bf       	out	0x3e, r29	; 62
-    33ac:	0f be       	out	0x3f, r0	; 63
-    33ae:	cd bf       	out	0x3d, r28	; 61
-    33b0:	cf 91       	pop	r28
-    33b2:	df 91       	pop	r29
-    33b4:	08 95       	ret
+    3380:	63 96       	adiw	r28, 0x13	; 19
+    3382:	0f b6       	in	r0, 0x3f	; 63
+    3384:	f8 94       	cli
+    3386:	de bf       	out	0x3e, r29	; 62
+    3388:	0f be       	out	0x3f, r0	; 63
+    338a:	cd bf       	out	0x3d, r28	; 61
+    338c:	cf 91       	pop	r28
+    338e:	df 91       	pop	r29
+    3390:	08 95       	ret
 
-000033b6 <Display_RenderScreen>:
+00003392 <Display_RenderScreen>:
 
 void Display_RenderScreen(u16 glucoseVal, u8 pulse) {
-    33b6:	df 93       	push	r29
-    33b8:	cf 93       	push	r28
-    33ba:	cd b7       	in	r28, 0x3d	; 61
-    33bc:	de b7       	in	r29, 0x3e	; 62
-    33be:	2c 97       	sbiw	r28, 0x0c	; 12
-    33c0:	0f b6       	in	r0, 0x3f	; 63
-    33c2:	f8 94       	cli
-    33c4:	de bf       	out	0x3e, r29	; 62
-    33c6:	0f be       	out	0x3f, r0	; 63
-    33c8:	cd bf       	out	0x3d, r28	; 61
-    33ca:	9e 83       	std	Y+6, r25	; 0x06
-    33cc:	8d 83       	std	Y+5, r24	; 0x05
-    33ce:	6f 83       	std	Y+7, r22	; 0x07
+    3392:	df 93       	push	r29
+    3394:	cf 93       	push	r28
+    3396:	cd b7       	in	r28, 0x3d	; 61
+    3398:	de b7       	in	r29, 0x3e	; 62
+    339a:	2c 97       	sbiw	r28, 0x0c	; 12
+    339c:	0f b6       	in	r0, 0x3f	; 63
+    339e:	f8 94       	cli
+    33a0:	de bf       	out	0x3e, r29	; 62
+    33a2:	0f be       	out	0x3f, r0	; 63
+    33a4:	cd bf       	out	0x3d, r28	; 61
+    33a6:	9e 83       	std	Y+6, r25	; 0x06
+    33a8:	8d 83       	std	Y+5, r24	; 0x05
+    33aa:	6f 83       	std	Y+7, r22	; 0x07
     HLCD_voidClearDisplay();
-    33d0:	0e 94 b9 13 	call	0x2772	; 0x2772 <HLCD_voidClearDisplay>
+    33ac:	0e 94 b9 13 	call	0x2772	; 0x2772 <HLCD_voidClearDisplay>
 
     // Line 1: Mode, Glucose Reading, Trend Arrow, Heart Pulse, Bell Icon, Time
     HLCD_voidGoToPos(ROW1, col1);
-    33d4:	81 e0       	ldi	r24, 0x01	; 1
-    33d6:	61 e0       	ldi	r22, 0x01	; 1
-    33d8:	0e 94 e1 14 	call	0x29c2	; 0x29c2 <HLCD_voidGoToPos>
+    33b0:	81 e0       	ldi	r24, 0x01	; 1
+    33b2:	61 e0       	ldi	r22, 0x01	; 1
+    33b4:	0e 94 e1 14 	call	0x29c2	; 0x29c2 <HLCD_voidGoToPos>
     HLCD_voidSendString(g_patientState == STATE_FASTING ? (u8*)"F:" : (u8*)"P:");
-    33dc:	80 91 22 01 	lds	r24, 0x0122
-    33e0:	88 23       	and	r24, r24
-    33e2:	29 f4       	brne	.+10     	; 0x33ee <Display_RenderScreen+0x38>
-    33e4:	8f e7       	ldi	r24, 0x7F	; 127
-    33e6:	90 e0       	ldi	r25, 0x00	; 0
-    33e8:	9c 87       	std	Y+12, r25	; 0x0c
-    33ea:	8b 87       	std	Y+11, r24	; 0x0b
-    33ec:	04 c0       	rjmp	.+8      	; 0x33f6 <Display_RenderScreen+0x40>
-    33ee:	82 e8       	ldi	r24, 0x82	; 130
-    33f0:	90 e0       	ldi	r25, 0x00	; 0
-    33f2:	9c 87       	std	Y+12, r25	; 0x0c
-    33f4:	8b 87       	std	Y+11, r24	; 0x0b
-    33f6:	8b 85       	ldd	r24, Y+11	; 0x0b
-    33f8:	9c 85       	ldd	r25, Y+12	; 0x0c
-    33fa:	0e 94 41 14 	call	0x2882	; 0x2882 <HLCD_voidSendString>
+    33b8:	80 91 22 01 	lds	r24, 0x0122
+    33bc:	88 23       	and	r24, r24
+    33be:	29 f4       	brne	.+10     	; 0x33ca <Display_RenderScreen+0x38>
+    33c0:	8f e7       	ldi	r24, 0x7F	; 127
+    33c2:	90 e0       	ldi	r25, 0x00	; 0
+    33c4:	9c 87       	std	Y+12, r25	; 0x0c
+    33c6:	8b 87       	std	Y+11, r24	; 0x0b
+    33c8:	04 c0       	rjmp	.+8      	; 0x33d2 <Display_RenderScreen+0x40>
+    33ca:	82 e8       	ldi	r24, 0x82	; 130
+    33cc:	90 e0       	ldi	r25, 0x00	; 0
+    33ce:	9c 87       	std	Y+12, r25	; 0x0c
+    33d0:	8b 87       	std	Y+11, r24	; 0x0b
+    33d2:	8b 85       	ldd	r24, Y+11	; 0x0b
+    33d4:	9c 85       	ldd	r25, Y+12	; 0x0c
+    33d6:	0e 94 41 14 	call	0x2882	; 0x2882 <HLCD_voidSendString>
     HLCD_voidDisplayNumber(glucoseVal);
-    33fe:	8d 81       	ldd	r24, Y+5	; 0x05
-    3400:	9e 81       	ldd	r25, Y+6	; 0x06
-    3402:	cc 01       	movw	r24, r24
-    3404:	a0 e0       	ldi	r26, 0x00	; 0
-    3406:	b0 e0       	ldi	r27, 0x00	; 0
-    3408:	bc 01       	movw	r22, r24
-    340a:	cd 01       	movw	r24, r26
-    340c:	0e 94 6a 14 	call	0x28d4	; 0x28d4 <HLCD_voidDisplayNumber>
+    33da:	8d 81       	ldd	r24, Y+5	; 0x05
+    33dc:	9e 81       	ldd	r25, Y+6	; 0x06
+    33de:	cc 01       	movw	r24, r24
+    33e0:	a0 e0       	ldi	r26, 0x00	; 0
+    33e2:	b0 e0       	ldi	r27, 0x00	; 0
+    33e4:	bc 01       	movw	r22, r24
+    33e6:	cd 01       	movw	r24, r26
+    33e8:	0e 94 6a 14 	call	0x28d4	; 0x28d4 <HLCD_voidDisplayNumber>
 
     u16 minTarget = 70;
-    3410:	86 e4       	ldi	r24, 0x46	; 70
-    3412:	90 e0       	ldi	r25, 0x00	; 0
-    3414:	9c 83       	std	Y+4, r25	; 0x04
-    3416:	8b 83       	std	Y+3, r24	; 0x03
+    33ec:	86 e4       	ldi	r24, 0x46	; 70
+    33ee:	90 e0       	ldi	r25, 0x00	; 0
+    33f0:	9c 83       	std	Y+4, r25	; 0x04
+    33f2:	8b 83       	std	Y+3, r24	; 0x03
     u16 maxTarget = (g_patientState == STATE_FASTING) ? 100 : 140;
-    3418:	80 91 22 01 	lds	r24, 0x0122
-    341c:	88 23       	and	r24, r24
-    341e:	29 f4       	brne	.+10     	; 0x342a <Display_RenderScreen+0x74>
-    3420:	84 e6       	ldi	r24, 0x64	; 100
-    3422:	90 e0       	ldi	r25, 0x00	; 0
-    3424:	9a 87       	std	Y+10, r25	; 0x0a
-    3426:	89 87       	std	Y+9, r24	; 0x09
-    3428:	04 c0       	rjmp	.+8      	; 0x3432 <Display_RenderScreen+0x7c>
-    342a:	8c e8       	ldi	r24, 0x8C	; 140
-    342c:	90 e0       	ldi	r25, 0x00	; 0
-    342e:	9a 87       	std	Y+10, r25	; 0x0a
-    3430:	89 87       	std	Y+9, r24	; 0x09
-    3432:	89 85       	ldd	r24, Y+9	; 0x09
-    3434:	9a 85       	ldd	r25, Y+10	; 0x0a
-    3436:	9a 83       	std	Y+2, r25	; 0x02
-    3438:	89 83       	std	Y+1, r24	; 0x01
+    33f4:	80 91 22 01 	lds	r24, 0x0122
+    33f8:	88 23       	and	r24, r24
+    33fa:	29 f4       	brne	.+10     	; 0x3406 <Display_RenderScreen+0x74>
+    33fc:	84 e6       	ldi	r24, 0x64	; 100
+    33fe:	90 e0       	ldi	r25, 0x00	; 0
+    3400:	9a 87       	std	Y+10, r25	; 0x0a
+    3402:	89 87       	std	Y+9, r24	; 0x09
+    3404:	04 c0       	rjmp	.+8      	; 0x340e <Display_RenderScreen+0x7c>
+    3406:	8c e8       	ldi	r24, 0x8C	; 140
+    3408:	90 e0       	ldi	r25, 0x00	; 0
+    340a:	9a 87       	std	Y+10, r25	; 0x0a
+    340c:	89 87       	std	Y+9, r24	; 0x09
+    340e:	89 85       	ldd	r24, Y+9	; 0x09
+    3410:	9a 85       	ldd	r25, Y+10	; 0x0a
+    3412:	9a 83       	std	Y+2, r25	; 0x02
+    3414:	89 83       	std	Y+1, r24	; 0x01
 
     HLCD_voidGoToPos(ROW1, col6);
-    343a:	81 e0       	ldi	r24, 0x01	; 1
-    343c:	66 e0       	ldi	r22, 0x06	; 6
-    343e:	0e 94 e1 14 	call	0x29c2	; 0x29c2 <HLCD_voidGoToPos>
+    3416:	81 e0       	ldi	r24, 0x01	; 1
+    3418:	66 e0       	ldi	r22, 0x06	; 6
+    341a:	0e 94 e1 14 	call	0x29c2	; 0x29c2 <HLCD_voidGoToPos>
     if(glucoseVal < minTarget)       HLCD_voidSendData(3); // Arrow Down
-    3442:	2d 81       	ldd	r18, Y+5	; 0x05
-    3444:	3e 81       	ldd	r19, Y+6	; 0x06
-    3446:	8b 81       	ldd	r24, Y+3	; 0x03
-    3448:	9c 81       	ldd	r25, Y+4	; 0x04
-    344a:	28 17       	cp	r18, r24
-    344c:	39 07       	cpc	r19, r25
-    344e:	20 f4       	brcc	.+8      	; 0x3458 <Display_RenderScreen+0xa2>
-    3450:	83 e0       	ldi	r24, 0x03	; 3
-    3452:	0e 94 9c 13 	call	0x2738	; 0x2738 <HLCD_voidSendData>
-    3456:	0e c0       	rjmp	.+28     	; 0x3474 <Display_RenderScreen+0xbe>
+    341e:	2d 81       	ldd	r18, Y+5	; 0x05
+    3420:	3e 81       	ldd	r19, Y+6	; 0x06
+    3422:	8b 81       	ldd	r24, Y+3	; 0x03
+    3424:	9c 81       	ldd	r25, Y+4	; 0x04
+    3426:	28 17       	cp	r18, r24
+    3428:	39 07       	cpc	r19, r25
+    342a:	20 f4       	brcc	.+8      	; 0x3434 <Display_RenderScreen+0xa2>
+    342c:	83 e0       	ldi	r24, 0x03	; 3
+    342e:	0e 94 9c 13 	call	0x2738	; 0x2738 <HLCD_voidSendData>
+    3432:	0e c0       	rjmp	.+28     	; 0x3450 <Display_RenderScreen+0xbe>
     else if(glucoseVal > maxTarget) HLCD_voidSendData(2); // Arrow Up
-    3458:	2d 81       	ldd	r18, Y+5	; 0x05
-    345a:	3e 81       	ldd	r19, Y+6	; 0x06
-    345c:	89 81       	ldd	r24, Y+1	; 0x01
-    345e:	9a 81       	ldd	r25, Y+2	; 0x02
-    3460:	82 17       	cp	r24, r18
-    3462:	93 07       	cpc	r25, r19
-    3464:	20 f4       	brcc	.+8      	; 0x346e <Display_RenderScreen+0xb8>
-    3466:	82 e0       	ldi	r24, 0x02	; 2
-    3468:	0e 94 9c 13 	call	0x2738	; 0x2738 <HLCD_voidSendData>
-    346c:	03 c0       	rjmp	.+6      	; 0x3474 <Display_RenderScreen+0xbe>
+    3434:	2d 81       	ldd	r18, Y+5	; 0x05
+    3436:	3e 81       	ldd	r19, Y+6	; 0x06
+    3438:	89 81       	ldd	r24, Y+1	; 0x01
+    343a:	9a 81       	ldd	r25, Y+2	; 0x02
+    343c:	82 17       	cp	r24, r18
+    343e:	93 07       	cpc	r25, r19
+    3440:	20 f4       	brcc	.+8      	; 0x344a <Display_RenderScreen+0xb8>
+    3442:	82 e0       	ldi	r24, 0x02	; 2
+    3444:	0e 94 9c 13 	call	0x2738	; 0x2738 <HLCD_voidSendData>
+    3448:	03 c0       	rjmp	.+6      	; 0x3450 <Display_RenderScreen+0xbe>
     else                            HLCD_voidSendData(4); // Arrow Right
-    346e:	84 e0       	ldi	r24, 0x04	; 4
-    3470:	0e 94 9c 13 	call	0x2738	; 0x2738 <HLCD_voidSendData>
+    344a:	84 e0       	ldi	r24, 0x04	; 4
+    344c:	0e 94 9c 13 	call	0x2738	; 0x2738 <HLCD_voidSendData>
 
     HLCD_voidGoToPos(ROW1, col8);
-    3474:	81 e0       	ldi	r24, 0x01	; 1
-    3476:	68 e0       	ldi	r22, 0x08	; 8
-    3478:	0e 94 e1 14 	call	0x29c2	; 0x29c2 <HLCD_voidGoToPos>
+    3450:	81 e0       	ldi	r24, 0x01	; 1
+    3452:	68 e0       	ldi	r22, 0x08	; 8
+    3454:	0e 94 e1 14 	call	0x29c2	; 0x29c2 <HLCD_voidGoToPos>
     HLCD_voidSendData(pulse ? 0 : 1); // Heart Pulse
-    347c:	18 86       	std	Y+8, r1	; 0x08
-    347e:	8f 81       	ldd	r24, Y+7	; 0x07
-    3480:	88 23       	and	r24, r24
-    3482:	11 f4       	brne	.+4      	; 0x3488 <Display_RenderScreen+0xd2>
-    3484:	91 e0       	ldi	r25, 0x01	; 1
-    3486:	98 87       	std	Y+8, r25	; 0x08
-    3488:	88 85       	ldd	r24, Y+8	; 0x08
-    348a:	0e 94 9c 13 	call	0x2738	; 0x2738 <HLCD_voidSendData>
+    3458:	18 86       	std	Y+8, r1	; 0x08
+    345a:	8f 81       	ldd	r24, Y+7	; 0x07
+    345c:	88 23       	and	r24, r24
+    345e:	11 f4       	brne	.+4      	; 0x3464 <Display_RenderScreen+0xd2>
+    3460:	91 e0       	ldi	r25, 0x01	; 1
+    3462:	98 87       	std	Y+8, r25	; 0x08
+    3464:	88 85       	ldd	r24, Y+8	; 0x08
+    3466:	0e 94 9c 13 	call	0x2738	; 0x2738 <HLCD_voidSendData>
 
     HLCD_voidGoToPos(ROW1, col10);
-    348e:	81 e0       	ldi	r24, 0x01	; 1
-    3490:	6a e0       	ldi	r22, 0x0A	; 10
-    3492:	0e 94 e1 14 	call	0x29c2	; 0x29c2 <HLCD_voidGoToPos>
+    346a:	81 e0       	ldi	r24, 0x01	; 1
+    346c:	6a e0       	ldi	r22, 0x0A	; 10
+    346e:	0e 94 e1 14 	call	0x29c2	; 0x29c2 <HLCD_voidGoToPos>
     if(g_alarmEnabled) {
-    3496:	80 91 e8 00 	lds	r24, 0x00E8
-    349a:	88 23       	and	r24, r24
-    349c:	21 f0       	breq	.+8      	; 0x34a6 <Display_RenderScreen+0xf0>
+    3472:	80 91 e8 00 	lds	r24, 0x00E8
+    3476:	88 23       	and	r24, r24
+    3478:	21 f0       	breq	.+8      	; 0x3482 <Display_RenderScreen+0xf0>
         HLCD_voidSendData(5); // Bell Icon
-    349e:	85 e0       	ldi	r24, 0x05	; 5
-    34a0:	0e 94 9c 13 	call	0x2738	; 0x2738 <HLCD_voidSendData>
-    34a4:	04 c0       	rjmp	.+8      	; 0x34ae <Display_RenderScreen+0xf8>
+    347a:	85 e0       	ldi	r24, 0x05	; 5
+    347c:	0e 94 9c 13 	call	0x2738	; 0x2738 <HLCD_voidSendData>
+    3480:	04 c0       	rjmp	.+8      	; 0x348a <Display_RenderScreen+0xf8>
     } else {
         HLCD_voidSendString((u8*)" ");
-    34a6:	85 e8       	ldi	r24, 0x85	; 133
-    34a8:	90 e0       	ldi	r25, 0x00	; 0
-    34aa:	0e 94 41 14 	call	0x2882	; 0x2882 <HLCD_voidSendString>
+    3482:	85 e8       	ldi	r24, 0x85	; 133
+    3484:	90 e0       	ldi	r25, 0x00	; 0
+    3486:	0e 94 41 14 	call	0x2882	; 0x2882 <HLCD_voidSendString>
     }
 
     // Display Time (HH:MM) on top right
     HLCD_voidGoToPos(ROW1, col12);
-    34ae:	81 e0       	ldi	r24, 0x01	; 1
-    34b0:	6c e0       	ldi	r22, 0x0C	; 12
-    34b2:	0e 94 e1 14 	call	0x29c2	; 0x29c2 <HLCD_voidGoToPos>
+    348a:	81 e0       	ldi	r24, 0x01	; 1
+    348c:	6c e0       	ldi	r22, 0x0C	; 12
+    348e:	0e 94 e1 14 	call	0x29c2	; 0x29c2 <HLCD_voidGoToPos>
     if(g_currentTime.Hours < 10) HLCD_voidSendString((u8*)"0");
-    34b6:	80 91 26 01 	lds	r24, 0x0126
-    34ba:	8a 30       	cpi	r24, 0x0A	; 10
-    34bc:	20 f4       	brcc	.+8      	; 0x34c6 <Display_RenderScreen+0x110>
-    34be:	87 e8       	ldi	r24, 0x87	; 135
-    34c0:	90 e0       	ldi	r25, 0x00	; 0
-    34c2:	0e 94 41 14 	call	0x2882	; 0x2882 <HLCD_voidSendString>
+    3492:	80 91 26 01 	lds	r24, 0x0126
+    3496:	8a 30       	cpi	r24, 0x0A	; 10
+    3498:	20 f4       	brcc	.+8      	; 0x34a2 <Display_RenderScreen+0x110>
+    349a:	87 e8       	ldi	r24, 0x87	; 135
+    349c:	90 e0       	ldi	r25, 0x00	; 0
+    349e:	0e 94 41 14 	call	0x2882	; 0x2882 <HLCD_voidSendString>
     HLCD_voidDisplayNumber(g_currentTime.Hours);
-    34c6:	80 91 26 01 	lds	r24, 0x0126
-    34ca:	88 2f       	mov	r24, r24
-    34cc:	90 e0       	ldi	r25, 0x00	; 0
-    34ce:	a0 e0       	ldi	r26, 0x00	; 0
-    34d0:	b0 e0       	ldi	r27, 0x00	; 0
-    34d2:	bc 01       	movw	r22, r24
-    34d4:	cd 01       	movw	r24, r26
-    34d6:	0e 94 6a 14 	call	0x28d4	; 0x28d4 <HLCD_voidDisplayNumber>
+    34a2:	80 91 26 01 	lds	r24, 0x0126
+    34a6:	88 2f       	mov	r24, r24
+    34a8:	90 e0       	ldi	r25, 0x00	; 0
+    34aa:	a0 e0       	ldi	r26, 0x00	; 0
+    34ac:	b0 e0       	ldi	r27, 0x00	; 0
+    34ae:	bc 01       	movw	r22, r24
+    34b0:	cd 01       	movw	r24, r26
+    34b2:	0e 94 6a 14 	call	0x28d4	; 0x28d4 <HLCD_voidDisplayNumber>
     HLCD_voidSendString((u8*)":");
-    34da:	89 e8       	ldi	r24, 0x89	; 137
-    34dc:	90 e0       	ldi	r25, 0x00	; 0
-    34de:	0e 94 41 14 	call	0x2882	; 0x2882 <HLCD_voidSendString>
+    34b6:	89 e8       	ldi	r24, 0x89	; 137
+    34b8:	90 e0       	ldi	r25, 0x00	; 0
+    34ba:	0e 94 41 14 	call	0x2882	; 0x2882 <HLCD_voidSendString>
     if(g_currentTime.Minutes < 10) HLCD_voidSendString((u8*)"0");
-    34e2:	80 91 25 01 	lds	r24, 0x0125
-    34e6:	8a 30       	cpi	r24, 0x0A	; 10
-    34e8:	20 f4       	brcc	.+8      	; 0x34f2 <Display_RenderScreen+0x13c>
-    34ea:	87 e8       	ldi	r24, 0x87	; 135
-    34ec:	90 e0       	ldi	r25, 0x00	; 0
-    34ee:	0e 94 41 14 	call	0x2882	; 0x2882 <HLCD_voidSendString>
+    34be:	80 91 25 01 	lds	r24, 0x0125
+    34c2:	8a 30       	cpi	r24, 0x0A	; 10
+    34c4:	20 f4       	brcc	.+8      	; 0x34ce <Display_RenderScreen+0x13c>
+    34c6:	87 e8       	ldi	r24, 0x87	; 135
+    34c8:	90 e0       	ldi	r25, 0x00	; 0
+    34ca:	0e 94 41 14 	call	0x2882	; 0x2882 <HLCD_voidSendString>
     HLCD_voidDisplayNumber(g_currentTime.Minutes);
-    34f2:	80 91 25 01 	lds	r24, 0x0125
-    34f6:	88 2f       	mov	r24, r24
-    34f8:	90 e0       	ldi	r25, 0x00	; 0
-    34fa:	a0 e0       	ldi	r26, 0x00	; 0
-    34fc:	b0 e0       	ldi	r27, 0x00	; 0
-    34fe:	bc 01       	movw	r22, r24
-    3500:	cd 01       	movw	r24, r26
-    3502:	0e 94 6a 14 	call	0x28d4	; 0x28d4 <HLCD_voidDisplayNumber>
+    34ce:	80 91 25 01 	lds	r24, 0x0125
+    34d2:	88 2f       	mov	r24, r24
+    34d4:	90 e0       	ldi	r25, 0x00	; 0
+    34d6:	a0 e0       	ldi	r26, 0x00	; 0
+    34d8:	b0 e0       	ldi	r27, 0x00	; 0
+    34da:	bc 01       	movw	r22, r24
+    34dc:	cd 01       	movw	r24, r26
+    34de:	0e 94 6a 14 	call	0x28d4	; 0x28d4 <HLCD_voidDisplayNumber>
 
     // Line 2: Status Messages & Dose Warnings
     HLCD_voidGoToPos(ROW2, col1);
-    3506:	82 e0       	ldi	r24, 0x02	; 2
-    3508:	61 e0       	ldi	r22, 0x01	; 1
-    350a:	0e 94 e1 14 	call	0x29c2	; 0x29c2 <HLCD_voidGoToPos>
+    34e2:	82 e0       	ldi	r24, 0x02	; 2
+    34e4:	61 e0       	ldi	r22, 0x01	; 1
+    34e6:	0e 94 e1 14 	call	0x29c2	; 0x29c2 <HLCD_voidGoToPos>
     if(g_isDoseTime) {
-    350e:	80 91 23 01 	lds	r24, 0x0123
-    3512:	88 23       	and	r24, r24
-    3514:	29 f0       	breq	.+10     	; 0x3520 <Display_RenderScreen+0x16a>
+    34ea:	80 91 23 01 	lds	r24, 0x0123
+    34ee:	88 23       	and	r24, r24
+    34f0:	29 f0       	breq	.+10     	; 0x34fc <Display_RenderScreen+0x16a>
         HLCD_voidSendString((u8*)"!! DOSE TIME !! ");
-    3516:	8b e8       	ldi	r24, 0x8B	; 139
-    3518:	90 e0       	ldi	r25, 0x00	; 0
-    351a:	0e 94 41 14 	call	0x2882	; 0x2882 <HLCD_voidSendString>
-    351e:	25 c0       	rjmp	.+74     	; 0x356a <Display_RenderScreen+0x1b4>
+    34f2:	8b e8       	ldi	r24, 0x8B	; 139
+    34f4:	90 e0       	ldi	r25, 0x00	; 0
+    34f6:	0e 94 41 14 	call	0x2882	; 0x2882 <HLCD_voidSendString>
+    34fa:	25 c0       	rjmp	.+74     	; 0x3546 <Display_RenderScreen+0x1b4>
     } else if(!g_alarmEnabled) {
-    3520:	80 91 e8 00 	lds	r24, 0x00E8
-    3524:	88 23       	and	r24, r24
-    3526:	29 f4       	brne	.+10     	; 0x3532 <Display_RenderScreen+0x17c>
+    34fc:	80 91 e8 00 	lds	r24, 0x00E8
+    3500:	88 23       	and	r24, r24
+    3502:	29 f4       	brne	.+10     	; 0x350e <Display_RenderScreen+0x17c>
         HLCD_voidSendString((u8*)"ALARM: OFF      ");
-    3528:	8c e9       	ldi	r24, 0x9C	; 156
-    352a:	90 e0       	ldi	r25, 0x00	; 0
-    352c:	0e 94 41 14 	call	0x2882	; 0x2882 <HLCD_voidSendString>
-    3530:	1c c0       	rjmp	.+56     	; 0x356a <Display_RenderScreen+0x1b4>
+    3504:	8c e9       	ldi	r24, 0x9C	; 156
+    3506:	90 e0       	ldi	r25, 0x00	; 0
+    3508:	0e 94 41 14 	call	0x2882	; 0x2882 <HLCD_voidSendString>
+    350c:	1c c0       	rjmp	.+56     	; 0x3546 <Display_RenderScreen+0x1b4>
     } else {
         if(glucoseVal < minTarget)       HLCD_voidSendString((u8*)"LOW! Take Sugar ");
-    3532:	2d 81       	ldd	r18, Y+5	; 0x05
-    3534:	3e 81       	ldd	r19, Y+6	; 0x06
-    3536:	8b 81       	ldd	r24, Y+3	; 0x03
-    3538:	9c 81       	ldd	r25, Y+4	; 0x04
-    353a:	28 17       	cp	r18, r24
-    353c:	39 07       	cpc	r19, r25
-    353e:	28 f4       	brcc	.+10     	; 0x354a <Display_RenderScreen+0x194>
-    3540:	8d ea       	ldi	r24, 0xAD	; 173
-    3542:	90 e0       	ldi	r25, 0x00	; 0
-    3544:	0e 94 41 14 	call	0x2882	; 0x2882 <HLCD_voidSendString>
-    3548:	10 c0       	rjmp	.+32     	; 0x356a <Display_RenderScreen+0x1b4>
+    350e:	2d 81       	ldd	r18, Y+5	; 0x05
+    3510:	3e 81       	ldd	r19, Y+6	; 0x06
+    3512:	8b 81       	ldd	r24, Y+3	; 0x03
+    3514:	9c 81       	ldd	r25, Y+4	; 0x04
+    3516:	28 17       	cp	r18, r24
+    3518:	39 07       	cpc	r19, r25
+    351a:	28 f4       	brcc	.+10     	; 0x3526 <Display_RenderScreen+0x194>
+    351c:	8d ea       	ldi	r24, 0xAD	; 173
+    351e:	90 e0       	ldi	r25, 0x00	; 0
+    3520:	0e 94 41 14 	call	0x2882	; 0x2882 <HLCD_voidSendString>
+    3524:	10 c0       	rjmp	.+32     	; 0x3546 <Display_RenderScreen+0x1b4>
         else if(glucoseVal > maxTarget) HLCD_voidSendString((u8*)"HIGH!Drink Water");
-    354a:	2d 81       	ldd	r18, Y+5	; 0x05
-    354c:	3e 81       	ldd	r19, Y+6	; 0x06
-    354e:	89 81       	ldd	r24, Y+1	; 0x01
-    3550:	9a 81       	ldd	r25, Y+2	; 0x02
-    3552:	82 17       	cp	r24, r18
-    3554:	93 07       	cpc	r25, r19
-    3556:	28 f4       	brcc	.+10     	; 0x3562 <Display_RenderScreen+0x1ac>
-    3558:	8e eb       	ldi	r24, 0xBE	; 190
-    355a:	90 e0       	ldi	r25, 0x00	; 0
-    355c:	0e 94 41 14 	call	0x2882	; 0x2882 <HLCD_voidSendString>
-    3560:	04 c0       	rjmp	.+8      	; 0x356a <Display_RenderScreen+0x1b4>
+    3526:	2d 81       	ldd	r18, Y+5	; 0x05
+    3528:	3e 81       	ldd	r19, Y+6	; 0x06
+    352a:	89 81       	ldd	r24, Y+1	; 0x01
+    352c:	9a 81       	ldd	r25, Y+2	; 0x02
+    352e:	82 17       	cp	r24, r18
+    3530:	93 07       	cpc	r25, r19
+    3532:	28 f4       	brcc	.+10     	; 0x353e <Display_RenderScreen+0x1ac>
+    3534:	8e eb       	ldi	r24, 0xBE	; 190
+    3536:	90 e0       	ldi	r25, 0x00	; 0
+    3538:	0e 94 41 14 	call	0x2882	; 0x2882 <HLCD_voidSendString>
+    353c:	04 c0       	rjmp	.+8      	; 0x3546 <Display_RenderScreen+0x1b4>
         else                            HLCD_voidSendString((u8*)"NORMAL (Good)   ");
-    3562:	8f ec       	ldi	r24, 0xCF	; 207
-    3564:	90 e0       	ldi	r25, 0x00	; 0
-    3566:	0e 94 41 14 	call	0x2882	; 0x2882 <HLCD_voidSendString>
+    353e:	8f ec       	ldi	r24, 0xCF	; 207
+    3540:	90 e0       	ldi	r25, 0x00	; 0
+    3542:	0e 94 41 14 	call	0x2882	; 0x2882 <HLCD_voidSendString>
     }
 }
-    356a:	2c 96       	adiw	r28, 0x0c	; 12
-    356c:	0f b6       	in	r0, 0x3f	; 63
-    356e:	f8 94       	cli
-    3570:	de bf       	out	0x3e, r29	; 62
-    3572:	0f be       	out	0x3f, r0	; 63
-    3574:	cd bf       	out	0x3d, r28	; 61
-    3576:	cf 91       	pop	r28
-    3578:	df 91       	pop	r29
-    357a:	08 95       	ret
+    3546:	2c 96       	adiw	r28, 0x0c	; 12
+    3548:	0f b6       	in	r0, 0x3f	; 63
+    354a:	f8 94       	cli
+    354c:	de bf       	out	0x3e, r29	; 62
+    354e:	0f be       	out	0x3f, r0	; 63
+    3550:	cd bf       	out	0x3d, r28	; 61
+    3552:	cf 91       	pop	r28
+    3554:	df 91       	pop	r29
+    3556:	08 95       	ret
 
-0000357c <Handle_AlertsAndLEDs>:
+00003558 <Check_DoseTime>:
+void Check_DoseTime(void) {
+    3558:	df 93       	push	r29
+    355a:	cf 93       	push	r28
+    355c:	cd b7       	in	r28, 0x3d	; 61
+    355e:	de b7       	in	r29, 0x3e	; 62
+    HRTC_voidGetTime(&g_currentTime);
+    3560:	84 e2       	ldi	r24, 0x24	; 36
+    3562:	91 e0       	ldi	r25, 0x01	; 1
+    3564:	0e 94 bd 15 	call	0x2b7a	; 0x2b7a <HRTC_voidGetTime>
+
+    if ((g_currentTime.Hours == 12 && g_currentTime.Minutes == 0) ||
+    3568:	80 91 26 01 	lds	r24, 0x0126
+    356c:	8c 30       	cpi	r24, 0x0C	; 12
+    356e:	21 f4       	brne	.+8      	; 0x3578 <Check_DoseTime+0x20>
+    3570:	80 91 25 01 	lds	r24, 0x0125
+    3574:	88 23       	and	r24, r24
+    3576:	41 f0       	breq	.+16     	; 0x3588 <Check_DoseTime+0x30>
+    3578:	80 91 26 01 	lds	r24, 0x0126
+    357c:	85 31       	cpi	r24, 0x15	; 21
+    357e:	41 f4       	brne	.+16     	; 0x3590 <Check_DoseTime+0x38>
+    3580:	80 91 25 01 	lds	r24, 0x0125
+    3584:	88 23       	and	r24, r24
+    3586:	21 f4       	brne	.+8      	; 0x3590 <Check_DoseTime+0x38>
+        (g_currentTime.Hours == 21 && g_currentTime.Minutes == 0)) {
+        g_isDoseTime = 1;
+    3588:	81 e0       	ldi	r24, 0x01	; 1
+    358a:	80 93 23 01 	sts	0x0123, r24
+    358e:	02 c0       	rjmp	.+4      	; 0x3594 <Check_DoseTime+0x3c>
+    } else {
+        g_isDoseTime = 0;
+    3590:	10 92 23 01 	sts	0x0123, r1
+    }
+}
+    3594:	cf 91       	pop	r28
+    3596:	df 91       	pop	r29
+    3598:	08 95       	ret
+
+0000359a <Handle_AlertsAndLEDs>:
 
 void Handle_AlertsAndLEDs(u16 glucoseVal) {
-    357c:	df 93       	push	r29
-    357e:	cf 93       	push	r28
-    3580:	cd b7       	in	r28, 0x3d	; 61
-    3582:	de b7       	in	r29, 0x3e	; 62
-    3584:	66 97       	sbiw	r28, 0x16	; 22
-    3586:	0f b6       	in	r0, 0x3f	; 63
-    3588:	f8 94       	cli
-    358a:	de bf       	out	0x3e, r29	; 62
-    358c:	0f be       	out	0x3f, r0	; 63
-    358e:	cd bf       	out	0x3d, r28	; 61
-    3590:	9b 8b       	std	Y+19, r25	; 0x13
-    3592:	8a 8b       	std	Y+18, r24	; 0x12
-    // If Alarm Feature is DISABLED -> Keep All Alert Outputs OFF
-    if(!g_alarmEnabled) {
-    3594:	80 91 e8 00 	lds	r24, 0x00E8
-    3598:	88 23       	and	r24, r24
-    359a:	91 f4       	brne	.+36     	; 0x35c0 <Handle_AlertsAndLEDs+0x44>
-        MDIO_voidSetPinValue(PORTD, PIN5, DIO_LOW);
-    359c:	83 e0       	ldi	r24, 0x03	; 3
-    359e:	65 e0       	ldi	r22, 0x05	; 5
-    35a0:	40 e0       	ldi	r20, 0x00	; 0
-    35a2:	0e 94 57 08 	call	0x10ae	; 0x10ae <MDIO_voidSetPinValue>
-        MDIO_voidSetPinValue(PORTD, PIN6, DIO_LOW);
-    35a6:	83 e0       	ldi	r24, 0x03	; 3
-    35a8:	66 e0       	ldi	r22, 0x06	; 6
-    35aa:	40 e0       	ldi	r20, 0x00	; 0
-    35ac:	0e 94 57 08 	call	0x10ae	; 0x10ae <MDIO_voidSetPinValue>
-        MDIO_voidSetPinValue(PORTD, PIN7, DIO_LOW);
-    35b0:	83 e0       	ldi	r24, 0x03	; 3
-    35b2:	67 e0       	ldi	r22, 0x07	; 7
-    35b4:	40 e0       	ldi	r20, 0x00	; 0
-    35b6:	0e 94 57 08 	call	0x10ae	; 0x10ae <MDIO_voidSetPinValue>
-        HBUZZER_voidTurnOff();
-    35ba:	0e 94 fb 06 	call	0xdf6	; 0xdf6 <HBUZZER_voidTurnOff>
-    35be:	ee c0       	rjmp	.+476    	; 0x379c <Handle_AlertsAndLEDs+0x220>
-        return;
-    }
+    359a:	df 93       	push	r29
+    359c:	cf 93       	push	r28
+    359e:	cd b7       	in	r28, 0x3d	; 61
+    35a0:	de b7       	in	r29, 0x3e	; 62
+    35a2:	28 97       	sbiw	r28, 0x08	; 8
+    35a4:	0f b6       	in	r0, 0x3f	; 63
+    35a6:	f8 94       	cli
+    35a8:	de bf       	out	0x3e, r29	; 62
+    35aa:	0f be       	out	0x3f, r0	; 63
+    35ac:	cd bf       	out	0x3d, r28	; 61
+    35ae:	9e 83       	std	Y+6, r25	; 0x06
+    35b0:	8d 83       	std	Y+5, r24	; 0x05
+    u16 minTarget = 70;
+    35b2:	86 e4       	ldi	r24, 0x46	; 70
+    35b4:	90 e0       	ldi	r25, 0x00	; 0
+    35b6:	9c 83       	std	Y+4, r25	; 0x04
+    35b8:	8b 83       	std	Y+3, r24	; 0x03
+    u16 maxTarget = (g_patientState == STATE_FASTING) ? 100 : 140;
+    35ba:	80 91 22 01 	lds	r24, 0x0122
+    35be:	88 23       	and	r24, r24
+    35c0:	29 f4       	brne	.+10     	; 0x35cc <Handle_AlertsAndLEDs+0x32>
+    35c2:	84 e6       	ldi	r24, 0x64	; 100
+    35c4:	90 e0       	ldi	r25, 0x00	; 0
+    35c6:	98 87       	std	Y+8, r25	; 0x08
+    35c8:	8f 83       	std	Y+7, r24	; 0x07
+    35ca:	04 c0       	rjmp	.+8      	; 0x35d4 <Handle_AlertsAndLEDs+0x3a>
+    35cc:	8c e8       	ldi	r24, 0x8C	; 140
+    35ce:	90 e0       	ldi	r25, 0x00	; 0
+    35d0:	98 87       	std	Y+8, r25	; 0x08
+    35d2:	8f 83       	std	Y+7, r24	; 0x07
+    35d4:	8f 81       	ldd	r24, Y+7	; 0x07
+    35d6:	98 85       	ldd	r25, Y+8	; 0x08
+    35d8:	9a 83       	std	Y+2, r25	; 0x02
+    35da:	89 83       	std	Y+1, r24	; 0x01
 
-    u8 isLow = (glucoseVal < 70);
-    35c0:	19 8a       	std	Y+17, r1	; 0x11
-    35c2:	8a 89       	ldd	r24, Y+18	; 0x12
-    35c4:	9b 89       	ldd	r25, Y+19	; 0x13
-    35c6:	86 34       	cpi	r24, 0x46	; 70
-    35c8:	91 05       	cpc	r25, r1
-    35ca:	10 f4       	brcc	.+4      	; 0x35d0 <Handle_AlertsAndLEDs+0x54>
-    35cc:	81 e0       	ldi	r24, 0x01	; 1
-    35ce:	89 8b       	std	Y+17, r24	; 0x11
-    u8 isHigh = (g_patientState == STATE_FASTING) ? (glucoseVal > 100) : (glucoseVal > 140);
-    35d0:	80 91 22 01 	lds	r24, 0x0122
-    35d4:	88 23       	and	r24, r24
-    35d6:	49 f4       	brne	.+18     	; 0x35ea <Handle_AlertsAndLEDs+0x6e>
-    35d8:	1e 8a       	std	Y+22, r1	; 0x16
-    35da:	8a 89       	ldd	r24, Y+18	; 0x12
-    35dc:	9b 89       	ldd	r25, Y+19	; 0x13
-    35de:	85 36       	cpi	r24, 0x65	; 101
-    35e0:	91 05       	cpc	r25, r1
-    35e2:	58 f0       	brcs	.+22     	; 0x35fa <Handle_AlertsAndLEDs+0x7e>
-    35e4:	81 e0       	ldi	r24, 0x01	; 1
-    35e6:	8e 8b       	std	Y+22, r24	; 0x16
-    35e8:	08 c0       	rjmp	.+16     	; 0x35fa <Handle_AlertsAndLEDs+0x7e>
-    35ea:	1e 8a       	std	Y+22, r1	; 0x16
-    35ec:	8a 89       	ldd	r24, Y+18	; 0x12
-    35ee:	9b 89       	ldd	r25, Y+19	; 0x13
-    35f0:	8d 38       	cpi	r24, 0x8D	; 141
-    35f2:	91 05       	cpc	r25, r1
-    35f4:	10 f0       	brcs	.+4      	; 0x35fa <Handle_AlertsAndLEDs+0x7e>
-    35f6:	91 e0       	ldi	r25, 0x01	; 1
-    35f8:	9e 8b       	std	Y+22, r25	; 0x16
-    35fa:	8e 89       	ldd	r24, Y+22	; 0x16
-    35fc:	88 8b       	std	Y+16, r24	; 0x10
-    u8 isCritical = (glucoseVal < 50) || (glucoseVal > 200);
-    35fe:	8a 89       	ldd	r24, Y+18	; 0x12
-    3600:	9b 89       	ldd	r25, Y+19	; 0x13
-    3602:	82 33       	cpi	r24, 0x32	; 50
-    3604:	91 05       	cpc	r25, r1
-    3606:	28 f0       	brcs	.+10     	; 0x3612 <Handle_AlertsAndLEDs+0x96>
-    3608:	8a 89       	ldd	r24, Y+18	; 0x12
-    360a:	9b 89       	ldd	r25, Y+19	; 0x13
-    360c:	89 3c       	cpi	r24, 0xC9	; 201
-    360e:	91 05       	cpc	r25, r1
-    3610:	28 f0       	brcs	.+10     	; 0x361c <Handle_AlertsAndLEDs+0xa0>
-    3612:	81 e0       	ldi	r24, 0x01	; 1
-    3614:	90 e0       	ldi	r25, 0x00	; 0
-    3616:	9d 8b       	std	Y+21, r25	; 0x15
-    3618:	8c 8b       	std	Y+20, r24	; 0x14
-    361a:	02 c0       	rjmp	.+4      	; 0x3620 <Handle_AlertsAndLEDs+0xa4>
-    361c:	1d 8a       	std	Y+21, r1	; 0x15
-    361e:	1c 8a       	std	Y+20, r1	; 0x14
-    3620:	9c 89       	ldd	r25, Y+20	; 0x14
-    3622:	9f 87       	std	Y+15, r25	; 0x0f
+    MDIO_voidSetPinValue(PORTD, PIN5, DIO_LOW);
+    35dc:	83 e0       	ldi	r24, 0x03	; 3
+    35de:	65 e0       	ldi	r22, 0x05	; 5
+    35e0:	40 e0       	ldi	r20, 0x00	; 0
+    35e2:	0e 94 57 08 	call	0x10ae	; 0x10ae <MDIO_voidSetPinValue>
+    MDIO_voidSetPinValue(PORTD, PIN6, DIO_LOW);
+    35e6:	83 e0       	ldi	r24, 0x03	; 3
+    35e8:	66 e0       	ldi	r22, 0x06	; 6
+    35ea:	40 e0       	ldi	r20, 0x00	; 0
+    35ec:	0e 94 57 08 	call	0x10ae	; 0x10ae <MDIO_voidSetPinValue>
+    MDIO_voidSetPinValue(PORTD, PIN7, DIO_LOW);
+    35f0:	83 e0       	ldi	r24, 0x03	; 3
+    35f2:	67 e0       	ldi	r22, 0x07	; 7
+    35f4:	40 e0       	ldi	r20, 0x00	; 0
+    35f6:	0e 94 57 08 	call	0x10ae	; 0x10ae <MDIO_voidSetPinValue>
+    HBUZZER_voidTurnOff();
+    35fa:	0e 94 fb 06 	call	0xdf6	; 0xdf6 <HBUZZER_voidTurnOff>
 
-    if(g_isDoseTime || isCritical) {
-    3624:	80 91 23 01 	lds	r24, 0x0123
-    3628:	88 23       	and	r24, r24
-    362a:	21 f4       	brne	.+8      	; 0x3634 <Handle_AlertsAndLEDs+0xb8>
-    362c:	8f 85       	ldd	r24, Y+15	; 0x0f
-    362e:	88 23       	and	r24, r24
-    3630:	09 f4       	brne	.+2      	; 0x3634 <Handle_AlertsAndLEDs+0xb8>
-    3632:	8b c0       	rjmp	.+278    	; 0x374a <Handle_AlertsAndLEDs+0x1ce>
-        // Red LED Blinks & Buzzer On for Critical Readings or Dose Time
-        MDIO_voidSetPinValue(PORTD, PIN5, DIO_LOW);
-    3634:	83 e0       	ldi	r24, 0x03	; 3
-    3636:	65 e0       	ldi	r22, 0x05	; 5
-    3638:	40 e0       	ldi	r20, 0x00	; 0
-    363a:	0e 94 57 08 	call	0x10ae	; 0x10ae <MDIO_voidSetPinValue>
-        MDIO_voidSetPinValue(PORTD, PIN6, DIO_LOW);
-    363e:	83 e0       	ldi	r24, 0x03	; 3
-    3640:	66 e0       	ldi	r22, 0x06	; 6
-    3642:	40 e0       	ldi	r20, 0x00	; 0
-    3644:	0e 94 57 08 	call	0x10ae	; 0x10ae <MDIO_voidSetPinValue>
-
+    if (g_isDoseTime || glucoseVal < 50 || glucoseVal > 200) {
+    35fe:	80 91 23 01 	lds	r24, 0x0123
+    3602:	88 23       	and	r24, r24
+    3604:	51 f4       	brne	.+20     	; 0x361a <Handle_AlertsAndLEDs+0x80>
+    3606:	8d 81       	ldd	r24, Y+5	; 0x05
+    3608:	9e 81       	ldd	r25, Y+6	; 0x06
+    360a:	82 33       	cpi	r24, 0x32	; 50
+    360c:	91 05       	cpc	r25, r1
+    360e:	28 f0       	brcs	.+10     	; 0x361a <Handle_AlertsAndLEDs+0x80>
+    3610:	8d 81       	ldd	r24, Y+5	; 0x05
+    3612:	9e 81       	ldd	r25, Y+6	; 0x06
+    3614:	89 3c       	cpi	r24, 0xC9	; 201
+    3616:	91 05       	cpc	r25, r1
+    3618:	60 f0       	brcs	.+24     	; 0x3632 <Handle_AlertsAndLEDs+0x98>
         MDIO_voidSetPinValue(PORTD, PIN7, DIO_HIGH);
-    3648:	83 e0       	ldi	r24, 0x03	; 3
-    364a:	67 e0       	ldi	r22, 0x07	; 7
-    364c:	41 e0       	ldi	r20, 0x01	; 1
-    364e:	0e 94 57 08 	call	0x10ae	; 0x10ae <MDIO_voidSetPinValue>
-        HBUZZER_voidTurnOn();
-    3652:	0e 94 ef 06 	call	0xdde	; 0xdde <HBUZZER_voidTurnOn>
-    3656:	80 e0       	ldi	r24, 0x00	; 0
-    3658:	90 e0       	ldi	r25, 0x00	; 0
-    365a:	a8 ec       	ldi	r26, 0xC8	; 200
-    365c:	b2 e4       	ldi	r27, 0x42	; 66
-    365e:	8b 87       	std	Y+11, r24	; 0x0b
-    3660:	9c 87       	std	Y+12, r25	; 0x0c
-    3662:	ad 87       	std	Y+13, r26	; 0x0d
-    3664:	be 87       	std	Y+14, r27	; 0x0e
- */
-void
-_delay_ms(double __ms)
-{
-	uint16_t __ticks;
-	double __tmp = ((F_CPU) / 4e3) * __ms;
-    3666:	6b 85       	ldd	r22, Y+11	; 0x0b
-    3668:	7c 85       	ldd	r23, Y+12	; 0x0c
-    366a:	8d 85       	ldd	r24, Y+13	; 0x0d
-    366c:	9e 85       	ldd	r25, Y+14	; 0x0e
-    366e:	20 e0       	ldi	r18, 0x00	; 0
-    3670:	30 e0       	ldi	r19, 0x00	; 0
-    3672:	4a ef       	ldi	r20, 0xFA	; 250
-    3674:	54 e4       	ldi	r21, 0x44	; 68
-    3676:	0e 94 1f 02 	call	0x43e	; 0x43e <__mulsf3>
-    367a:	dc 01       	movw	r26, r24
-    367c:	cb 01       	movw	r24, r22
-    367e:	8f 83       	std	Y+7, r24	; 0x07
-    3680:	98 87       	std	Y+8, r25	; 0x08
-    3682:	a9 87       	std	Y+9, r26	; 0x09
-    3684:	ba 87       	std	Y+10, r27	; 0x0a
-	if (__tmp < 1.0)
-    3686:	6f 81       	ldd	r22, Y+7	; 0x07
-    3688:	78 85       	ldd	r23, Y+8	; 0x08
-    368a:	89 85       	ldd	r24, Y+9	; 0x09
-    368c:	9a 85       	ldd	r25, Y+10	; 0x0a
-    368e:	20 e0       	ldi	r18, 0x00	; 0
-    3690:	30 e0       	ldi	r19, 0x00	; 0
-    3692:	40 e8       	ldi	r20, 0x80	; 128
-    3694:	5f e3       	ldi	r21, 0x3F	; 63
-    3696:	0e 94 25 04 	call	0x84a	; 0x84a <__ltsf2>
-    369a:	88 23       	and	r24, r24
-    369c:	2c f4       	brge	.+10     	; 0x36a8 <Handle_AlertsAndLEDs+0x12c>
-		__ticks = 1;
-    369e:	81 e0       	ldi	r24, 0x01	; 1
-    36a0:	90 e0       	ldi	r25, 0x00	; 0
-    36a2:	9e 83       	std	Y+6, r25	; 0x06
-    36a4:	8d 83       	std	Y+5, r24	; 0x05
-    36a6:	3f c0       	rjmp	.+126    	; 0x3726 <Handle_AlertsAndLEDs+0x1aa>
-	else if (__tmp > 65535)
-    36a8:	6f 81       	ldd	r22, Y+7	; 0x07
-    36aa:	78 85       	ldd	r23, Y+8	; 0x08
-    36ac:	89 85       	ldd	r24, Y+9	; 0x09
-    36ae:	9a 85       	ldd	r25, Y+10	; 0x0a
-    36b0:	20 e0       	ldi	r18, 0x00	; 0
-    36b2:	3f ef       	ldi	r19, 0xFF	; 255
-    36b4:	4f e7       	ldi	r20, 0x7F	; 127
-    36b6:	57 e4       	ldi	r21, 0x47	; 71
-    36b8:	0e 94 c5 03 	call	0x78a	; 0x78a <__gtsf2>
-    36bc:	18 16       	cp	r1, r24
-    36be:	4c f5       	brge	.+82     	; 0x3712 <Handle_AlertsAndLEDs+0x196>
-	{
-		//	__ticks = requested delay in 1/10 ms
-		__ticks = (uint16_t) (__ms * 10.0);
-    36c0:	6b 85       	ldd	r22, Y+11	; 0x0b
-    36c2:	7c 85       	ldd	r23, Y+12	; 0x0c
-    36c4:	8d 85       	ldd	r24, Y+13	; 0x0d
-    36c6:	9e 85       	ldd	r25, Y+14	; 0x0e
-    36c8:	20 e0       	ldi	r18, 0x00	; 0
-    36ca:	30 e0       	ldi	r19, 0x00	; 0
-    36cc:	40 e2       	ldi	r20, 0x20	; 32
-    36ce:	51 e4       	ldi	r21, 0x41	; 65
-    36d0:	0e 94 1f 02 	call	0x43e	; 0x43e <__mulsf3>
-    36d4:	dc 01       	movw	r26, r24
-    36d6:	cb 01       	movw	r24, r22
-    36d8:	bc 01       	movw	r22, r24
-    36da:	cd 01       	movw	r24, r26
-    36dc:	0e 94 49 00 	call	0x92	; 0x92 <__fixunssfsi>
-    36e0:	dc 01       	movw	r26, r24
-    36e2:	cb 01       	movw	r24, r22
-    36e4:	9e 83       	std	Y+6, r25	; 0x06
-    36e6:	8d 83       	std	Y+5, r24	; 0x05
-    36e8:	0f c0       	rjmp	.+30     	; 0x3708 <Handle_AlertsAndLEDs+0x18c>
-    36ea:	88 ec       	ldi	r24, 0xC8	; 200
-    36ec:	90 e0       	ldi	r25, 0x00	; 0
-    36ee:	9c 83       	std	Y+4, r25	; 0x04
-    36f0:	8b 83       	std	Y+3, r24	; 0x03
-    36f2:	8b 81       	ldd	r24, Y+3	; 0x03
-    36f4:	9c 81       	ldd	r25, Y+4	; 0x04
-    36f6:	01 97       	sbiw	r24, 0x01	; 1
-    36f8:	f1 f7       	brne	.-4      	; 0x36f6 <Handle_AlertsAndLEDs+0x17a>
-    36fa:	9c 83       	std	Y+4, r25	; 0x04
-    36fc:	8b 83       	std	Y+3, r24	; 0x03
-		while(__ticks)
-		{
-			// wait 1/10 ms
-			_delay_loop_2(((F_CPU) / 4e3) / 10);
-			__ticks --;
-    36fe:	8d 81       	ldd	r24, Y+5	; 0x05
-    3700:	9e 81       	ldd	r25, Y+6	; 0x06
-    3702:	01 97       	sbiw	r24, 0x01	; 1
-    3704:	9e 83       	std	Y+6, r25	; 0x06
-    3706:	8d 83       	std	Y+5, r24	; 0x05
-		__ticks = 1;
-	else if (__tmp > 65535)
-	{
-		//	__ticks = requested delay in 1/10 ms
-		__ticks = (uint16_t) (__ms * 10.0);
-		while(__ticks)
-    3708:	8d 81       	ldd	r24, Y+5	; 0x05
-    370a:	9e 81       	ldd	r25, Y+6	; 0x06
-    370c:	00 97       	sbiw	r24, 0x00	; 0
-    370e:	69 f7       	brne	.-38     	; 0x36ea <Handle_AlertsAndLEDs+0x16e>
-    3710:	14 c0       	rjmp	.+40     	; 0x373a <Handle_AlertsAndLEDs+0x1be>
-			__ticks --;
-		}
-		return;
-	}
-	else
-		__ticks = (uint16_t)__tmp;
-    3712:	6f 81       	ldd	r22, Y+7	; 0x07
-    3714:	78 85       	ldd	r23, Y+8	; 0x08
-    3716:	89 85       	ldd	r24, Y+9	; 0x09
-    3718:	9a 85       	ldd	r25, Y+10	; 0x0a
-    371a:	0e 94 49 00 	call	0x92	; 0x92 <__fixunssfsi>
-    371e:	dc 01       	movw	r26, r24
-    3720:	cb 01       	movw	r24, r22
-    3722:	9e 83       	std	Y+6, r25	; 0x06
-    3724:	8d 83       	std	Y+5, r24	; 0x05
-    3726:	8d 81       	ldd	r24, Y+5	; 0x05
-    3728:	9e 81       	ldd	r25, Y+6	; 0x06
-    372a:	9a 83       	std	Y+2, r25	; 0x02
-    372c:	89 83       	std	Y+1, r24	; 0x01
-    372e:	89 81       	ldd	r24, Y+1	; 0x01
-    3730:	9a 81       	ldd	r25, Y+2	; 0x02
-    3732:	01 97       	sbiw	r24, 0x01	; 1
-    3734:	f1 f7       	brne	.-4      	; 0x3732 <Handle_AlertsAndLEDs+0x1b6>
-    3736:	9a 83       	std	Y+2, r25	; 0x02
-    3738:	89 83       	std	Y+1, r24	; 0x01
-        _delay_ms(100);
-        MDIO_voidSetPinValue(PORTD, PIN7, DIO_LOW);
-    373a:	83 e0       	ldi	r24, 0x03	; 3
-    373c:	67 e0       	ldi	r22, 0x07	; 7
-    373e:	40 e0       	ldi	r20, 0x00	; 0
-    3740:	0e 94 57 08 	call	0x10ae	; 0x10ae <MDIO_voidSetPinValue>
-        HBUZZER_voidTurnOff();
-    3744:	0e 94 fb 06 	call	0xdf6	; 0xdf6 <HBUZZER_voidTurnOff>
-    3748:	29 c0       	rjmp	.+82     	; 0x379c <Handle_AlertsAndLEDs+0x220>
+    361a:	83 e0       	ldi	r24, 0x03	; 3
+    361c:	67 e0       	ldi	r22, 0x07	; 7
+    361e:	41 e0       	ldi	r20, 0x01	; 1
+    3620:	0e 94 57 08 	call	0x10ae	; 0x10ae <MDIO_voidSetPinValue>
+        if (g_alarmEnabled) {
+    3624:	80 91 e8 00 	lds	r24, 0x00E8
+    3628:	88 23       	and	r24, r24
+    362a:	e1 f0       	breq	.+56     	; 0x3664 <Handle_AlertsAndLEDs+0xca>
+            HBUZZER_voidTurnOn();
+    362c:	0e 94 ef 06 	call	0xdde	; 0xdde <HBUZZER_voidTurnOn>
+    3630:	19 c0       	rjmp	.+50     	; 0x3664 <Handle_AlertsAndLEDs+0xca>
+        }
     }
-    else if(isLow || isHigh) {
-    374a:	89 89       	ldd	r24, Y+17	; 0x11
-    374c:	88 23       	and	r24, r24
-    374e:	19 f4       	brne	.+6      	; 0x3756 <Handle_AlertsAndLEDs+0x1da>
-    3750:	88 89       	ldd	r24, Y+16	; 0x10
-    3752:	88 23       	and	r24, r24
-    3754:	91 f0       	breq	.+36     	; 0x377a <Handle_AlertsAndLEDs+0x1fe>
-        // Yellow LED Warning
-        MDIO_voidSetPinValue(PORTD, PIN5, DIO_LOW);
-    3756:	83 e0       	ldi	r24, 0x03	; 3
-    3758:	65 e0       	ldi	r22, 0x05	; 5
-    375a:	40 e0       	ldi	r20, 0x00	; 0
-    375c:	0e 94 57 08 	call	0x10ae	; 0x10ae <MDIO_voidSetPinValue>
+    else if (glucoseVal < minTarget || glucoseVal > maxTarget) {
+    3632:	2d 81       	ldd	r18, Y+5	; 0x05
+    3634:	3e 81       	ldd	r19, Y+6	; 0x06
+    3636:	8b 81       	ldd	r24, Y+3	; 0x03
+    3638:	9c 81       	ldd	r25, Y+4	; 0x04
+    363a:	28 17       	cp	r18, r24
+    363c:	39 07       	cpc	r19, r25
+    363e:	38 f0       	brcs	.+14     	; 0x364e <Handle_AlertsAndLEDs+0xb4>
+    3640:	2d 81       	ldd	r18, Y+5	; 0x05
+    3642:	3e 81       	ldd	r19, Y+6	; 0x06
+    3644:	89 81       	ldd	r24, Y+1	; 0x01
+    3646:	9a 81       	ldd	r25, Y+2	; 0x02
+    3648:	82 17       	cp	r24, r18
+    364a:	93 07       	cpc	r25, r19
+    364c:	30 f4       	brcc	.+12     	; 0x365a <Handle_AlertsAndLEDs+0xc0>
         MDIO_voidSetPinValue(PORTD, PIN6, DIO_HIGH);
-    3760:	83 e0       	ldi	r24, 0x03	; 3
-    3762:	66 e0       	ldi	r22, 0x06	; 6
-    3764:	41 e0       	ldi	r20, 0x01	; 1
-    3766:	0e 94 57 08 	call	0x10ae	; 0x10ae <MDIO_voidSetPinValue>
-        MDIO_voidSetPinValue(PORTD, PIN7, DIO_LOW);
-    376a:	83 e0       	ldi	r24, 0x03	; 3
-    376c:	67 e0       	ldi	r22, 0x07	; 7
-    376e:	40 e0       	ldi	r20, 0x00	; 0
-    3770:	0e 94 57 08 	call	0x10ae	; 0x10ae <MDIO_voidSetPinValue>
-        HBUZZER_voidTurnOff();
-    3774:	0e 94 fb 06 	call	0xdf6	; 0xdf6 <HBUZZER_voidTurnOff>
-    3778:	11 c0       	rjmp	.+34     	; 0x379c <Handle_AlertsAndLEDs+0x220>
+    364e:	83 e0       	ldi	r24, 0x03	; 3
+    3650:	66 e0       	ldi	r22, 0x06	; 6
+    3652:	41 e0       	ldi	r20, 0x01	; 1
+    3654:	0e 94 57 08 	call	0x10ae	; 0x10ae <MDIO_voidSetPinValue>
+    3658:	05 c0       	rjmp	.+10     	; 0x3664 <Handle_AlertsAndLEDs+0xca>
     }
     else {
-        // Normal Green LED
         MDIO_voidSetPinValue(PORTD, PIN5, DIO_HIGH);
-    377a:	83 e0       	ldi	r24, 0x03	; 3
-    377c:	65 e0       	ldi	r22, 0x05	; 5
-    377e:	41 e0       	ldi	r20, 0x01	; 1
-    3780:	0e 94 57 08 	call	0x10ae	; 0x10ae <MDIO_voidSetPinValue>
-        MDIO_voidSetPinValue(PORTD, PIN6, DIO_LOW);
-    3784:	83 e0       	ldi	r24, 0x03	; 3
-    3786:	66 e0       	ldi	r22, 0x06	; 6
-    3788:	40 e0       	ldi	r20, 0x00	; 0
-    378a:	0e 94 57 08 	call	0x10ae	; 0x10ae <MDIO_voidSetPinValue>
-        MDIO_voidSetPinValue(PORTD, PIN7, DIO_LOW);
-    378e:	83 e0       	ldi	r24, 0x03	; 3
-    3790:	67 e0       	ldi	r22, 0x07	; 7
-    3792:	40 e0       	ldi	r20, 0x00	; 0
-    3794:	0e 94 57 08 	call	0x10ae	; 0x10ae <MDIO_voidSetPinValue>
-        HBUZZER_voidTurnOff();
-    3798:	0e 94 fb 06 	call	0xdf6	; 0xdf6 <HBUZZER_voidTurnOff>
+    365a:	83 e0       	ldi	r24, 0x03	; 3
+    365c:	65 e0       	ldi	r22, 0x05	; 5
+    365e:	41 e0       	ldi	r20, 0x01	; 1
+    3660:	0e 94 57 08 	call	0x10ae	; 0x10ae <MDIO_voidSetPinValue>
     }
 }
-    379c:	66 96       	adiw	r28, 0x16	; 22
-    379e:	0f b6       	in	r0, 0x3f	; 63
-    37a0:	f8 94       	cli
-    37a2:	de bf       	out	0x3e, r29	; 62
-    37a4:	0f be       	out	0x3f, r0	; 63
-    37a6:	cd bf       	out	0x3d, r28	; 61
-    37a8:	cf 91       	pop	r28
-    37aa:	df 91       	pop	r29
-    37ac:	08 95       	ret
+    3664:	28 96       	adiw	r28, 0x08	; 8
+    3666:	0f b6       	in	r0, 0x3f	; 63
+    3668:	f8 94       	cli
+    366a:	de bf       	out	0x3e, r29	; 62
+    366c:	0f be       	out	0x3f, r0	; 63
+    366e:	cd bf       	out	0x3d, r28	; 61
+    3670:	cf 91       	pop	r28
+    3672:	df 91       	pop	r29
+    3674:	08 95       	ret
 
-000037ae <__udivmodqi4>:
-    37ae:	99 1b       	sub	r25, r25
-    37b0:	79 e0       	ldi	r23, 0x09	; 9
-    37b2:	04 c0       	rjmp	.+8      	; 0x37bc <__udivmodqi4_ep>
+00003676 <__udivmodqi4>:
+    3676:	99 1b       	sub	r25, r25
+    3678:	79 e0       	ldi	r23, 0x09	; 9
+    367a:	04 c0       	rjmp	.+8      	; 0x3684 <__udivmodqi4_ep>
 
-000037b4 <__udivmodqi4_loop>:
-    37b4:	99 1f       	adc	r25, r25
-    37b6:	96 17       	cp	r25, r22
-    37b8:	08 f0       	brcs	.+2      	; 0x37bc <__udivmodqi4_ep>
-    37ba:	96 1b       	sub	r25, r22
+0000367c <__udivmodqi4_loop>:
+    367c:	99 1f       	adc	r25, r25
+    367e:	96 17       	cp	r25, r22
+    3680:	08 f0       	brcs	.+2      	; 0x3684 <__udivmodqi4_ep>
+    3682:	96 1b       	sub	r25, r22
 
-000037bc <__udivmodqi4_ep>:
-    37bc:	88 1f       	adc	r24, r24
-    37be:	7a 95       	dec	r23
-    37c0:	c9 f7       	brne	.-14     	; 0x37b4 <__udivmodqi4_loop>
-    37c2:	80 95       	com	r24
-    37c4:	08 95       	ret
+00003684 <__udivmodqi4_ep>:
+    3684:	88 1f       	adc	r24, r24
+    3686:	7a 95       	dec	r23
+    3688:	c9 f7       	brne	.-14     	; 0x367c <__udivmodqi4_loop>
+    368a:	80 95       	com	r24
+    368c:	08 95       	ret
 
-000037c6 <__udivmodhi4>:
-    37c6:	aa 1b       	sub	r26, r26
-    37c8:	bb 1b       	sub	r27, r27
-    37ca:	51 e1       	ldi	r21, 0x11	; 17
-    37cc:	07 c0       	rjmp	.+14     	; 0x37dc <__udivmodhi4_ep>
+0000368e <__udivmodhi4>:
+    368e:	aa 1b       	sub	r26, r26
+    3690:	bb 1b       	sub	r27, r27
+    3692:	51 e1       	ldi	r21, 0x11	; 17
+    3694:	07 c0       	rjmp	.+14     	; 0x36a4 <__udivmodhi4_ep>
 
-000037ce <__udivmodhi4_loop>:
-    37ce:	aa 1f       	adc	r26, r26
-    37d0:	bb 1f       	adc	r27, r27
-    37d2:	a6 17       	cp	r26, r22
-    37d4:	b7 07       	cpc	r27, r23
-    37d6:	10 f0       	brcs	.+4      	; 0x37dc <__udivmodhi4_ep>
-    37d8:	a6 1b       	sub	r26, r22
-    37da:	b7 0b       	sbc	r27, r23
+00003696 <__udivmodhi4_loop>:
+    3696:	aa 1f       	adc	r26, r26
+    3698:	bb 1f       	adc	r27, r27
+    369a:	a6 17       	cp	r26, r22
+    369c:	b7 07       	cpc	r27, r23
+    369e:	10 f0       	brcs	.+4      	; 0x36a4 <__udivmodhi4_ep>
+    36a0:	a6 1b       	sub	r26, r22
+    36a2:	b7 0b       	sbc	r27, r23
 
-000037dc <__udivmodhi4_ep>:
-    37dc:	88 1f       	adc	r24, r24
-    37de:	99 1f       	adc	r25, r25
-    37e0:	5a 95       	dec	r21
-    37e2:	a9 f7       	brne	.-22     	; 0x37ce <__udivmodhi4_loop>
-    37e4:	80 95       	com	r24
-    37e6:	90 95       	com	r25
-    37e8:	bc 01       	movw	r22, r24
-    37ea:	cd 01       	movw	r24, r26
-    37ec:	08 95       	ret
+000036a4 <__udivmodhi4_ep>:
+    36a4:	88 1f       	adc	r24, r24
+    36a6:	99 1f       	adc	r25, r25
+    36a8:	5a 95       	dec	r21
+    36aa:	a9 f7       	brne	.-22     	; 0x3696 <__udivmodhi4_loop>
+    36ac:	80 95       	com	r24
+    36ae:	90 95       	com	r25
+    36b0:	bc 01       	movw	r22, r24
+    36b2:	cd 01       	movw	r24, r26
+    36b4:	08 95       	ret
 
-000037ee <__udivmodsi4>:
-    37ee:	a1 e2       	ldi	r26, 0x21	; 33
-    37f0:	1a 2e       	mov	r1, r26
-    37f2:	aa 1b       	sub	r26, r26
-    37f4:	bb 1b       	sub	r27, r27
-    37f6:	fd 01       	movw	r30, r26
-    37f8:	0d c0       	rjmp	.+26     	; 0x3814 <__udivmodsi4_ep>
+000036b6 <__udivmodsi4>:
+    36b6:	a1 e2       	ldi	r26, 0x21	; 33
+    36b8:	1a 2e       	mov	r1, r26
+    36ba:	aa 1b       	sub	r26, r26
+    36bc:	bb 1b       	sub	r27, r27
+    36be:	fd 01       	movw	r30, r26
+    36c0:	0d c0       	rjmp	.+26     	; 0x36dc <__udivmodsi4_ep>
 
-000037fa <__udivmodsi4_loop>:
-    37fa:	aa 1f       	adc	r26, r26
-    37fc:	bb 1f       	adc	r27, r27
-    37fe:	ee 1f       	adc	r30, r30
-    3800:	ff 1f       	adc	r31, r31
-    3802:	a2 17       	cp	r26, r18
-    3804:	b3 07       	cpc	r27, r19
-    3806:	e4 07       	cpc	r30, r20
-    3808:	f5 07       	cpc	r31, r21
-    380a:	20 f0       	brcs	.+8      	; 0x3814 <__udivmodsi4_ep>
-    380c:	a2 1b       	sub	r26, r18
-    380e:	b3 0b       	sbc	r27, r19
-    3810:	e4 0b       	sbc	r30, r20
-    3812:	f5 0b       	sbc	r31, r21
+000036c2 <__udivmodsi4_loop>:
+    36c2:	aa 1f       	adc	r26, r26
+    36c4:	bb 1f       	adc	r27, r27
+    36c6:	ee 1f       	adc	r30, r30
+    36c8:	ff 1f       	adc	r31, r31
+    36ca:	a2 17       	cp	r26, r18
+    36cc:	b3 07       	cpc	r27, r19
+    36ce:	e4 07       	cpc	r30, r20
+    36d0:	f5 07       	cpc	r31, r21
+    36d2:	20 f0       	brcs	.+8      	; 0x36dc <__udivmodsi4_ep>
+    36d4:	a2 1b       	sub	r26, r18
+    36d6:	b3 0b       	sbc	r27, r19
+    36d8:	e4 0b       	sbc	r30, r20
+    36da:	f5 0b       	sbc	r31, r21
 
-00003814 <__udivmodsi4_ep>:
-    3814:	66 1f       	adc	r22, r22
-    3816:	77 1f       	adc	r23, r23
-    3818:	88 1f       	adc	r24, r24
-    381a:	99 1f       	adc	r25, r25
-    381c:	1a 94       	dec	r1
-    381e:	69 f7       	brne	.-38     	; 0x37fa <__udivmodsi4_loop>
-    3820:	60 95       	com	r22
-    3822:	70 95       	com	r23
-    3824:	80 95       	com	r24
-    3826:	90 95       	com	r25
-    3828:	9b 01       	movw	r18, r22
-    382a:	ac 01       	movw	r20, r24
-    382c:	bd 01       	movw	r22, r26
-    382e:	cf 01       	movw	r24, r30
-    3830:	08 95       	ret
+000036dc <__udivmodsi4_ep>:
+    36dc:	66 1f       	adc	r22, r22
+    36de:	77 1f       	adc	r23, r23
+    36e0:	88 1f       	adc	r24, r24
+    36e2:	99 1f       	adc	r25, r25
+    36e4:	1a 94       	dec	r1
+    36e6:	69 f7       	brne	.-38     	; 0x36c2 <__udivmodsi4_loop>
+    36e8:	60 95       	com	r22
+    36ea:	70 95       	com	r23
+    36ec:	80 95       	com	r24
+    36ee:	90 95       	com	r25
+    36f0:	9b 01       	movw	r18, r22
+    36f2:	ac 01       	movw	r20, r24
+    36f4:	bd 01       	movw	r22, r26
+    36f6:	cf 01       	movw	r24, r30
+    36f8:	08 95       	ret
 
-00003832 <__prologue_saves__>:
-    3832:	2f 92       	push	r2
-    3834:	3f 92       	push	r3
-    3836:	4f 92       	push	r4
-    3838:	5f 92       	push	r5
-    383a:	6f 92       	push	r6
-    383c:	7f 92       	push	r7
-    383e:	8f 92       	push	r8
-    3840:	9f 92       	push	r9
-    3842:	af 92       	push	r10
-    3844:	bf 92       	push	r11
-    3846:	cf 92       	push	r12
-    3848:	df 92       	push	r13
-    384a:	ef 92       	push	r14
-    384c:	ff 92       	push	r15
-    384e:	0f 93       	push	r16
-    3850:	1f 93       	push	r17
-    3852:	cf 93       	push	r28
-    3854:	df 93       	push	r29
-    3856:	cd b7       	in	r28, 0x3d	; 61
-    3858:	de b7       	in	r29, 0x3e	; 62
-    385a:	ca 1b       	sub	r28, r26
-    385c:	db 0b       	sbc	r29, r27
-    385e:	0f b6       	in	r0, 0x3f	; 63
-    3860:	f8 94       	cli
-    3862:	de bf       	out	0x3e, r29	; 62
-    3864:	0f be       	out	0x3f, r0	; 63
-    3866:	cd bf       	out	0x3d, r28	; 61
-    3868:	09 94       	ijmp
+000036fa <__prologue_saves__>:
+    36fa:	2f 92       	push	r2
+    36fc:	3f 92       	push	r3
+    36fe:	4f 92       	push	r4
+    3700:	5f 92       	push	r5
+    3702:	6f 92       	push	r6
+    3704:	7f 92       	push	r7
+    3706:	8f 92       	push	r8
+    3708:	9f 92       	push	r9
+    370a:	af 92       	push	r10
+    370c:	bf 92       	push	r11
+    370e:	cf 92       	push	r12
+    3710:	df 92       	push	r13
+    3712:	ef 92       	push	r14
+    3714:	ff 92       	push	r15
+    3716:	0f 93       	push	r16
+    3718:	1f 93       	push	r17
+    371a:	cf 93       	push	r28
+    371c:	df 93       	push	r29
+    371e:	cd b7       	in	r28, 0x3d	; 61
+    3720:	de b7       	in	r29, 0x3e	; 62
+    3722:	ca 1b       	sub	r28, r26
+    3724:	db 0b       	sbc	r29, r27
+    3726:	0f b6       	in	r0, 0x3f	; 63
+    3728:	f8 94       	cli
+    372a:	de bf       	out	0x3e, r29	; 62
+    372c:	0f be       	out	0x3f, r0	; 63
+    372e:	cd bf       	out	0x3d, r28	; 61
+    3730:	09 94       	ijmp
 
-0000386a <__epilogue_restores__>:
-    386a:	2a 88       	ldd	r2, Y+18	; 0x12
-    386c:	39 88       	ldd	r3, Y+17	; 0x11
-    386e:	48 88       	ldd	r4, Y+16	; 0x10
-    3870:	5f 84       	ldd	r5, Y+15	; 0x0f
-    3872:	6e 84       	ldd	r6, Y+14	; 0x0e
-    3874:	7d 84       	ldd	r7, Y+13	; 0x0d
-    3876:	8c 84       	ldd	r8, Y+12	; 0x0c
-    3878:	9b 84       	ldd	r9, Y+11	; 0x0b
-    387a:	aa 84       	ldd	r10, Y+10	; 0x0a
-    387c:	b9 84       	ldd	r11, Y+9	; 0x09
-    387e:	c8 84       	ldd	r12, Y+8	; 0x08
-    3880:	df 80       	ldd	r13, Y+7	; 0x07
-    3882:	ee 80       	ldd	r14, Y+6	; 0x06
-    3884:	fd 80       	ldd	r15, Y+5	; 0x05
-    3886:	0c 81       	ldd	r16, Y+4	; 0x04
-    3888:	1b 81       	ldd	r17, Y+3	; 0x03
-    388a:	aa 81       	ldd	r26, Y+2	; 0x02
-    388c:	b9 81       	ldd	r27, Y+1	; 0x01
-    388e:	ce 0f       	add	r28, r30
-    3890:	d1 1d       	adc	r29, r1
-    3892:	0f b6       	in	r0, 0x3f	; 63
-    3894:	f8 94       	cli
-    3896:	de bf       	out	0x3e, r29	; 62
-    3898:	0f be       	out	0x3f, r0	; 63
-    389a:	cd bf       	out	0x3d, r28	; 61
-    389c:	ed 01       	movw	r28, r26
-    389e:	08 95       	ret
+00003732 <__epilogue_restores__>:
+    3732:	2a 88       	ldd	r2, Y+18	; 0x12
+    3734:	39 88       	ldd	r3, Y+17	; 0x11
+    3736:	48 88       	ldd	r4, Y+16	; 0x10
+    3738:	5f 84       	ldd	r5, Y+15	; 0x0f
+    373a:	6e 84       	ldd	r6, Y+14	; 0x0e
+    373c:	7d 84       	ldd	r7, Y+13	; 0x0d
+    373e:	8c 84       	ldd	r8, Y+12	; 0x0c
+    3740:	9b 84       	ldd	r9, Y+11	; 0x0b
+    3742:	aa 84       	ldd	r10, Y+10	; 0x0a
+    3744:	b9 84       	ldd	r11, Y+9	; 0x09
+    3746:	c8 84       	ldd	r12, Y+8	; 0x08
+    3748:	df 80       	ldd	r13, Y+7	; 0x07
+    374a:	ee 80       	ldd	r14, Y+6	; 0x06
+    374c:	fd 80       	ldd	r15, Y+5	; 0x05
+    374e:	0c 81       	ldd	r16, Y+4	; 0x04
+    3750:	1b 81       	ldd	r17, Y+3	; 0x03
+    3752:	aa 81       	ldd	r26, Y+2	; 0x02
+    3754:	b9 81       	ldd	r27, Y+1	; 0x01
+    3756:	ce 0f       	add	r28, r30
+    3758:	d1 1d       	adc	r29, r1
+    375a:	0f b6       	in	r0, 0x3f	; 63
+    375c:	f8 94       	cli
+    375e:	de bf       	out	0x3e, r29	; 62
+    3760:	0f be       	out	0x3f, r0	; 63
+    3762:	cd bf       	out	0x3d, r28	; 61
+    3764:	ed 01       	movw	r28, r26
+    3766:	08 95       	ret
 
-000038a0 <_exit>:
-    38a0:	f8 94       	cli
+00003768 <_exit>:
+    3768:	f8 94       	cli
 
-000038a2 <__stop_program>:
-    38a2:	ff cf       	rjmp	.-2      	; 0x38a2 <__stop_program>
+0000376a <__stop_program>:
+    376a:	ff cf       	rjmp	.-2      	; 0x376a <__stop_program>

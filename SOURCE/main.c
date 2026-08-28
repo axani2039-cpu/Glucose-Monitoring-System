@@ -99,19 +99,20 @@ int main(void) {
 }
 
 void System_Init(void) {
-    /* Initialize MCAL and Hardware Drivers via Pre-Compile Configurations */
     MDIO_voidInit();
     HLCD_voidInit();
     HGLUCOSE_voidInit();
     HBUZZER_voidInit();
     HRTC_voidInit();
 
-    /* Setup LEDs on PORTD pins (PD5: Green, PD6: Yellow, PD7: Red) */
     MDIO_voidSetPinDirection(PORTD, PIN5, DIO_OUTPUT);
     MDIO_voidSetPinDirection(PORTD, PIN6, DIO_OUTPUT);
     MDIO_voidSetPinDirection(PORTD, PIN7, DIO_OUTPUT);
 
-    /* Load Custom Characters to CGRAM */
+    MDIO_voidSetPinValue(PORTD, PIN5, DIO_LOW);
+    MDIO_voidSetPinValue(PORTD, PIN6, DIO_LOW);
+    MDIO_voidSetPinValue(PORTD, PIN7, DIO_LOW);
+
     HLCD_voidSendSpecialCharacter(Heart_Full, 0, ROW1, col1);
     HLCD_voidSendSpecialCharacter(Heart_Empty, 1, ROW1, col1);
     HLCD_voidSendSpecialCharacter(Arrow_Up, 2, ROW1, col1);
@@ -119,35 +120,19 @@ void System_Init(void) {
     HLCD_voidSendSpecialCharacter(Arrow_Right, 4, ROW1, col1);
     HLCD_voidSendSpecialCharacter(Bell_Icon, 5, ROW1, col1);
 
-    /* Setup EXTI INT0 for Alarm Toggle Button (PD2) */
     MEXTI_voidConfig(EXTI0, FALLING_EDGE);
     MEXTI_voidSetCallBack(EXTI0, &ISR_Button_ToggleAlarm);
     MEXTI_voidEnable(EXTI0);
 
-    /* Setup EXTI INT1 for Fasting Button (PD3) */
     MEXTI_voidConfig(EXTI1, FALLING_EDGE);
     MEXTI_voidSetCallBack(EXTI1, &ISR_Button_Fasting);
     MEXTI_voidEnable(EXTI1);
 
-    /* Setup EXTI INT2 for Post-Meal Button (PB2) */
     MEXTI_voidConfig(EXTI2, FALLING_EDGE);
     MEXTI_voidSetCallBack(EXTI2, &ISR_Button_PostMeal);
     MEXTI_voidEnable(EXTI2);
 
-    /* Enable Global Interrupts */
     MGI_voidEnable();
-}
-
-void Check_DoseTime(void) {
-    HRTC_voidGetTime(&g_currentTime);
-
-    // Check Scheduled Dose Reminders (12:00:00 PM or 09:00:00 PM)
-    if ((g_currentTime.Hours == 12 && g_currentTime.Minutes == 0) ||
-        (g_currentTime.Hours == 21 && g_currentTime.Minutes == 0)) {
-        g_isDoseTime = 1;
-    } else {
-        g_isDoseTime = 0;
-    }
 }
 
 void Display_StartupAnimation(void) {
@@ -221,44 +206,36 @@ void Display_RenderScreen(u16 glucoseVal, u8 pulse) {
         else                            HLCD_voidSendString((u8*)"NORMAL (Good)   ");
     }
 }
+void Check_DoseTime(void) {
+    HRTC_voidGetTime(&g_currentTime);
+
+    if ((g_currentTime.Hours == 12 && g_currentTime.Minutes == 0) ||
+        (g_currentTime.Hours == 21 && g_currentTime.Minutes == 0)) {
+        g_isDoseTime = 1;
+    } else {
+        g_isDoseTime = 0;
+    }
+}
 
 void Handle_AlertsAndLEDs(u16 glucoseVal) {
-    // If Alarm Feature is DISABLED -> Keep All Alert Outputs OFF
-    if(!g_alarmEnabled) {
-        MDIO_voidSetPinValue(PORTD, PIN5, DIO_LOW);
-        MDIO_voidSetPinValue(PORTD, PIN6, DIO_LOW);
-        MDIO_voidSetPinValue(PORTD, PIN7, DIO_LOW);
-        HBUZZER_voidTurnOff();
-        return;
-    }
+    u16 minTarget = 70;
+    u16 maxTarget = (g_patientState == STATE_FASTING) ? 100 : 140;
 
-    u8 isLow = (glucoseVal < 70);
-    u8 isHigh = (g_patientState == STATE_FASTING) ? (glucoseVal > 100) : (glucoseVal > 140);
-    u8 isCritical = (glucoseVal < 50) || (glucoseVal > 200);
+    MDIO_voidSetPinValue(PORTD, PIN5, DIO_LOW);
+    MDIO_voidSetPinValue(PORTD, PIN6, DIO_LOW);
+    MDIO_voidSetPinValue(PORTD, PIN7, DIO_LOW);
+    HBUZZER_voidTurnOff();
 
-    if(g_isDoseTime || isCritical) {
-        // Red LED Blinks & Buzzer On for Critical Readings or Dose Time
-        MDIO_voidSetPinValue(PORTD, PIN5, DIO_LOW);
-        MDIO_voidSetPinValue(PORTD, PIN6, DIO_LOW);
-
+    if (g_isDoseTime || glucoseVal < 50 || glucoseVal > 200) {
         MDIO_voidSetPinValue(PORTD, PIN7, DIO_HIGH);
-        HBUZZER_voidTurnOn();
-        _delay_ms(100);
-        MDIO_voidSetPinValue(PORTD, PIN7, DIO_LOW);
-        HBUZZER_voidTurnOff();
+        if (g_alarmEnabled) {
+            HBUZZER_voidTurnOn();
+        }
     }
-    else if(isLow || isHigh) {
-        // Yellow LED Warning
-        MDIO_voidSetPinValue(PORTD, PIN5, DIO_LOW);
+    else if (glucoseVal < minTarget || glucoseVal > maxTarget) {
         MDIO_voidSetPinValue(PORTD, PIN6, DIO_HIGH);
-        MDIO_voidSetPinValue(PORTD, PIN7, DIO_LOW);
-        HBUZZER_voidTurnOff();
     }
     else {
-        // Normal Green LED
         MDIO_voidSetPinValue(PORTD, PIN5, DIO_HIGH);
-        MDIO_voidSetPinValue(PORTD, PIN6, DIO_LOW);
-        MDIO_voidSetPinValue(PORTD, PIN7, DIO_LOW);
-        HBUZZER_voidTurnOff();
     }
 }

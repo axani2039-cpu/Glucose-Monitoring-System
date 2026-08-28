@@ -9,6 +9,7 @@ C_SRCS += \
 ../SOURCE/DIO_PROGRAM.c \
 ../SOURCE/EXTI_PROGRAM.c \
 ../SOURCE/GLUCOSE_PROGRAM.c \
+../SOURCE/GLUCOSE_SENSOR_PROGRAM.c \
 ../SOURCE/GL_PROGRAM.c \
 ../SOURCE/LCD_PROGRAM.c \
 ../SOURCE/RTC_PROGRAM.c \
@@ -21,6 +22,7 @@ OBJS += \
 ./SOURCE/DIO_PROGRAM.o \
 ./SOURCE/EXTI_PROGRAM.o \
 ./SOURCE/GLUCOSE_PROGRAM.o \
+./SOURCE/GLUCOSE_SENSOR_PROGRAM.o \
 ./SOURCE/GL_PROGRAM.o \
 ./SOURCE/LCD_PROGRAM.o \
 ./SOURCE/RTC_PROGRAM.o \
@@ -33,6 +35,7 @@ C_DEPS += \
 ./SOURCE/DIO_PROGRAM.d \
 ./SOURCE/EXTI_PROGRAM.d \
 ./SOURCE/GLUCOSE_PROGRAM.d \
+./SOURCE/GLUCOSE_SENSOR_PROGRAM.d \
 ./SOURCE/GL_PROGRAM.d \
 ./SOURCE/LCD_PROGRAM.d \
 ./SOURCE/RTC_PROGRAM.d \
@@ -44,7 +47,7 @@ C_DEPS += \
 SOURCE/%.o: ../SOURCE/%.c
 	@echo 'Building file: $<'
 	@echo 'Invoking: AVR Compiler'
-	avr-gcc -I"C:\Users\ahmed\Videos\nti\eclipse\SDK_Win_64\SDK_Win_64\WinAVR\avr\include" -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega16 -DF_CPU=16000000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" -c -o "$@" "$<"
+	avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega16 -DF_CPU=16000000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" -c -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
